@@ -2,8 +2,8 @@
 A wave-based local co-op battler
 
 ## Team Members
-- David Panagiotopulos
-- Luis Hankel
+- [David Panagiotopulos](https://github.com/DavidPgl)
+- [Luis Hankel](https://github.com/Kaes3kuch3n)
 
 ## Planned Features
 
