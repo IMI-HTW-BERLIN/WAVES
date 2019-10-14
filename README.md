@@ -7,7 +7,7 @@ A wave-based local co-op battler
 
 ## Planned Features
 
-### Must have
+### Must have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/1)
 - Two Players
 - Can shoot/fight
 - Base to protect
@@ -15,13 +15,13 @@ A wave-based local co-op battler
 - Wave-based – Defined by daylight or simply by time
 - Split-screen or one screen
 
-### Should have
+### Should have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/2)
 -	Different enemy types
 -	Buildable towers which attack enemies/provide buffs or debuffs
 -	Resources for building towers (money/loot from defeated enemies or resource gathering)
 -	Score (waves survived, enemies killed, time?)
 
-### Nice to have
+### Nice to have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/3)
 - Enemy death animation
 - Different themes
 - Player Abilities (Fast repair, More DMG) or skill-tree
