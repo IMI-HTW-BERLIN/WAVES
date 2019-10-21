@@ -10,12 +10,14 @@ namespace Buildings
         private GameObject destructionParticleEffect;
         [SerializeField]
         private int maxLevel;
-        
-        private int _level;
+
+        public int Health => health;
+        public int MaxLevel => maxLevel;
+        public int Level { get; private set; }
 
         private void Start()
         {
-            _level = 1;
+            Level = 1;
         }
 
         /// <summary>
@@ -38,14 +40,20 @@ namespace Buildings
         }
 
         /// <summary>
+        /// Checks if a building is on its maximum level
+        /// </summary>
+        /// <returns></returns>
+        public bool IsMaxLevel() => Level >= maxLevel;
+
+        /// <summary>
         /// Called when a building is upgraded to the next level
         /// </summary>
         protected virtual void Upgrade()
         {
-            if (_level >= maxLevel)
+            if (IsMaxLevel())
                 return;
             Instantiate(destructionParticleEffect, transform);
-            _level++;
+            Level++;
         }
     }
 }
