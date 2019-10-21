@@ -4,7 +4,7 @@ namespace Entities
 {
     public class Entity : MonoBehaviour
     {
-        public int currentHealth;
+        private int _currentHealth;
         
         [SerializeField]
         protected int health;
@@ -15,7 +15,7 @@ namespace Entities
 
         protected virtual void Start()
         {
-            currentHealth = health;
+            _currentHealth = health;
         }
 
         /// <summary>
@@ -25,13 +25,13 @@ namespace Entities
 
         public void ReduceHealth(int amount)
         {
-            currentHealth -= amount;
-            if (currentHealth > 0) return;
+            _currentHealth -= amount;
+            if (_currentHealth > 0) return;
             
             Debug.Log("Entity '" + this.name + "' died");
             OnDeath();
         }
 
-        public void ResetHealth() => currentHealth = health;
+        public void ResetHealth() => _currentHealth = health;
     }
 }

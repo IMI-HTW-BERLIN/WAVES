@@ -6,17 +6,18 @@ namespace Entities
     public class Enemy : Entity
     {
         [SerializeField] private Rigidbody2D rigid;
-        private Vector3 _target;
+        [SerializeField]
+        private Transform target;
 
         private void FixedUpdate() => MoveToTarget();
 
-        public void SetTarget(Vector2 target) => _target = target;
+        public void SetTarget(Transform targetTransform) => this.target = targetTransform;
 
         private void MoveToTarget()
         {
             Vector3 position = transform.position;
-            Vector3 direction = (_target - position).normalized;
-            rigid.MovePosition(position + Time.deltaTime * baseMovementSpeed * direction);
+            bool targetToLeft = position.x > target.position.x;
+            rigid.MovePosition(new Vector3(position.x + baseMovementSpeed * Time.fixedDeltaTime * (targetToLeft ? - 1 : 1), position.y, position.z));
         }
         
     }
