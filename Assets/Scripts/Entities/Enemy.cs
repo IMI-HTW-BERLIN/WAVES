@@ -5,7 +5,6 @@ namespace Entities
 {
     public class Enemy : Entity
     {
-        [SerializeField] private Rigidbody2D rigid;
         [SerializeField]
         private Transform target;
 
@@ -17,7 +16,7 @@ namespace Entities
         {
             Vector3 position = transform.position;
             bool targetToLeft = position.x > target.position.x;
-            rigid.MovePosition(new Vector3(position.x + baseMovementSpeed * Time.fixedDeltaTime * (targetToLeft ? - 1 : 1), position.y, position.z));
+            rigidbody2D.MovePosition(new Vector3(position.x + baseMovementSpeed * Time.fixedDeltaTime * (targetToLeft ? - 1 : 1), position.y, position.z));
         }
         
     }

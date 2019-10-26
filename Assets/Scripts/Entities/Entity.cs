@@ -12,6 +12,8 @@ namespace Entities
         protected int baseMovementSpeed;
         [SerializeField]
         protected int baseDamage;
+        [SerializeField]
+        protected Rigidbody2D rigidbody2D;
 
         protected virtual void Start()
         {
