@@ -11,9 +11,9 @@ namespace Buildings
         
         [SerializeField] private GameObject destructionParticleEffect;
         [SerializeField] private int maxLevel;
+        [SerializeField] private Collider2D triggerCollider2D;
 
         private int _currentHealth;
-        private Collider2D _collider2D;
         
         public int CurrentHealth => _currentHealth;
         public int MaxLevel => maxLevel;
@@ -23,7 +23,6 @@ namespace Buildings
         {
             Level = 1;
             _currentHealth = maxHealth;
-            _collider2D = GetComponent<Collider2D>();
         }
 
         /// <summary>
@@ -60,6 +59,13 @@ namespace Buildings
                 return;
             Instantiate(destructionParticleEffect, transform);
             Level++;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            if(enemy == null) return;
+            enemy.Attack();
         }
     }
 }

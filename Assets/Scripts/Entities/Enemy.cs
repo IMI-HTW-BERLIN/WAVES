@@ -29,7 +29,6 @@ namespace Entities
         {
             Vector3 position = transform.position;
             bool targetToLeft = position.x > target.position.x;
-            Debug.Log("Current velocity: " + rb.velocity.x);
             if (Math.Abs(rb.velocity.x) < maxVelocity)
                 rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (targetToLeft ? - 1 : 1), 0));
             
