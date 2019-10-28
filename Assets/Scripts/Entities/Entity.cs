@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Entities
 {
+    [RequireComponent(typeof(Collider2D))]
     public class Entity : MonoBehaviour
     {
         private int _currentHealth;
+        protected Collider2D Collider2D;
         
         [SerializeField] protected int health;
         [SerializeField] protected int baseMovementSpeed;
@@ -13,9 +16,11 @@ namespace Entities
 
         public int BaseDamage => baseDamage;
 
-        protected virtual void Start()
+        private void Awake()
         {
+            Collider2D = GetComponent<Collider2D>();
             _currentHealth = health;
+            
         }
 
         /// <summary>

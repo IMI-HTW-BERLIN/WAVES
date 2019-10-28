@@ -13,6 +13,12 @@ namespace Entities
         [SerializeField] private Vector2 attackRepulseForce;
         [SerializeField] private float maxVelocity;
 
+
+        private void Awake()
+        {
+            Physics2D.IgnoreLayerCollision(9,9);
+        }
+
         private void FixedUpdate() => MoveToTarget();
 
         public void SetTarget(Transform targetTransform) => this.target = targetTransform;
