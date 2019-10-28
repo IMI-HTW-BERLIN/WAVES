@@ -100,6 +100,9 @@ MonoBehaviour:
   baseMovementSpeed: 2
   baseDamage: 5
   rigidbody2D: {fileID: 873512210811409015}
+  bullet: {fileID: 0}
+  bulletSpeed: 1000
+  bulletLifetime: 3
 --- !u!114 &873512210811409012
 MonoBehaviour:
   m_ObjectHideFlags: 0
