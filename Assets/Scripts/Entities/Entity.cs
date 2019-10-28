@@ -13,10 +13,7 @@ namespace Entities
 
         public int BaseDamage => baseDamage;
 
-        protected virtual void Start()
-        {
-            _currentHealth = health;
-        }
+        protected virtual void Start() => _currentHealth = health;
 
         /// <summary>
         /// Destroys the game object. Allows behaviour before death.
