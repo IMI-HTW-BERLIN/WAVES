@@ -16,7 +16,7 @@ namespace Entities
         public void OnFire()
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector2 direction = (new Vector2(mousePosition.x, mousePosition.y) - rigidbody2D.position).normalized;
+            Vector2 direction = (new Vector2(mousePosition.x, mousePosition.y) - rb.position).normalized;
             GameObject bullet = Instantiate(this.bullet, transform);
             bullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletSpeed);
             Destroy(bullet, bulletLifetime);
@@ -25,7 +25,7 @@ namespace Entities
         private void FixedUpdate()
         {
             Vector2 direction = new Vector2(_speed, 0);
-            rigidbody2D.MovePosition(rigidbody2D.position + direction * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
         }
     }
 }

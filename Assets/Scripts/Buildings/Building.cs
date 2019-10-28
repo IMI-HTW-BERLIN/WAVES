@@ -1,23 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using Entities;
+using UnityEngine;
 
 namespace Buildings
 {
+    [RequireComponent(typeof(Collider2D))]
     public class Building : MonoBehaviour
     {
-        [SerializeField]
-        protected int health;
-        [SerializeField]
-        private GameObject destructionParticleEffect;
-        [SerializeField]
-        private int maxLevel;
+        [SerializeField] protected int maxHealth;
+        
+        [SerializeField] private GameObject destructionParticleEffect;
+        [SerializeField] private int maxLevel;
 
-        public int Health => health;
+        private int _currentHealth;
+        private Collider2D _collider2D;
+        
+        public int CurrentHealth => _currentHealth;
         public int MaxLevel => maxLevel;
         public int Level { get; private set; }
 
         private void Start()
         {
             Level = 1;
+            _currentHealth = maxHealth;
+            _collider2D = GetComponent<Collider2D>();
         }
 
         /// <summary>
@@ -26,8 +32,8 @@ namespace Buildings
         /// <param name="damage">The amount of damage to apply</param>
         public void ApplyDamage(int damage)
         {
-            health -= damage;
-            if (health <= 0) Destroy();
+            _currentHealth -= damage;
+            if (_currentHealth <= 0) Destroy();
         }
 
         /// <summary>
