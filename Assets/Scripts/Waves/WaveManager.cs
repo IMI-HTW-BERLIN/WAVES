@@ -14,8 +14,8 @@ namespace Waves
 
         public void SpawnWave()
         {
-            StartCoroutine(Spawing());
-            IEnumerator Spawing()
+            StartCoroutine(Spawning());
+            IEnumerator Spawning()
             {
                 for (int i = 0; i < numberOfEnemies; i++)
                 {
