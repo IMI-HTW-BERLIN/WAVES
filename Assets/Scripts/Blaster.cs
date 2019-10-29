@@ -28,6 +28,4 @@ public class Blaster : MonoBehaviour
         _currentAngle = Mathf.Clamp(_currentAngle + _aimDirection * aimSpeed, -15, 65);
         transform.localEulerAngles = new Vector3(0, 0, _currentAngle < 0 ? -(360 - _currentAngle) : _currentAngle);
     }
-
-    private Vector2 GetMousePosition() => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 }
