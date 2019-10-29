@@ -9,8 +9,8 @@ public class Blaster : MonoBehaviour
     [SerializeField] private int bulletSpeed;
     [SerializeField] private float bulletLifetime;
 
-    private float aimDirection;
-    private float currentAngle;
+    private float _aimDirection;
+    private float _currentAngle;
     
     public void OnFire()
     {
@@ -21,17 +21,13 @@ public class Blaster : MonoBehaviour
         Destroy(bulletInstance, bulletLifetime);
     }
 
-    public void OnWeaponAim(InputValue inputValue) => aimDirection = inputValue.Get<float>();
+    public void OnWeaponAim(InputValue inputValue) => _aimDirection = inputValue.Get<float>();
 
     private void Update()
     {
-        currentAngle = Mathf.Clamp(currentAngle + aimDirection * aimSpeed, -15, 65);
-        transform.localEulerAngles = new Vector3(0, 0, currentAngle < 0 ? -(360 - currentAngle) : currentAngle);
+        _currentAngle = Mathf.Clamp(_currentAngle + _aimDirection * aimSpeed, -15, 65);
+        transform.localEulerAngles = new Vector3(0, 0, _currentAngle < 0 ? -(360 - _currentAngle) : _currentAngle);
     }
 
-    private Vector2 GetMousePosition()
-    {
-        var mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        return new Vector2(mousePosition.x, mousePosition.y);
-    }
+    private Vector2 GetMousePosition() => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 }

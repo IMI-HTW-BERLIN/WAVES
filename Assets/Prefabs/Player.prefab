@@ -104,12 +104,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e65ad564eaa3454095cf49226d58474, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9abd85f3d4e07401694c91536d81d033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.85, y: 3.74}
+  m_Size: {x: 2.31, y: 3.03}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -206,7 +206,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.31, y: 3.03}
-    newSize: {x: 4.85, y: 3.74}
+    newSize: {x: 2.31, y: 3.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -256,10 +256,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3842665366517069059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10adcd4b67049432f807926a38b4f380, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a916cf68151b47e9a0b7972b5090a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePosition: {fileID: 1827666538}
+  aimSpeed: 3
   bullet: {fileID: 2048484742174265259, guid: 796918ebf457b4249b8b611ff15b4790, type: 3}
   bulletSpeed: 1000
   bulletLifetime: 3
@@ -332,7 +333,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 98e3d836528fd448e9d7807256c22c43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9a368c2bd463478bbf07dd89b7b0519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
