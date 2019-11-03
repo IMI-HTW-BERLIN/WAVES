@@ -6,19 +6,14 @@ namespace Entities
     {
         private int _currentHealth;
         
-        [SerializeField]
-        protected int health;
-        [SerializeField]
-        protected int baseMovementSpeed;
-        [SerializeField]
-        protected int baseDamage;
-        [SerializeField]
-        protected Rigidbody2D rigidbody2D;
+        [SerializeField] protected int health;
+        [SerializeField] protected int baseMovementSpeed;
+        [SerializeField] protected int baseDamage;
+        [SerializeField] protected Rigidbody2D rb;
 
-        protected virtual void Start()
-        {
-            _currentHealth = health;
-        }
+        public int BaseDamage => baseDamage;
+
+        protected virtual void Start() => _currentHealth = health;
 
         /// <summary>
         /// Destroys the game object. Allows behaviour before death.
