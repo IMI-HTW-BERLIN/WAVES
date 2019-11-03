@@ -19,6 +19,6 @@ namespace Entities
             _speed = input * baseMovementSpeed;
         }
         
-        private void FixedUpdate() => rigidbody2D.velocity = new Vector2(_speed, rigidbody2D.velocity.y);
+        private void FixedUpdate() => rb.velocity = new Vector2(_speed, rb.velocity.y);
     }
 }
