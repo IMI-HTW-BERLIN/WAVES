@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "WeaponAim",
+                    "type": "Button",
+                    "id": "24334f7a-7066-499a-8cb7-3f0b8e12b82a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "6750dd07-69ef-4c90-916a-f1aae64392c8",
@@ -59,13 +67,79 @@
                 {
                     "name": "",
                     "id": "baa90bf0-acbc-45d1-960a-300dce85aecc",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "WS",
+                    "id": "02af04c2-a117-4751-add2-53911685163a",
+                    "path": "1DAxis",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponAim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "181994de-1742-4634-bdc8-22959a3ae4db",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b7ac8214-7b06-4d73-b513-8b1b8fc0ea3b",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "UpDown",
+                    "id": "171e0f8c-91f3-46ea-8ecf-fff599b50ce0",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponAim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "139f06e5-14d1-443d-8d7a-171cad5b068e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "e3a17ea5-ba02-4337-8f89-646d2bb3688c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
