@@ -81,7 +81,8 @@ MonoBehaviour:
   health: 0
   baseMovementSpeed: 5
   baseDamage: 0
-  rigidbody2D: {fileID: 873512210811409015}
+  rb: {fileID: 873512210811409015}
+  jumpForce: 50
 --- !u!50 &873512210811409015
 Rigidbody2D:
   serializedVersion: 4
@@ -94,7 +95,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 200
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -102,7 +103,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &873512210811409010
 SpriteRenderer:
   m_ObjectHideFlags: 0

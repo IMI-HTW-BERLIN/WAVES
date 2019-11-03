@@ -40,11 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5802745207803674605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e40b8d7d0361424788c830a228da643, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d7f1adf8eb43224fb419a08da07437f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7003830395606255359, guid: c9c79684ab58f8341b9a775084dfa423, type: 3}
   spawnPoint: {fileID: 0}
   numberOfEnemies: 5
-  spawnDelay: 1
+  spawnDelay: 0.5
   basePosition: {fileID: 0}

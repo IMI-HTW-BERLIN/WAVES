@@ -5,6 +5,9 @@ namespace Entities
 {
     public class Player : Entity
     {
+        [SerializeField]
+        private float jumpForce;
+        
         private float _speed;
 
         public void OnMove(InputValue inputValue)
@@ -18,7 +21,9 @@ namespace Entities
             
             _speed = input * baseMovementSpeed;
         }
-        
+
+        public void OnJump() => rb.AddForce(new Vector2(0, jumpForce));
+
         private void FixedUpdate() => rb.velocity = new Vector2(_speed, rb.velocity.y);
     }
 }

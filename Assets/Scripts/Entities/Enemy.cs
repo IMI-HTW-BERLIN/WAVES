@@ -2,7 +2,7 @@
 using Buildings;
 using UnityEngine;
 using Utils;
-using Random = UnityEngine.Random;
+
 
 namespace Entities
 {
