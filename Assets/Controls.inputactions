@@ -107,6 +107,39 @@
                     "action": "WeaponAim",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "UpDown",
+                    "id": "171e0f8c-91f3-46ea-8ecf-fff599b50ce0",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponAim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "139f06e5-14d1-443d-8d7a-171cad5b068e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "e3a17ea5-ba02-4337-8f89-646d2bb3688c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
