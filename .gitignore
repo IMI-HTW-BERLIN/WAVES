@@ -256,7 +256,6 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-*.meta
 *.obj
 *.iobj
 *.pch
@@ -508,6 +507,10 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+#Custom
+*.xml
+*.iml
 
 # OpenCover UI analysis results
 OpenCover/
