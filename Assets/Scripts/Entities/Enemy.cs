@@ -1,6 +1,7 @@
 ﻿using System;
 using Buildings;
 using UnityEngine;
+using Utils;
 using Random = UnityEngine.Random;
 
 namespace Entities
@@ -8,10 +9,12 @@ namespace Entities
     public class Enemy : Entity
     {
         [SerializeField] private Transform target;
-        [SerializeField] private Vector2 attackJumpForceY;
-        [SerializeField] private Vector2 attackJumpForceX;
-        [SerializeField] private Vector2 attackRepulseForce;
         [SerializeField] private float maxVelocity;
+        [SerializeField] private Range attackJumpForceX;
+        [SerializeField] private Range attackJumpForceY;
+        [SerializeField] private Range attackRepulseForce;
+        
+        private bool TargetToLeft => transform.position.x > target.position.x;
 
 
         private void Awake()
@@ -20,30 +23,27 @@ namespace Entities
         }
 
         private void FixedUpdate() => MoveToTarget();
+        
 
         public void SetTarget(Transform targetTransform) => this.target = targetTransform;
 
         public void Attack()
         {
             rb.AddForce(new Vector2(
-                Random.Range(attackJumpForceX.x, attackJumpForceX.y), 
-                Random.Range(attackJumpForceY.x, attackJumpForceY.y))
+                attackJumpForceX.GetRandom() * (TargetToLeft ? -1 : 1),
+                attackJumpForceY.GetRandom())
             );
         }
 
         private void MoveToTarget()
         {
             Vector3 position = transform.position;
-            bool targetToLeft = position.x > target.position.x;
             if (Math.Abs(rb.velocity.x) < maxVelocity)
-                rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (targetToLeft ? - 1 : 1), 0));
+                rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (TargetToLeft ? -1 : 1), 0));
             
         }
 
-        private void GetRepulsed()
-        {
-            rb.AddForce(new Vector2(Random.Range(attackRepulseForce.x, attackRepulseForce.y),0f));
-        }
+        private void GetRepulsed() => rb.AddForce(new Vector2(attackRepulseForce.GetRandom() * (TargetToLeft ? 1 : -1),0f));
 
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -51,6 +51,13 @@ namespace Entities
             if(building == null) return;
             building.ApplyDamage(baseDamage);
             GetRepulsed();
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Building building = other.gameObject.GetComponent<Building>();
+            if(building == null) return;
+            Attack();
         }
     }
 }

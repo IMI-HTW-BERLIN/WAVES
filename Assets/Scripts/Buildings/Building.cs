@@ -60,12 +60,5 @@ namespace Buildings
             Instantiate(destructionParticleEffect, transform);
             Level++;
         }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            if(enemy == null) return;
-            enemy.Attack();
-        }
     }
 }

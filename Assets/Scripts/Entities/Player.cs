@@ -5,27 +5,20 @@ namespace Entities
 {
     public class Player : Entity
     {
-        [SerializeField] private GameObject bullet;
-        [SerializeField] private int bulletSpeed;
-        [SerializeField] private float bulletLifetime;
-        
         private float _speed;
 
-        public void OnMove(InputValue input) => _speed = input.Get<float>() * baseMovementSpeed;
-
-        public void OnFire()
+        public void OnMove(InputValue inputValue)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector2 direction = (new Vector2(mousePosition.x, mousePosition.y) - rb.position).normalized;
-            GameObject bullet = Instantiate(this.bullet, transform);
-            bullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletSpeed);
-            Destroy(bullet, bulletLifetime);
+            float input = inputValue.Get<float>();
+            
+            if (input < 0)
+                transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            else if (input > 0)
+                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            
+            _speed = input * baseMovementSpeed;
         }
         
-        private void FixedUpdate()
-        {
-            Vector2 direction = new Vector2(_speed, 0);
-            rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
-        }
+        private void FixedUpdate() => rb.velocity = new Vector2(_speed, rb.velocity.y);
     }
 }

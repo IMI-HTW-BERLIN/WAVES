@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6473999233327690604}
   - component: {fileID: 4219429431354117161}
   - component: {fileID: 3051178764070975412}
-  - component: {fileID: 888418880408923893}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -47,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bd299920fa53f4bb4dfc3cb412e9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 20
   destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
   maxLevel: 0
@@ -134,30 +133,4 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
---- !u!61 &888418880408923893
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2937822164136766707}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.25, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.16}
   m_EdgeRadius: 0
