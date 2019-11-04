@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Entities;
 using UnityEngine;
+using World;
 
 namespace Waves
 {
@@ -12,14 +13,21 @@ namespace Waves
         [SerializeField] private float spawnDelay;
         [SerializeField] private Transform basePosition;
 
+        private void Start()
+        {
+            Sun.SunDown += SpawnWave;
+        }
+
         public void SpawnWave()
         {
             StartCoroutine(Spawning());
+
             IEnumerator Spawning()
             {
                 for (int i = 0; i < numberOfEnemies; i++)
                 {
-                    Enemy newEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity, this.transform).GetComponent<Enemy>();
+                    Enemy newEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity, this.transform)
+                        .GetComponent<Enemy>();
                     newEnemy.SetTarget(basePosition);
                     yield return new WaitForSeconds(spawnDelay);
                 }
