@@ -1,5 +1,5 @@
 {
-    "name": "Controls",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Game",
@@ -14,10 +14,10 @@
                     "interactions": ""
                 },
                 {
-                    "name": "WeaponAim",
-                    "type": "Button",
+                    "name": "WeaponAimMouse",
+                    "type": "Value",
                     "id": "24334f7a-7066-499a-8cb7-3f0b8e12b82a",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
@@ -25,7 +25,7 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "6750dd07-69ef-4c90-916a-f1aae64392c8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -33,6 +33,22 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "3263a2f8-e666-4293-ab09-1bce3f895862",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveStick",
+                    "type": "Value",
+                    "id": "33b4b3be-e8dd-44b0-977e-c007e825a4f4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "WeaponAimStick",
+                    "type": "Button",
+                    "id": "b8da82b0-2200-4b8a-824d-8e006a193fc2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -84,79 +100,90 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WS",
-                    "id": "02af04c2-a117-4751-add2-53911685163a",
-                    "path": "1DAxis",
-                    "interactions": "Press(behavior=2)",
+                    "name": "",
+                    "id": "03dae197-723a-454d-a4bf-82d5f6296387",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "WeaponAim",
-                    "isComposite": true,
+                    "groups": "Gamepad",
+                    "action": "Fire",
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "181994de-1742-4634-bdc8-22959a3ae4db",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "WeaponAim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "b7ac8214-7b06-4d73-b513-8b1b8fc0ea3b",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "WeaponAim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "UpDown",
-                    "id": "171e0f8c-91f3-46ea-8ecf-fff599b50ce0",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponAim",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "139f06e5-14d1-443d-8d7a-171cad5b068e",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "WeaponAim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "e3a17ea5-ba02-4337-8f89-646d2bb3688c",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "WeaponAim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "cb3280c6-1a5f-470d-839c-830cae242ee3",
+                    "id": "55d784f4-304d-4343-a566-873276d07325",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37eca69a-52d3-4205-b1e7-d8271edc4e48",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb3280c6-1a5f-470d-839c-830cae242ee3",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27512d83-005a-427c-8487-7c427456327f",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c49632d7-f783-438a-b89d-dc14a7432f79",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MoveStick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2e0bb8a-9c63-4e01-b7db-d268e9d25a3e",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeaponAimMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38fad887-aba6-42be-b2f1-8dd3687e1793",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "WeaponAimStick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -176,6 +203,17 @@
                 {
                     "devicePath": "<Mouse>",
                     "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

@@ -3,7 +3,6 @@ using Buildings;
 using UnityEngine;
 using Utils;
 
-
 namespace Entities
 {
     public class Enemy : Entity
@@ -13,23 +12,23 @@ namespace Entities
         [SerializeField] private Range attackJumpForceX;
         [SerializeField] private Range attackJumpForceY;
         [SerializeField] private Range attackRepulseForce;
-        
+
         private bool TargetToLeft => transform.position.x > target.position.x;
 
 
         private void Awake()
         {
-            Physics2D.IgnoreLayerCollision(9,9);
+            Physics2D.IgnoreLayerCollision(9, 9);
         }
 
         private void FixedUpdate() => MoveToTarget();
-        
+
 
         public void SetTarget(Transform targetTransform) => this.target = targetTransform;
 
         public void Attack()
         {
-            rb.AddForce(new Vector2(
+            Rb.AddForce(new Vector2(
                 attackJumpForceX.GetRandom() * (TargetToLeft ? -1 : 1),
                 attackJumpForceY.GetRandom())
             );
@@ -38,17 +37,17 @@ namespace Entities
         private void MoveToTarget()
         {
             Vector3 position = transform.position;
-            if (Math.Abs(rb.velocity.x) < maxVelocity)
-                rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (TargetToLeft ? -1 : 1), 0));
-            
+            if (Math.Abs(Rb.velocity.x) < maxVelocity)
+                Rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (TargetToLeft ? -1 : 1), 0));
         }
 
-        private void GetRepulsed() => rb.AddForce(new Vector2(attackRepulseForce.GetRandom() * (TargetToLeft ? 1 : -1),0f));
+        private void GetRepulsed() =>
+            Rb.AddForce(new Vector2(attackRepulseForce.GetRandom() * (TargetToLeft ? 1 : -1), 0f));
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             Building building = other.gameObject.GetComponent<Building>();
-            if(building == null) return;
+            if (building == null) return;
             building.ApplyDamage(baseDamage);
             GetRepulsed();
         }
@@ -56,7 +55,7 @@ namespace Entities
         private void OnTriggerEnter2D(Collider2D other)
         {
             Building building = other.gameObject.GetComponent<Building>();
-            if(building == null) return;
+            if (building == null) return;
             Attack();
         }
     }

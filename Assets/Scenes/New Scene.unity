@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 137280467}
   - component: {fileID: 137280466}
   - component: {fileID: 137280468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ PrefabInstance:
     - target: {fileID: 873512210811409012, guid: c9a1ff21682226e4da941e4c38a31be4,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 1113439920487235628, guid: c9a1ff21682226e4da941e4c38a31be4,
         type: 3}

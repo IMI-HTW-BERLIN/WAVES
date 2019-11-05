@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationPoint: {fileID: 4091157582459666211}
   globalLight: {fileID: 9143368554690205896}
-  dayLengthInS: 15
+  dayLengthInS: 500
   dayLightFallOff:
     min: 0.5
     max: 0.75
