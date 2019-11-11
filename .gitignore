@@ -543,3 +543,5 @@ MigrationBackup/
 *.iml
 
 
+/Assets/Plugins/Editor.meta
+/Assets/Plugins.meta
