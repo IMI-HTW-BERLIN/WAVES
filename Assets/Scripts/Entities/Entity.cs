@@ -7,15 +7,12 @@ namespace Entities
     [RequireComponent(typeof(Collider2D))]
     public class Entity : Damageable
     {
-        [SerializeField] protected int maxHealth;
         [SerializeField] protected int baseMovementSpeed;
         [SerializeField] protected int baseDamage;
         public int BaseDamage => baseDamage;
 
         protected Rigidbody2D Rb;
         protected Collider2D Collider2D;
-
-        protected int CurrentHealth;
 
         protected virtual void Awake()
         {

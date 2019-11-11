@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ca9c92a4978304690152f6457e567c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 50
+  healthBar: {fileID: 4589029524504289353}
   destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
   maxLevel: 0
-  healthBar: {fileID: 4589029524504289353}
 --- !u!212 &7343067763752046282
 SpriteRenderer:
   m_ObjectHideFlags: 0
