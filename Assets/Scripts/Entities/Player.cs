@@ -1,5 +1,6 @@
 using Controls;
 using UnityEngine;
+using Weapons;
 
 namespace Entities
 {
@@ -32,7 +33,7 @@ namespace Entities
             _controls.Game.MoveStick.canceled += value => _movementInput = Vector2.zero;
             _controls.Game.Jump.performed += value => Jump();
             _controls.Game.WeaponAimStick.performed += value => _aimDirection = value.ReadValue<Vector2>();
-            _controls.Game.Fire.performed += value => blaster.Fire();
+            _controls.Game.Fire.performed += value => blaster.Attack();
 
             //Keyboard
             _controls.Game.Move.performed += value => _movementInput = new Vector2(value.ReadValue<float>(), 0);
@@ -54,7 +55,7 @@ namespace Entities
             blaster.transform.eulerAngles = new Vector3(0, 0, angle);
             bool facingLeft = angle > 90 || angle <= -90;
             spriteRenderer.flipX = facingLeft;
-            blaster.SpriteRenderer.flipY = facingLeft;
+            blaster.spriteRenderer.flipY = facingLeft;
         }
 
         private void Jump()

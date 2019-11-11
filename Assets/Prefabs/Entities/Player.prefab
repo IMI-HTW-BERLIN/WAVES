@@ -361,14 +361,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3842665366517069059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9127cfe71454935429aea9bc8d61c5f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 10db2ec7d5bcf9d4faa3cd117b51f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePosition: {fileID: 1827666538}
-  bullet: {fileID: 2048484742174265259, guid: 82efdccdd8c91684b82531eaacd1bc9c, type: 3}
-  bulletSpeed: 1000
-  bulletLifetime: 3
   spriteRenderer: {fileID: 1113439920487235628}
+  firePosition: {fileID: 1827666538}
+  bulletPrefab: {fileID: -545268524979254285, guid: 82efdccdd8c91684b82531eaacd1bc9c,
+    type: 3}
+  bulletSpeed: 1000
+  damage: 1
 --- !u!1 &5944096829575672987
 GameObject:
   m_ObjectHideFlags: 0
