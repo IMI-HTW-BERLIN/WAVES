@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2417454305212080526}
   - component: {fileID: 7343067763752046282}
   - component: {fileID: 1387470997101823250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ca9c92a4978304690152f6457e567c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 50
   healthBar: {fileID: 4589029524504289353}
   destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7921250239661538477}
   - component: {fileID: 3375489716443243848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerBaseLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,10 +274,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
-      propertyPath: m_FillAmount
-      value: 1
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355395510876074432, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224583780605391038, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 392952912744079418, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705e8423b7c187d4e90f0f9a161aa20e, type: 3}
