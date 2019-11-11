@@ -7,7 +7,7 @@ A wave-based local co-op battler
 
 ## Planned Features
 
-### Must have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/1)
+### Must have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/1) :white_check_mark:
 - Two Players
 - Can shoot/fight
 - Base to protect
