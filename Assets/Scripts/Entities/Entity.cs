@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Interfaces;
+using UnityEngine;
 
 namespace Entities
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class Entity : MonoBehaviour
+    public class Entity : MonoBehaviour, IDamageable
     {
         [SerializeField] protected int health;
         [SerializeField] protected int baseMovementSpeed;
@@ -28,12 +29,13 @@ namespace Entities
         /// </summary>
         protected virtual void OnDeath() => Destroy(this.gameObject);
 
-        public void ReduceHealth(int amount)
+        /// <inheritdoc />
+        public void ApplyDamage(int damage)
         {
-            _currentHealth -= amount;
+            _currentHealth -= damage;
             if (_currentHealth > 0) return;
 
-            Debug.Log("Entity '" + this.name + "' died");
+            Debug.Log("Entity '" + name + "' died");
             OnDeath();
         }
 

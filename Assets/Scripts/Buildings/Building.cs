@@ -1,11 +1,10 @@
-﻿using System;
-using Entities;
+﻿using Interfaces;
 using UnityEngine;
 
 namespace Buildings
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Building : MonoBehaviour
+    public class Building : MonoBehaviour, IDamageable
     {
         [SerializeField] protected int maxHealth;
         
@@ -25,10 +24,7 @@ namespace Buildings
             _currentHealth = maxHealth;
         }
 
-        /// <summary>
-        /// Applies the given amount of damage to the building
-        /// </summary>
-        /// <param name="damage">The amount of damage to apply</param>
+        /// <inheritdoc />
         public void ApplyDamage(int damage)
         {
             _currentHealth -= damage;
