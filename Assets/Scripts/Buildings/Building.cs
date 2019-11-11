@@ -1,6 +1,4 @@
-﻿using System;
-using Entities;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Buildings
 {
@@ -8,13 +6,13 @@ namespace Buildings
     public class Building : MonoBehaviour
     {
         [SerializeField] protected int maxHealth;
-        
+
         [SerializeField] private GameObject destructionParticleEffect;
         [SerializeField] private int maxLevel;
-        [SerializeField] private Collider2D triggerCollider2D;
+        [SerializeField] private HealthBarBuilding healthBar;
 
         private int _currentHealth;
-        
+
         public int CurrentHealth => _currentHealth;
         public int MaxLevel => maxLevel;
         public int Level { get; private set; }
@@ -32,6 +30,7 @@ namespace Buildings
         public void ApplyDamage(int damage)
         {
             _currentHealth -= damage;
+            healthBar.SetHealthBar(_currentHealth, maxHealth);
             if (_currentHealth <= 0) Destroy();
         }
 
