@@ -541,7 +541,3 @@ MigrationBackup/
 #Custom
 *.xml
 *.iml
-
-
-/Assets/Plugins/Editor.meta
-/Assets/Plugins.meta

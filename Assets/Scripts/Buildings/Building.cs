@@ -1,34 +1,28 @@
-﻿using Interfaces;
+using Interfaces;
 using UnityEngine;
 
 namespace Buildings
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Building : MonoBehaviour, IDamageable
+    public class Building : Damageable
     {
-        [SerializeField] protected int maxHealth;
-        
         [SerializeField] private GameObject destructionParticleEffect;
         [SerializeField] private int maxLevel;
-        [SerializeField] private Collider2D triggerCollider2D;
 
-        private int _currentHealth;
-        
-        public int CurrentHealth => _currentHealth;
-        public int MaxLevel => maxLevel;
         public int Level { get; private set; }
 
         private void Start()
         {
             Level = 1;
-            _currentHealth = maxHealth;
+            CurrentHealth = maxHealth;
         }
 
         /// <inheritdoc />
-        public void ApplyDamage(int damage)
+        public override void ApplyDamage(int damage)
         {
-            _currentHealth -= damage;
-            if (_currentHealth <= 0) Destroy();
+            base.ApplyDamage(damage);
+            CurrentHealth -= damage;
+            if (CurrentHealth <= 0) Destroy();
         }
 
         /// <summary>
