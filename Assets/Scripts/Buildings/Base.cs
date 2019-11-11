@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Buildings
 {
     public class Base : Building
@@ -7,7 +5,7 @@ namespace Buildings
         protected override void Destroy()
         {
             base.Destroy();
-            Debug.Log("Game Over :(");
+            GameManager.Instance.GameOver();
         }
     }
 }

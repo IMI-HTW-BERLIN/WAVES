@@ -1,4 +1,4 @@
-﻿using Controls;
+using Controls;
 using UnityEngine;
 
 namespace Entities
@@ -6,6 +6,7 @@ namespace Entities
     public class Player : Entity
     {
         [SerializeField] private float jumpForce;
+        [SerializeField] private Transform respawnPosition;
 
         //InputSystem
         private PlayerControls _controls;
@@ -61,5 +62,16 @@ namespace Entities
             if (_onGround)
                 Rb.velocity = new Vector2(Rb.velocity.x, jumpForce);
         }
+        
+        protected override void OnDeath()
+        {
+            gameObject.SetActive(false);
+            CurrentHealth = maxHealth;
+            transform.position = respawnPosition.position;
+
+            Invoke(nameof(Respawn), 3);
+        }
+
+        private void Respawn() => gameObject.SetActive(true);
     }
 }

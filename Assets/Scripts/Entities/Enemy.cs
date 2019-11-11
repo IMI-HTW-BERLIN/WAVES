@@ -15,10 +15,12 @@ namespace Entities
 
         private bool TargetToLeft => transform.position.x > target.position.x;
 
-        private void FixedUpdate() => MoveToTarget();
+        private void FixedUpdate()
+        {
+            if (target) MoveToTarget();
+        }
 
-
-        public void SetTarget(Transform targetTransform) => this.target = targetTransform;
+        public void SetTarget(Transform targetTransform) => target = targetTransform;
 
         public void Attack()
         {
@@ -30,7 +32,6 @@ namespace Entities
 
         private void MoveToTarget()
         {
-            Vector3 position = transform.position;
             if (Math.Abs(Rb.velocity.x) < maxVelocity)
                 Rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (TargetToLeft ? -1 : 1), 0));
         }
@@ -40,6 +41,7 @@ namespace Entities
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            if (!target) return;
             Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (damageable == null) return;
             damageable.ApplyDamage(baseDamage);
@@ -48,6 +50,7 @@ namespace Entities
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!target) return;
             Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (damageable == null) return;
             Attack();
