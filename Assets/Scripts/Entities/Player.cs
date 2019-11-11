@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,7 @@ namespace Entities
         [Header("Player")] [SerializeField] private float jumpForce;
         [SerializeField] private Blaster blaster;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private Transform respawnPosition;
+        [SerializeField] private GameObject playerContent;
 
         [Header("Player Ground-Check")] [SerializeField]
         private Transform topLeft;
@@ -22,17 +23,11 @@ namespace Entities
 
         private bool _onGround;
 
-        //Input Messages
-        public void OnMove(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);
-        public void OnMoveStick(InputValue value) => _movementInput = value.Get<Vector2>();
-
-        public void OnWeaponAimMouse(InputValue value) =>
-            _aimDirection = Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - transform.position;
-
-        public void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
-        public void OnFire(InputValue value) => blaster.Fire();
-        public void OnJump(InputValue value) => Jump();
-        public void OnDeviceLost() => Destroy(this.gameObject);
+        protected override void Awake()
+        {
+            base.Awake();
+            spriteRenderer.color = Random.ColorHSV();
+        }
 
         private void FixedUpdate()
         {
@@ -48,6 +43,26 @@ namespace Entities
             blaster.SpriteRenderer.flipY = facingLeft;
         }
 
+        //Input Messages
+        public void OnMove(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);
+        public void OnMoveStick(InputValue value) => _movementInput = value.Get<Vector2>();
+
+        public void OnWeaponAimMouse(InputValue value) =>
+            _aimDirection = Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - transform.position;
+
+        public void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
+        public void OnFire(InputValue value) => blaster.Fire();
+        public void OnJump(InputValue value) => Jump();
+        public void OnDeviceLost() => Destroy(this.gameObject);
+
+        public void TogglePlayer(bool show)
+        {
+            Rb.simulated = show;
+            this.enabled = show;
+            spriteRenderer.enabled = show;
+            playerContent.SetActive(show);
+        }
+
         private void Jump()
         {
             if (_onGround)
@@ -56,13 +71,13 @@ namespace Entities
 
         protected override void OnDeath()
         {
-            gameObject.SetActive(false);
+            TogglePlayer(false);
             CurrentHealth = maxHealth;
-            transform.position = respawnPosition.position;
+            transform.position = GameManager.Instance.PlayerSpawnPosition.position;
             UpdateHealthBar();
             Invoke(nameof(Respawn), 3);
         }
 
-        private void Respawn() => gameObject.SetActive(true);
+        private void Respawn() => TogglePlayer(true);
     }
 }

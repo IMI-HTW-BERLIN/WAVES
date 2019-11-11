@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Buildings;
+using UI;
 using UnityEngine;
 
 namespace Managers
@@ -6,8 +7,13 @@ namespace Managers
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameOver gameOverScreen;
+        [SerializeField] private Base playerBase;
+        [SerializeField] private Transform enemySpawnPoint;
 
         public static GameManager Instance;
+        public Transform PlayerSpawnPosition => playerBase.transform;
+        public Transform EnemySpawnPoint => enemySpawnPoint;
+        public Base PlayerBase => playerBase;
 
         public static int Score => 524; //{ get; private set; }
 

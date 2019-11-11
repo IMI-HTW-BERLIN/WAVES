@@ -63,9 +63,9 @@ namespace Controls
                 },
                 {
                     ""name"": ""WeaponAimStick"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b8da82b0-2200-4b8a-824d-8e006a193fc2"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
