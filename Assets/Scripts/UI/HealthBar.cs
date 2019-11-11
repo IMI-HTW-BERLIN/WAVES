@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Buildings
+namespace UI
 {
-    public class HealthBarBuilding : MonoBehaviour
+    public class HealthBar : MonoBehaviour
     {
         [SerializeField] private Image healthBar;
 

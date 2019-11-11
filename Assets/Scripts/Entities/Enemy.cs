@@ -40,7 +40,7 @@ namespace Entities
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (damageable == null) return;
             damageable.ApplyDamage(baseDamage);
             GetRepulsed();
@@ -48,7 +48,7 @@ namespace Entities
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (damageable == null) return;
             Attack();
         }
