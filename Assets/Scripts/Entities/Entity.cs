@@ -2,18 +2,26 @@
 
 namespace Entities
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Collider2D))]
     public class Entity : MonoBehaviour
     {
-        private int _currentHealth;
-        
         [SerializeField] protected int health;
         [SerializeField] protected int baseMovementSpeed;
         [SerializeField] protected int baseDamage;
-        [SerializeField] protected Rigidbody2D rb;
-
         public int BaseDamage => baseDamage;
 
-        protected virtual void Start() => _currentHealth = health;
+        protected Rigidbody2D Rb;
+        protected Collider2D Collider2D;
+
+        private int _currentHealth;
+
+        protected virtual void Awake()
+        {
+            Collider2D = GetComponent<Collider2D>();
+            Rb = GetComponent<Rigidbody2D>();
+            _currentHealth = health;
+        }
 
         /// <summary>
         /// Destroys the game object. Allows behaviour before death.
@@ -24,7 +32,7 @@ namespace Entities
         {
             _currentHealth -= amount;
             if (_currentHealth > 0) return;
-            
+
             Debug.Log("Entity '" + this.name + "' died");
             OnDeath();
         }

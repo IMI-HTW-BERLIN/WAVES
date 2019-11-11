@@ -1,24 +1,65 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using Controls;
+using UnityEngine;
 
 namespace Entities
 {
     public class Player : Entity
     {
-        private float _speed;
+        [SerializeField] private float jumpForce;
 
-        public void OnMove(InputValue inputValue)
+        //InputSystem
+        private PlayerControls _controls;
+        private Vector2 _movementInput;
+        private Vector2 _aimDirection;
+
+        //Ground-Check
+        [SerializeField] private Transform topLeft;
+        [SerializeField] private Transform bottomRight;
+        [SerializeField] private LayerMask groundLayer;
+        private bool _onGround;
+
+        [SerializeField] private Blaster blaster;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+
+        protected override void Awake()
         {
-            float input = inputValue.Get<float>();
-            
-            if (input < 0)
-                transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            else if (input > 0)
-                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            
-            _speed = input * baseMovementSpeed;
+            base.Awake();
+
+            _controls = new PlayerControls();
+            //Gamepad
+            _controls.Game.MoveStick.performed += value => _movementInput = value.ReadValue<Vector2>();
+            _controls.Game.MoveStick.canceled += value => _movementInput = Vector2.zero;
+            _controls.Game.Jump.performed += value => Jump();
+            _controls.Game.WeaponAimStick.performed += value => _aimDirection = value.ReadValue<Vector2>();
+            _controls.Game.Fire.performed += value => blaster.Fire();
+
+            //Keyboard
+            _controls.Game.Move.performed += value => _movementInput = new Vector2(value.ReadValue<float>(), 0);
+            _controls.Game.WeaponAimMouse.performed += value =>
+                _aimDirection = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()) - transform.position;
         }
-        
-        private void FixedUpdate() => rb.velocity = new Vector2(_speed, rb.velocity.y);
+
+        private void OnEnable() => _controls.Enable();
+        private void OnDisable() => _controls.Disable();
+
+        private void FixedUpdate()
+        {
+            //Ground Check
+            _onGround = Physics2D.OverlapArea(topLeft.position, bottomRight.position, groundLayer);
+            //Movement
+            Rb.velocity = new Vector2(_movementInput.x * baseMovementSpeed, Rb.velocity.y);
+            //Aiming
+            float angle = Vector2.SignedAngle(Vector2.right, _aimDirection);
+            blaster.transform.eulerAngles = new Vector3(0, 0, angle);
+            bool facingLeft = angle > 90 || angle <= -90;
+            spriteRenderer.flipX = facingLeft;
+            blaster.SpriteRenderer.flipY = facingLeft;
+        }
+
+        private void Jump()
+        {
+            if (_onGround)
+                Rb.velocity = new Vector2(Rb.velocity.x, jumpForce);
+        }
     }
 }
