@@ -15,12 +15,6 @@ namespace Entities
 
         private bool TargetToLeft => transform.position.x > target.position.x;
 
-
-        private void Awake()
-        {
-            Physics2D.IgnoreLayerCollision(9, 9);
-        }
-
         private void FixedUpdate() => MoveToTarget();
 
 

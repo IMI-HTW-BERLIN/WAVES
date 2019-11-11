@@ -20,8 +20,6 @@ namespace Waves
 
         public void SpawnWave()
         {
-            StartCoroutine(Spawning());
-
             IEnumerator Spawning()
             {
                 for (int i = 0; i < numberOfEnemies; i++)
@@ -32,6 +30,8 @@ namespace Waves
                     yield return new WaitForSeconds(spawnDelay);
                 }
             }
+
+            StartCoroutine(Spawning());
         }
     }
 }

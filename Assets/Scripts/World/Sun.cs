@@ -8,7 +8,10 @@ namespace World
     {
         [SerializeField] private Transform rotationPoint;
         [SerializeField] private Light2D globalLight;
-        [SerializeField] private float dayLengthInS;
+
+        [Tooltip("Day length in seconds")] [SerializeField]
+        private float dayLength;
+
         [SerializeField] private Range dayLightFallOff;
 
         public delegate void SunStatus();
@@ -22,20 +25,18 @@ namespace World
 
         private void Update()
         {
-            rotationPoint.Rotate(Vector3.forward, 1f / dayLengthInS * Time.deltaTime * 360f);
+            rotationPoint.Rotate(Vector3.forward, 1f / dayLength * Time.deltaTime * 360f);
             float angle = Mathf.Abs(rotationPoint.rotation.z);
             float newIntensity = (angle - dayLightFallOff.min) /
                                  ((dayLightFallOff.max - dayLightFallOff.min) / _globalLightMaxIntensity);
             globalLight.intensity = Mathf.Clamp(_globalLightMaxIntensity - newIntensity, 0, _globalLightMaxIntensity);
-            if (globalLight.intensity < 0.01f && !_isNight)
+            if (!_isNight) return;
+            if (globalLight.intensity < 0.01f)
             {
-                if (_isNight)
-                    return;
-
                 _isNight = true;
                 SunDown?.Invoke();
             }
-            else if (globalLight.intensity >= 0.01f)
+            else
                 _isNight = false;
         }
     }
