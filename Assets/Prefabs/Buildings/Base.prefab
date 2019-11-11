@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2417454305212080526}
   - component: {fileID: 7343067763752046282}
   - component: {fileID: 1387470997101823250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7921250239661538477}
   - component: {fileID: 3375489716443243848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerBaseLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,16 +204,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589148749388543570}
     m_Modifications:
-    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -278,6 +268,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355395510876074432, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224583780605391038, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 392952912744079418, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705e8423b7c187d4e90f0f9a161aa20e, type: 3}
