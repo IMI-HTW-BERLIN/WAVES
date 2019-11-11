@@ -1,5 +1,5 @@
 ﻿using System;
-using Buildings;
+using Interfaces;
 using UnityEngine;
 using Utils;
 
@@ -40,16 +40,16 @@ namespace Entities
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Building building = other.gameObject.GetComponent<Building>();
-            if (building == null) return;
-            building.ApplyDamage(baseDamage);
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            if (damageable == null) return;
+            damageable.ApplyDamage(baseDamage);
             GetRepulsed();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Building building = other.gameObject.GetComponent<Building>();
-            if (building == null) return;
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            if (damageable == null) return;
             Attack();
         }
     }
