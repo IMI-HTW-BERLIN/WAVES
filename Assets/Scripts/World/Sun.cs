@@ -30,9 +30,9 @@ namespace World
             float newIntensity = (angle - dayLightFallOff.min) /
                                  ((dayLightFallOff.max - dayLightFallOff.min) / _globalLightMaxIntensity);
             globalLight.intensity = Mathf.Clamp(_globalLightMaxIntensity - newIntensity, 0, _globalLightMaxIntensity);
-            if (!_isNight) return;
             if (globalLight.intensity < 0.01f)
             {
+                if (_isNight) return;
                 _isNight = true;
                 SunDown?.Invoke();
             }
