@@ -102,9 +102,9 @@ GameObject:
   m_Component:
   - component: {fileID: 873512210811409011}
   - component: {fileID: 873512210811409013}
+  - component: {fileID: 873512210811409012}
   - component: {fileID: 873512210811409015}
   - component: {fileID: 873512210811409010}
-  - component: {fileID: 873512210811409012}
   - component: {fileID: 7467617291531553767}
   m_Layer: 0
   m_Name: Player
@@ -147,7 +147,7 @@ MonoBehaviour:
   healthBar: {fileID: 5927048135624464888}
   baseMovementSpeed: 10
   baseDamage: 0
-  baseAttackSpeed: 0
+  baseAttackSpeed: 1
   jumpForce: 6
   respawnPosition: {fileID: 0}
   topLeft: {fileID: 1860828776217005230}
@@ -157,6 +157,58 @@ MonoBehaviour:
     m_Bits: 256
   blaster: {fileID: 8215038850959474279}
   spriteRenderer: {fileID: 873512210811409010}
+--- !u!114 &873512210811409012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873512210811409014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 67262cf71ca2baf40bbd55bfed5ac5ee,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6af0be90-7c6c-489d-a98c-c74dcb3213cd
+    m_ActionName: Game/Move[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6750dd07-69ef-4c90-916a-f1aae64392c8
+    m_ActionName: Game/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24334f7a-7066-499a-8cb7-3f0b8e12b82a
+    m_ActionName: Game/WeaponAimMouse[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3263a2f8-e666-4293-ab09-1bce3f895862
+    m_ActionName: Game/Jump[/Keyboard/space,/DualShock4GamepadHID/leftStick/up,/XInputControllerWindows/leftStick/up,/DualShock4GamepadHID/leftShoulder,/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 33b4b3be-e8dd-44b0-977e-c007e825a4f4
+    m_ActionName: Game/MoveStick[/DualShock4GamepadHID/leftStick,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b8da82b0-2200-4b8a-824d-8e006a193fc2
+    m_ActionName: Game/WeaponAimStick[/DualShock4GamepadHID/rightStick,/XInputControllerWindows/rightStick]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: e9d76cc1-bddf-4e33-8041-2bd512314251
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!50 &873512210811409015
 Rigidbody2D:
   serializedVersion: 4
@@ -227,42 +279,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &873512210811409012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873512210811409014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 67262cf71ca2baf40bbd55bfed5ac5ee,
-    type: 3}
-  m_NotificationBehavior: 1
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6af0be90-7c6c-489d-a98c-c74dcb3213cd
-    m_ActionName: Game/Move[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6750dd07-69ef-4c90-916a-f1aae64392c8
-    m_ActionName: Game/Fire[/Mouse/leftButton]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: e9d76cc1-bddf-4e33-8041-2bd512314251
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!61 &7467617291531553767
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -526,51 +542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873512210811409011}
     m_Modifications:
-    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2993028743049478846, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.4339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 2993028743049478846, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.069597736
-      objectReference: {fileID: 0}
-    - target: {fileID: 2993028743049478846, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.069597736
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.26107642
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.15
-      objectReference: {fileID: 0}
     - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -635,6 +606,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993028743049478846, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.4339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993028743049478846, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.069597736
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993028743049478846, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.069597736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.26107642
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705e8423b7c187d4e90f0f9a161aa20e, type: 3}

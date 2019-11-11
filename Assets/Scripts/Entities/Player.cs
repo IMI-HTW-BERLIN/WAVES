@@ -1,5 +1,5 @@
-using Controls;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Entities
 {
@@ -9,7 +9,6 @@ namespace Entities
         [SerializeField] private Transform respawnPosition;
 
         //InputSystem
-        private PlayerControls _controls;
         private Vector2 _movementInput;
         private Vector2 _aimDirection;
 
@@ -22,26 +21,17 @@ namespace Entities
         [SerializeField] private Blaster blaster;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
-        protected override void Awake()
-        {
-            base.Awake();
+        //Input Messages
+        public void OnMove(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);
+        public void OnMoveStick(InputValue value) => _movementInput = value.Get<Vector2>();
 
-            _controls = new PlayerControls();
-            //Gamepad
-            _controls.Game.MoveStick.performed += value => _movementInput = value.ReadValue<Vector2>();
-            _controls.Game.MoveStick.canceled += value => _movementInput = Vector2.zero;
-            _controls.Game.Jump.performed += value => Jump();
-            _controls.Game.WeaponAimStick.performed += value => _aimDirection = value.ReadValue<Vector2>();
-            _controls.Game.Fire.performed += value => blaster.Fire();
+        public void OnWeaponAimMouse(InputValue value) =>
+            _aimDirection = Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - transform.position;
 
-            //Keyboard
-            _controls.Game.Move.performed += value => _movementInput = new Vector2(value.ReadValue<float>(), 0);
-            _controls.Game.WeaponAimMouse.performed += value =>
-                _aimDirection = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()) - transform.position;
-        }
-
-        private void OnEnable() => _controls.Enable();
-        private void OnDisable() => _controls.Disable();
+        public void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
+        public void OnFire(InputValue value) => blaster.Fire();
+        public void OnJump(InputValue value) => Jump();
+        public void OnDeviceLost() => Destroy(this.gameObject);
 
         private void FixedUpdate()
         {

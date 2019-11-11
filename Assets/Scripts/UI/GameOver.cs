@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Managers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +7,9 @@ namespace UI
 {
     public class GameOver : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI scoreLabel;
-        [SerializeField]
-        private Button retryButton;
-        [SerializeField]
-        private Button quitButton;
+        [SerializeField] private TextMeshProUGUI scoreLabel;
+        [SerializeField] private Button retryButton;
+        [SerializeField] private Button quitButton;
 
         public void Show()
         {
