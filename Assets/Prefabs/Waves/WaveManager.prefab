@@ -46,5 +46,5 @@ MonoBehaviour:
   enemy: {fileID: 7003830395606255359, guid: c9c79684ab58f8341b9a775084dfa423, type: 3}
   spawnPoint: {fileID: 0}
   numberOfEnemies: 5
-  spawnDelay: 0.5
+  spawnDelay: 0.2
   basePosition: {fileID: 0}

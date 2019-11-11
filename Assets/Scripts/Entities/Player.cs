@@ -5,21 +5,22 @@ namespace Entities
 {
     public class Player : Entity
     {
-        [SerializeField] private float jumpForce;
+        [Header("Player")] [SerializeField] private float jumpForce;
+        [SerializeField] private Blaster blaster;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Transform respawnPosition;
+
+        [Header("Player Ground-Check")] [SerializeField]
+        private Transform topLeft;
+
+        [SerializeField] private Transform bottomRight;
+        [SerializeField] private LayerMask groundLayer;
 
         //InputSystem
         private Vector2 _movementInput;
         private Vector2 _aimDirection;
 
-        //Ground-Check
-        [SerializeField] private Transform topLeft;
-        [SerializeField] private Transform bottomRight;
-        [SerializeField] private LayerMask groundLayer;
         private bool _onGround;
-
-        [SerializeField] private Blaster blaster;
-        [SerializeField] private SpriteRenderer spriteRenderer;
 
         //Input Messages
         public void OnMove(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);

@@ -7,7 +7,9 @@ namespace Entities
     [RequireComponent(typeof(Collider2D))]
     public class Entity : Damageable
     {
-        [SerializeField] protected int baseMovementSpeed;
+        [Header("Entity-Base")] [SerializeField]
+        protected int baseMovementSpeed;
+
         [SerializeField] protected int baseDamage;
         [SerializeField] protected float baseAttackSpeed;
         public int BaseDamage => baseDamage;
