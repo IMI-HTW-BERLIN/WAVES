@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1827666538}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 310266632941674809}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bottomRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3605638786159325772}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 873512210811409010}
   - component: {fileID: 873512210811409012}
   - component: {fileID: 7467617291531553767}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,10 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f6ce3368b7cef48b992316d079a06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 10
   baseMovementSpeed: 10
   baseDamage: 0
   jumpForce: 6
+  respawnPosition: {fileID: 0}
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}
   groundLayer:
@@ -294,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1860828776217005230}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: topLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3349600504158526135}
   - component: {fileID: 8215038850959474279}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Blaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7430609998487848977}
   - component: {fileID: 1113439920487235628}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlasterGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2888385038725326641}
   - component: {fileID: 8807303093664018488}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

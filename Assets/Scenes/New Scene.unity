@@ -266,6 +266,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2417454305212080526, guid: 991cd85dfbd7984448df906b46b88848,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991cd85dfbd7984448df906b46b88848, type: 3}
 --- !u!4 &566758831 stripped
@@ -411,7 +416,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.5686275, g: 0.6745098, b: 0.7176471, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -500,6 +505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 873512210811409014, guid: c9a1ff21682226e4da941e4c38a31be4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 873512210811409011, guid: c9a1ff21682226e4da941e4c38a31be4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -557,9 +567,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873512210811409013, guid: c9a1ff21682226e4da941e4c38a31be4,
         type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: respawnPosition
+      value: 
+      objectReference: {fileID: 566758831}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9a1ff21682226e4da941e4c38a31be4, type: 3}
 --- !u!1001 &1543513230

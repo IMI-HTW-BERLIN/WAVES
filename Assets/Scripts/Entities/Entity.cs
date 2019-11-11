@@ -7,7 +7,7 @@ namespace Entities
     [RequireComponent(typeof(Collider2D))]
     public class Entity : MonoBehaviour, IDamageable
     {
-        [SerializeField] protected int health;
+        [SerializeField] protected int maxHealth;
         [SerializeField] protected int baseMovementSpeed;
         [SerializeField] protected int baseDamage;
         public int BaseDamage => baseDamage;
@@ -15,13 +15,13 @@ namespace Entities
         protected Rigidbody2D Rb;
         protected Collider2D Collider2D;
 
-        private int _currentHealth;
+        protected int CurrentHealth;
 
         protected virtual void Awake()
         {
             Collider2D = GetComponent<Collider2D>();
             Rb = GetComponent<Rigidbody2D>();
-            _currentHealth = health;
+            CurrentHealth = maxHealth;
         }
 
         /// <summary>
@@ -32,13 +32,13 @@ namespace Entities
         /// <inheritdoc />
         public void ApplyDamage(int damage)
         {
-            _currentHealth -= damage;
-            if (_currentHealth > 0) return;
+            CurrentHealth -= damage;
+            if (CurrentHealth > 0) return;
 
             Debug.Log("Entity '" + name + "' died");
             OnDeath();
         }
 
-        public void ResetHealth() => _currentHealth = health;
+        public void ResetHealth() => CurrentHealth = maxHealth;
     }
 }
