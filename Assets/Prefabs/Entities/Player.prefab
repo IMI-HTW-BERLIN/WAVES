@@ -147,7 +147,9 @@ MonoBehaviour:
   healthBar: {fileID: 5927048135624464888}
   baseMovementSpeed: 10
   baseDamage: 0
+  baseAttackSpeed: 0
   jumpForce: 6
+  respawnPosition: {fileID: 0}
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}
   groundLayer:
@@ -167,7 +169,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -558,6 +560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}

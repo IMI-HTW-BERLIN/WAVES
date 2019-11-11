@@ -9,13 +9,15 @@ namespace Entities
     {
         [SerializeField] protected int baseMovementSpeed;
         [SerializeField] protected int baseDamage;
+        [SerializeField] protected float baseAttackSpeed;
         public int BaseDamage => baseDamage;
 
         protected Rigidbody2D Rb;
         protected Collider2D Collider2D;
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             Collider2D = GetComponent<Collider2D>();
             Rb = GetComponent<Rigidbody2D>();
             CurrentHealth = maxHealth;

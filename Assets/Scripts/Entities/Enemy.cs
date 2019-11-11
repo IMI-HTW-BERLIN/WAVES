@@ -14,6 +14,7 @@ namespace Entities
         [SerializeField] private Range attackRepulseForce;
 
         private bool TargetToLeft => transform.position.x > target.position.x;
+        private float _cooldownTime;
 
         private void FixedUpdate()
         {
@@ -24,6 +25,10 @@ namespace Entities
 
         public void Attack()
         {
+            float time = Time.time;
+            if (_cooldownTime + 1f / baseAttackSpeed > time)
+                return;
+            _cooldownTime = time;
             Rb.AddForce(new Vector2(
                 attackJumpForceX.GetRandom() * (TargetToLeft ? -1 : 1),
                 attackJumpForceY.GetRandom())

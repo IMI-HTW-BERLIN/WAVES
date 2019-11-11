@@ -62,13 +62,13 @@ namespace Entities
             if (_onGround)
                 Rb.velocity = new Vector2(Rb.velocity.x, jumpForce);
         }
-        
+
         protected override void OnDeath()
         {
             gameObject.SetActive(false);
             CurrentHealth = maxHealth;
             transform.position = respawnPosition.position;
-
+            UpdateHealthBar();
             Invoke(nameof(Respawn), 3);
         }
 
