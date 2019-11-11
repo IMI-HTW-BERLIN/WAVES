@@ -55,7 +55,7 @@ namespace Entities
             blaster.transform.eulerAngles = new Vector3(0, 0, angle);
             bool facingLeft = angle > 90 || angle <= -90;
             spriteRenderer.flipX = facingLeft;
-            blaster.spriteRenderer.flipY = facingLeft;
+            blaster.SpriteRenderer.flipY = facingLeft;
         }
 
         private void Jump()
