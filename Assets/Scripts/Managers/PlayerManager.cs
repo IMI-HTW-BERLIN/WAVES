@@ -1,4 +1,4 @@
-using System;
+using Boo.Lang;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -10,28 +10,46 @@ namespace Managers
     {
         [SerializeField] private PlayerInputManager inputManager;
 
+        private readonly List<InputDevice> _devices = new List<InputDevice>();
+
         private void Start()
         {
-            inputManager.onPlayerJoined += PlayerJoined;
-            inputManager.onPlayerLeft += PlayerLeft;
-
             InputUser.listenForUnpairedDeviceActivity = 1;
             InputUser.onUnpairedDeviceUsed += UnpairedDeviceUsed;
+
+            inputManager.onPlayerJoined += PlayerJoined;
+            inputManager.onPlayerLeft += PlayerLeft;
+        }
+
+        private void OnDisable()
+        {
+            inputManager.onPlayerJoined -= PlayerJoined;
+            inputManager.onPlayerLeft -= PlayerLeft;
+            InputUser.onUnpairedDeviceUsed -= UnpairedDeviceUsed;
         }
 
         private void UnpairedDeviceUsed(InputControl inputControl, InputEventPtr inputEventPtr)
         {
-            throw new NotImplementedException();
-        }
+            if (_devices.Contains(inputControl.device))
+            {
+                Debug.Log("Device already in use");
+                return;
+            }
 
-        private void PlayerLeft(PlayerInput playerInput)
-        {
-            throw new NotImplementedException();
+            Debug.Log("Unpaired Device");
+            PlayerInput.Instantiate(inputManager.playerPrefab, inputManager.playerCount,
+                pairWithDevice: inputControl.device);
+            _devices.Add(inputControl.device);
         }
 
         private void PlayerJoined(PlayerInput playerInput)
         {
-            throw new NotImplementedException();
+            Debug.Log("Player joined");
+        }
+
+        private void PlayerLeft(PlayerInput playerInput)
+        {
+            Debug.Log("Player left");
         }
     }
 }

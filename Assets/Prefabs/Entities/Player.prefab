@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePosition: {fileID: 1827666538}
   bullet: {fileID: 2048484742174265259, guid: 82efdccdd8c91684b82531eaacd1bc9c, type: 3}
-  bulletSpeed: 1000
+  bulletSpeed: 10
   bulletLifetime: 3
   spriteRenderer: {fileID: 1113439920487235628}
 --- !u!1 &5944096829575672987
@@ -542,11 +542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873512210811409011}
     m_Modifications:
-    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
     - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -611,6 +606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
