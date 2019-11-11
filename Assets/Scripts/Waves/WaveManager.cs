@@ -7,7 +7,7 @@ namespace Waves
 {
     public class WaveManager : MonoBehaviour
     {
-        [SerializeField] private GameObject enemy;
+        [SerializeField] private UnityEngine.GameObject enemy;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private int numberOfEnemies;
         [SerializeField] private float spawnDelay;

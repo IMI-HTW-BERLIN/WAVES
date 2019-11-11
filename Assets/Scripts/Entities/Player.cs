@@ -1,5 +1,6 @@
 ﻿using Controls;
 using UnityEngine;
+using Weapons;
 
 namespace Entities
 {
@@ -19,7 +20,7 @@ namespace Entities
         [SerializeField] private LayerMask groundLayer;
         private bool _onGround;
 
-        [SerializeField] private Blaster blaster;
+        [SerializeField] private Weapon weapon;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         protected override void Awake()
@@ -32,7 +33,7 @@ namespace Entities
             _controls.Game.MoveStick.canceled += value => _movementInput = Vector2.zero;
             _controls.Game.Jump.performed += value => Jump();
             _controls.Game.WeaponAimStick.performed += value => _aimDirection = value.ReadValue<Vector2>();
-            _controls.Game.Fire.performed += value => blaster.Fire();
+            _controls.Game.Fire.performed += value => weapon.Attack();
 
             //Keyboard
             _controls.Game.Move.performed += value => _movementInput = new Vector2(value.ReadValue<float>(), 0);
@@ -51,10 +52,10 @@ namespace Entities
             Rb.velocity = new Vector2(_movementInput.x * baseMovementSpeed, Rb.velocity.y);
             //Aiming
             float angle = Vector2.SignedAngle(Vector2.right, _aimDirection);
-            blaster.transform.eulerAngles = new Vector3(0, 0, angle);
+            weapon.transform.eulerAngles = new Vector3(0, 0, angle);
             bool facingLeft = angle > 90 || angle <= -90;
             spriteRenderer.flipX = facingLeft;
-            blaster.SpriteRenderer.flipY = facingLeft;
+            weapon.spriteRenderer.flipY = facingLeft;
         }
 
         private void Jump()
