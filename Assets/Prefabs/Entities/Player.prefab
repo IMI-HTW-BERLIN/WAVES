@@ -150,6 +150,10 @@ MonoBehaviour:
   baseAttackSpeed: 0
   jumpForce: 6
   respawnPosition: {fileID: 0}
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  upgradeMenuToggleRange: 1
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}
   groundLayer:

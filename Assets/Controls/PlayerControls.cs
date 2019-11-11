@@ -11,7 +11,6 @@ namespace Controls
     public class PlayerControls : IInputActionCollection, IDisposable
     {
         private InputActionAsset asset;
-
         public PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
@@ -65,6 +64,14 @@ namespace Controls
                     ""name"": ""WeaponAimStick"",
                     ""type"": ""Button"",
                     ""id"": ""b8da82b0-2200-4b8a-824d-8e006a193fc2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UpgradeMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""267c774e-8542-43dd-a18d-df03bc110d01"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -202,6 +209,28 @@ namespace Controls
                     ""action"": ""WeaponAimStick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af89003b-998d-4b31-a484-ce410fd3fbe3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""UpgradeMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1d0cb26-52d5-4f7b-a054-f279877ebdb7"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UpgradeMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -244,6 +273,7 @@ namespace Controls
             m_Game_Jump = m_Game.FindAction("Jump", throwIfNotFound: true);
             m_Game_MoveStick = m_Game.FindAction("MoveStick", throwIfNotFound: true);
             m_Game_WeaponAimStick = m_Game.FindAction("WeaponAimStick", throwIfNotFound: true);
+            m_Game_UpgradeMenu = m_Game.FindAction("UpgradeMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -299,45 +329,23 @@ namespace Controls
         private readonly InputAction m_Game_Jump;
         private readonly InputAction m_Game_MoveStick;
         private readonly InputAction m_Game_WeaponAimStick;
-
+        private readonly InputAction m_Game_UpgradeMenu;
         public struct GameActions
         {
             private PlayerControls m_Wrapper;
-
-            public GameActions(PlayerControls wrapper)
-            {
-                m_Wrapper = wrapper;
-            }
-
+            public GameActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Game_Move;
             public InputAction @WeaponAimMouse => m_Wrapper.m_Game_WeaponAimMouse;
             public InputAction @Fire => m_Wrapper.m_Game_Fire;
             public InputAction @Jump => m_Wrapper.m_Game_Jump;
             public InputAction @MoveStick => m_Wrapper.m_Game_MoveStick;
             public InputAction @WeaponAimStick => m_Wrapper.m_Game_WeaponAimStick;
-
-            public InputActionMap Get()
-            {
-                return m_Wrapper.m_Game;
-            }
-
-            public void Enable()
-            {
-                Get().Enable();
-            }
-
-            public void Disable()
-            {
-                Get().Disable();
-            }
-
+            public InputAction @UpgradeMenu => m_Wrapper.m_Game_UpgradeMenu;
+            public InputActionMap Get() { return m_Wrapper.m_Game; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-
-            public static implicit operator InputActionMap(GameActions set)
-            {
-                return set.Get();
-            }
-
+            public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
             public void SetCallbacks(IGameActions instance)
             {
                 if (m_Wrapper.m_GameActionsCallbackInterface != null)
@@ -360,8 +368,10 @@ namespace Controls
                     WeaponAimStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
                     WeaponAimStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
                     WeaponAimStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
+                    UpgradeMenu.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgradeMenu;
+                    UpgradeMenu.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgradeMenu;
+                    UpgradeMenu.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgradeMenu;
                 }
-
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
                 {
@@ -383,13 +393,14 @@ namespace Controls
                     WeaponAimStick.started += instance.OnWeaponAimStick;
                     WeaponAimStick.performed += instance.OnWeaponAimStick;
                     WeaponAimStick.canceled += instance.OnWeaponAimStick;
+                    UpgradeMenu.started += instance.OnUpgradeMenu;
+                    UpgradeMenu.performed += instance.OnUpgradeMenu;
+                    UpgradeMenu.canceled += instance.OnUpgradeMenu;
                 }
             }
         }
-
         public GameActions @Game => new GameActions(this);
         private int m_KeyboardSchemeIndex = -1;
-
         public InputControlScheme KeyboardScheme
         {
             get
@@ -398,9 +409,7 @@ namespace Controls
                 return asset.controlSchemes[m_KeyboardSchemeIndex];
             }
         }
-
         private int m_GamepadSchemeIndex = -1;
-
         public InputControlScheme GamepadScheme
         {
             get
@@ -409,7 +418,6 @@ namespace Controls
                 return asset.controlSchemes[m_GamepadSchemeIndex];
             }
         }
-
         public interface IGameActions
         {
             void OnMove(InputAction.CallbackContext context);
@@ -418,6 +426,7 @@ namespace Controls
             void OnJump(InputAction.CallbackContext context);
             void OnMoveStick(InputAction.CallbackContext context);
             void OnWeaponAimStick(InputAction.CallbackContext context);
+            void OnUpgradeMenu(InputAction.CallbackContext context);
         }
     }
 }

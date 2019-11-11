@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Buildings;
+using UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver() => gameOverScreen.Show();
+
+    public void ShowUpgradeMenu(Building building)
+    {
+        Debug.Log($"Displaying upgrade menu for {building.transform.name}");
+        // TODO: Show upgrade menu for the selected building
+    }
 
     public static void ResetGame()
     {

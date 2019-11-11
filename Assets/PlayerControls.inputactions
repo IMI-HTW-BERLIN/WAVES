@@ -52,6 +52,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "UpgradeMenu",
+                    "type": "Button",
+                    "id": "267c774e-8542-43dd-a18d-df03bc110d01",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -184,6 +192,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "WeaponAimStick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af89003b-998d-4b31-a484-ce410fd3fbe3",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "UpgradeMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1d0cb26-52d5-4f7b-a054-f279877ebdb7",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UpgradeMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

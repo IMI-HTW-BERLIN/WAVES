@@ -1,5 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
+using Buildings;
 using Controls;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Entities
 {
@@ -7,6 +11,10 @@ namespace Entities
     {
         [SerializeField] private float jumpForce;
         [SerializeField] private Transform respawnPosition;
+        
+        // Building upgrade menu
+        [SerializeField] private LayerMask buildingLayer;
+        [SerializeField] private float upgradeMenuToggleRange;
 
         //InputSystem
         private PlayerControls _controls;
@@ -38,6 +46,32 @@ namespace Entities
             _controls.Game.Move.performed += value => _movementInput = new Vector2(value.ReadValue<float>(), 0);
             _controls.Game.WeaponAimMouse.performed += value =>
                 _aimDirection = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()) - transform.position;
+        }
+
+        public void OnUpgradeMenu()
+        {
+            List<Collider2D> results = new List<Collider2D>();
+            ContactFilter2D filter = new ContactFilter2D
+            {
+                layerMask = buildingLayer,
+                useLayerMask = true
+            };
+            if (Physics2D.OverlapCircle(transform.position, upgradeMenuToggleRange, filter, results) == 0) return;
+            
+            // Building in range, get nearest building
+            float minDistance = float.PositiveInfinity;
+            Collider2D result = null;
+            foreach (var hit in results.Where(hit => Vector2.Distance(transform.position, hit.transform.position) < minDistance))
+                result = hit;
+
+            Building selectedBuilding = result.gameObject.GetComponent<Building>();
+            if (selectedBuilding == null)
+            {
+                Debug.LogError($"\"{result.transform.name}\" is missing a Building script");
+                return;
+            }
+
+            GameManager.Instance.ShowUpgradeMenu(selectedBuilding);
         }
 
         private void OnEnable() => _controls.Enable();
