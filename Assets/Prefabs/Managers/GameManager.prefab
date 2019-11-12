@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 960443799416040641}
+  playerBase: {fileID: 0}
+  enemySpawnPoint: {fileID: 0}
 --- !u!1001 &3114428136729920702
 PrefabInstance:
   m_ObjectHideFlags: 0

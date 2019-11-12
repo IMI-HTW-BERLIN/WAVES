@@ -53,6 +53,7 @@ MonoBehaviour:
   baseMovementSpeed: 500
   baseDamage: 1
   baseAttackSpeed: 1
+  spriteRenderer: {fileID: 1714553375422581315}
   target: {fileID: 0}
   maxSpeed: 1
   attackJumpForceX:
