@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Entities;
+using Entities.Enemies;
 using UnityEngine;
 using World;
 
