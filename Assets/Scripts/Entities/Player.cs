@@ -1,47 +1,33 @@
-using Controls;
+using Managers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Weapons;
 
 namespace Entities
 {
     public class Player : Entity
     {
-        [SerializeField] private float jumpForce;
-        [SerializeField] private Transform respawnPosition;
+        [Header("Player")] [SerializeField] private float jumpForce;
+        [SerializeField] private Weapon weapon;
+        [SerializeField] private GameObject playerContent;
+
+        [Header("Player Ground-Check")] [SerializeField]
+        private Transform topLeft;
+
+        [SerializeField] private Transform bottomRight;
+        [SerializeField] private LayerMask groundLayer;
 
         //InputSystem
-        private PlayerControls _controls;
         private Vector2 _movementInput;
         private Vector2 _aimDirection;
 
-        //Ground-Check
-        [SerializeField] private Transform topLeft;
-        [SerializeField] private Transform bottomRight;
-        [SerializeField] private LayerMask groundLayer;
         private bool _onGround;
-
-        [SerializeField] private Blaster blaster;
 
         protected override void Awake()
         {
             base.Awake();
-
-            _controls = new PlayerControls();
-            //Gamepad
-            _controls.Game.MoveStick.performed += value => _movementInput = value.ReadValue<Vector2>();
-            _controls.Game.MoveStick.canceled += value => _movementInput = Vector2.zero;
-            _controls.Game.Jump.performed += value => Jump();
-            _controls.Game.WeaponAimStick.performed += value => _aimDirection = value.ReadValue<Vector2>();
-            _controls.Game.Fire.performed += value => blaster.Attack();
-
-            //Keyboard
-            _controls.Game.Move.performed += value => _movementInput = new Vector2(value.ReadValue<float>(), 0);
-            _controls.Game.WeaponAimMouse.performed += value =>
-                _aimDirection = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()) - transform.position;
+            spriteRenderer.color = Random.ColorHSV();
         }
-
-        private void OnEnable() => _controls.Enable();
-        private void OnDisable() => _controls.Disable();
 
         private void FixedUpdate()
         {
@@ -51,8 +37,28 @@ namespace Entities
             Rb.velocity = new Vector2(_movementInput.x * baseMovementSpeed, Rb.velocity.y);
             //Aiming
             float angle = Vector2.SignedAngle(Vector2.right, _aimDirection);
-            blaster.transform.eulerAngles = new Vector3(0, 0, angle);
+            weapon.transform.eulerAngles = new Vector3(0, 0, angle);
             FlipEntity(angle > 90 || angle <= -90);
+        }
+
+        //Input Messages
+        public void OnMove(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);
+        public void OnMoveStick(InputValue value) => _movementInput = value.Get<Vector2>();
+
+        public void OnWeaponAimMouse(InputValue value) =>
+            _aimDirection = Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - transform.position;
+
+        public void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
+        public void OnFire(InputValue value) => weapon.Attack();
+        public void OnJump(InputValue value) => Jump();
+        public void OnDeviceLost() => Destroy(this.gameObject);
+
+        public void TogglePlayer(bool show)
+        {
+            Rb.simulated = show;
+            this.enabled = show;
+            spriteRenderer.enabled = show;
+            playerContent.SetActive(show);
         }
 
         private void Jump()
@@ -64,18 +70,18 @@ namespace Entities
         protected override void FlipEntity(bool facingLeft)
         {
             base.FlipEntity(facingLeft);
-            blaster.SpriteRenderer.flipY = facingLeft;
+            weapon.SpriteRenderer.flipY = facingLeft;
         }
 
         protected override void OnDeath()
         {
-            gameObject.SetActive(false);
+            TogglePlayer(false);
             CurrentHealth = maxHealth;
-            transform.position = respawnPosition.position;
+            transform.position = GameManager.Instance.PlayerSpawnPosition.position;
             UpdateHealthBar();
             Invoke(nameof(Respawn), 3);
         }
 
-        private void Respawn() => gameObject.SetActive(true);
+        private void Respawn() => TogglePlayer(true);
     }
 }
