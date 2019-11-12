@@ -368,7 +368,7 @@ MonoBehaviour:
   firePosition: {fileID: 1827666538}
   bulletPrefab: {fileID: -545268524979254285, guid: 82efdccdd8c91684b82531eaacd1bc9c,
     type: 3}
-  bulletSpeed: 1000
+  bulletSpeed: 500
   damage: 1
 --- !u!1 &5944096829575672987
 GameObject:

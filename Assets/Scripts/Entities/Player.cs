@@ -21,7 +21,6 @@ namespace Entities
         private bool _onGround;
 
         [SerializeField] private Blaster blaster;
-        [SerializeField] private SpriteRenderer spriteRenderer;
 
         protected override void Awake()
         {
@@ -53,15 +52,19 @@ namespace Entities
             //Aiming
             float angle = Vector2.SignedAngle(Vector2.right, _aimDirection);
             blaster.transform.eulerAngles = new Vector3(0, 0, angle);
-            bool facingLeft = angle > 90 || angle <= -90;
-            spriteRenderer.flipX = facingLeft;
-            blaster.SpriteRenderer.flipY = facingLeft;
+            FlipEntity(angle > 90 || angle <= -90);
         }
 
         private void Jump()
         {
             if (_onGround)
                 Rb.velocity = new Vector2(Rb.velocity.x, jumpForce);
+        }
+
+        protected override void FlipEntity(bool facingLeft)
+        {
+            base.FlipEntity(facingLeft);
+            blaster.SpriteRenderer.flipY = facingLeft;
         }
 
         protected override void OnDeath()

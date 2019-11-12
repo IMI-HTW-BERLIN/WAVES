@@ -5,9 +5,8 @@ namespace Weapons
     [RequireComponent(typeof(SpriteRenderer))]
     public abstract class Weapon : MonoBehaviour
     {
-        public SpriteRenderer SpriteRenderer { get; private set; }
-
-        private void Awake() => SpriteRenderer = GetComponent<SpriteRenderer>();
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        public SpriteRenderer SpriteRenderer => spriteRenderer;
 
         public abstract void Attack();
     }

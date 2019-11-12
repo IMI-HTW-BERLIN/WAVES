@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 944665710203116130}
   - component: {fileID: 1714553375422581315}
   - component: {fileID: 503634796123039686}
-  - component: {fileID: 9156069008781518283}
+  - component: {fileID: 3862988439024628662}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Runner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   baseDamage: 1
   baseAttackSpeed: 1
   target: {fileID: 0}
-  maxVelocity: 1
+  maxSpeed: 1
   attackJumpForceX:
     min: 150
     max: 200
@@ -160,8 +160,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!61 &9156069008781518283
-BoxCollider2D:
+--- !u!58 &3862988439024628662
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -174,18 +174,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.16}
-  m_EdgeRadius: 0
+  m_Radius: 0.8
 --- !u!1001 &7796585722343421965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,36 +183,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3871332784511960355}
     m_Modifications:
-    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.25732073
-      objectReference: {fileID: 0}
-    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,6 +252,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997302175661003314, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.25732073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096665683801009271, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705e8423b7c187d4e90f0f9a161aa20e, type: 3}

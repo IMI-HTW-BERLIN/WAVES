@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Entities;
+using Entities.Enemies;
 using UnityEngine;
 using World;
 
@@ -7,7 +7,7 @@ namespace Waves
 {
     public class WaveManager : MonoBehaviour
     {
-        [SerializeField] private GameObject enemy;
+        [SerializeField] private Enemy enemy;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private int numberOfEnemies;
         [SerializeField] private float spawnDelay;
@@ -24,8 +24,7 @@ namespace Waves
             {
                 for (int i = 0; i < numberOfEnemies; i++)
                 {
-                    Enemy newEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity, this.transform)
-                        .GetComponent<Enemy>();
+                    Enemy newEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity, this.transform);
                     newEnemy.SetTarget(basePosition);
                     yield return new WaitForSeconds(spawnDelay);
                 }
