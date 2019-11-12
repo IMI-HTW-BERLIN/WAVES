@@ -228,9 +228,9 @@ MonoBehaviour:
   baseMovementSpeed: 10
   baseDamage: 0
   baseAttackSpeed: 0
+  spriteRenderer: {fileID: 7051256944995503710}
   jumpForce: 6
   weapon: {fileID: 8215038850959474279}
-  spriteRenderer: {fileID: 7051256944995503710}
   playerContent: {fileID: 636000326042915219}
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}

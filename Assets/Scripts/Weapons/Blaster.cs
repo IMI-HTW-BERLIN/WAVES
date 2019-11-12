@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Entities.Enemies;
+using UnityEngine;
 
 namespace Weapons
 {
@@ -12,10 +13,10 @@ namespace Weapons
         public override void Attack()
         {
             Transform weaponTransform = transform;
-            Vector3 bulletSpawnPos = firePosition.position;
+            Vector2 bulletSpawnPos = firePosition.position;
             Vector2 direction = weaponTransform.right;
             Bullet bullet = Instantiate(bulletPrefab, bulletSpawnPos, Quaternion.identity);
-            bullet.Shoot(damage, direction * bulletSpeed);
+            bullet.Shoot(typeof(Enemy), damage, direction * bulletSpeed);
         }
     }
 }

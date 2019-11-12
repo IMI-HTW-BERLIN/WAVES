@@ -37,7 +37,7 @@ namespace Entities.Enemies
         /// <summary>
         /// This method will automatically be called by <see cref="ExecuteAttack"/>.
         /// </summary>
-        protected abstract void Attack();
+        protected abstract void Attack(Damageable damageable);
 
         /// <summary>
         /// Moves to the target aka. the player-base.
@@ -57,7 +57,7 @@ namespace Entities.Enemies
             FlipEntity(TargetToLeft);
             EnemyToLeft = transform.position.x > damageable.transform.position.x;
             if (CanAttack)
-                Attack();
+                Attack(damageable);
         }
 
         /// <summary>

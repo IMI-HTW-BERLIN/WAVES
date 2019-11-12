@@ -14,7 +14,7 @@ namespace Entities.Enemies
         [SerializeField] private Range attackRepulseForce;
 
 
-        protected override void Attack()
+        protected override void Attack(Damageable damageable)
         {
             Rb.AddForce(new Vector2(
                 attackJumpForceX.GetRandom() * (EnemyToLeft ? -1 : 1),
