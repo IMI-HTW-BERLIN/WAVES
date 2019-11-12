@@ -229,7 +229,7 @@ MonoBehaviour:
   baseDamage: 0
   baseAttackSpeed: 0
   jumpForce: 6
-  blaster: {fileID: 8215038850959474279}
+  weapon: {fileID: 8215038850959474279}
   spriteRenderer: {fileID: 7051256944995503710}
   playerContent: {fileID: 636000326042915219}
   topLeft: {fileID: 1860828776217005230}
@@ -395,7 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10db2ec7d5bcf9d4faa3cd117b51f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1113439920487235628}
   firePosition: {fileID: 1827666538}
   bulletPrefab: {fileID: -545268524979254285, guid: 82efdccdd8c91684b82531eaacd1bc9c,
     type: 3}
