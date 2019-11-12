@@ -1,4 +1,5 @@
 using Interfaces;
+using UI;
 using UnityEngine;
 
 namespace Buildings
@@ -41,14 +42,34 @@ namespace Buildings
         public bool IsMaxLevel() => Level >= maxLevel;
 
         /// <summary>
+        /// Checks if a building's health is on its maximum
+        /// </summary>
+        /// <returns></returns>
+        public bool IsMaxHealth() => CurrentHealth == maxHealth;
+
+        /// <summary>
         /// Called when a building is upgraded to the next level
         /// </summary>
-        protected virtual void Upgrade()
+        public virtual void Upgrade()
         {
             if (IsMaxLevel())
                 return;
             Instantiate(destructionParticleEffect, transform);
             Level++;
         }
+
+        /// <summary>
+        /// Repairs a building by resetting its current health to the maximum
+        /// </summary>
+        public void Repair()
+        {
+            CurrentHealth = maxHealth;
+            UpdateHealthBar();
+        }
+
+        /// <summary>
+        /// Sells a building
+        /// </summary>
+        public void Sell() => Destroy();
     }
 }

@@ -152,13 +152,13 @@ MonoBehaviour:
   respawnPosition: {fileID: 0}
   buildingLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 5120
   upgradeMenuToggleRange: 1
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4352
   blaster: {fileID: 8215038850959474279}
   spriteRenderer: {fileID: 873512210811409010}
 --- !u!50 &873512210811409015

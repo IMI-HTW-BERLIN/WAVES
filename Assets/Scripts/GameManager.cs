@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameOver gameOverScreen;
+    [SerializeField] private UpgradeMenu upgradeMenu;
 
     public static GameManager Instance;
 
@@ -21,8 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowUpgradeMenu(Building building)
     {
-        Debug.Log($"Displaying upgrade menu for {building.transform.name}");
-        // TODO: Show upgrade menu for the selected building
+        upgradeMenu.ShowForBuilding(building);
     }
 
     public static void ResetGame()
