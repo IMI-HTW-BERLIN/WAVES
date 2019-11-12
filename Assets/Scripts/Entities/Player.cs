@@ -1,13 +1,14 @@
 using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Weapons;
 
 namespace Entities
 {
     public class Player : Entity
     {
         [Header("Player")] [SerializeField] private float jumpForce;
-        [SerializeField] private Blaster blaster;
+        [SerializeField] private Weapon weapon;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject playerContent;
 
@@ -37,10 +38,10 @@ namespace Entities
             Rb.velocity = new Vector2(_movementInput.x * baseMovementSpeed, Rb.velocity.y);
             //Aiming
             float angle = Vector2.SignedAngle(Vector2.right, _aimDirection);
-            blaster.transform.eulerAngles = new Vector3(0, 0, angle);
+            weapon.transform.eulerAngles = new Vector3(0, 0, angle);
             bool facingLeft = angle > 90 || angle <= -90;
             spriteRenderer.flipX = facingLeft;
-            blaster.SpriteRenderer.flipY = facingLeft;
+            weapon.SpriteRenderer.flipY = facingLeft;
         }
 
         //Input Messages
@@ -51,7 +52,7 @@ namespace Entities
             _aimDirection = Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - transform.position;
 
         public void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
-        public void OnFire(InputValue value) => blaster.Fire();
+        public void OnFire(InputValue value) => weapon.Attack();
         public void OnJump(InputValue value) => Jump();
         public void OnDeviceLost() => Destroy(this.gameObject);
 
