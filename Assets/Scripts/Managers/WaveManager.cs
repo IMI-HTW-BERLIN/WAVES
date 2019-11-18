@@ -25,7 +25,7 @@ namespace Managers
                 {
                     Enemy newEnemy = Instantiate(enemy, enemySpawnPoints[i % enemySpawnPoints.Length].position,
                         Quaternion.identity, this.transform);
-                    newEnemy.SetTarget(GameManager.Instance.PlayerBase.transform);
+                    newEnemy.SetPlayerBase(GameManager.Instance.PlayerBase.transform);
                     yield return new WaitForSeconds(spawnDelay);
                 }
             }

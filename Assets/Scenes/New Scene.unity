@@ -187,6 +187,17 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5802745207803674606, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: numberOfEnemies
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5802745207803674606, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 7889135342112414605, guid: c9c79684ab58f8341b9a775084dfa423,
+        type: 3}
     - target: {fileID: 5802745207803674607, guid: 18a20f56aa96dd1438c18aa7357152f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -281,11 +292,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base
-      objectReference: {fileID: 0}
-    - target: {fileID: 2417454305212080526, guid: 991cd85dfbd7984448df906b46b88848,
-        type: 3}
-      propertyPath: maxHealth
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1589148749388543570, guid: 991cd85dfbd7984448df906b46b88848,
         type: 3}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6473999233327690604}
   - component: {fileID: 4219429431354117161}
   - component: {fileID: 3051178764070975412}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4804388675862232313}
   - component: {fileID: 5226601318616326936}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +218,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -282,6 +287,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 6.6666665
+      objectReference: {fileID: 0}
+    - target: {fileID: 392952912744079418, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355395510876074432, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224583780605391038, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705e8423b7c187d4e90f0f9a161aa20e, type: 3}

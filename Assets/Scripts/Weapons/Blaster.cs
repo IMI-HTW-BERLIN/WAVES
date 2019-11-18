@@ -1,5 +1,4 @@
-﻿using Entities.Enemies;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Weapons
 {
@@ -16,7 +15,7 @@ namespace Weapons
             Vector2 bulletSpawnPos = firePosition.position;
             Vector2 direction = weaponTransform.right;
             Bullet bullet = Instantiate(bulletPrefab, bulletSpawnPos, Quaternion.identity);
-            bullet.Shoot(typeof(Enemy), damage, direction * bulletSpeed);
+            bullet.Shoot(damage, direction * bulletSpeed);
         }
     }
 }
