@@ -3,15 +3,13 @@ using Entities;
 using UnityEngine;
 using World;
 
-namespace Waves
+namespace Managers
 {
     public class WaveManager : MonoBehaviour
     {
-        [SerializeField] private GameObject enemy;
-        [SerializeField] private Transform spawnPoint;
+        [SerializeField] private Enemy enemy;
         [SerializeField] private int numberOfEnemies;
         [SerializeField] private float spawnDelay;
-        [SerializeField] private Transform basePosition;
 
         private void Start()
         {
@@ -24,9 +22,9 @@ namespace Waves
             {
                 for (int i = 0; i < numberOfEnemies; i++)
                 {
-                    Enemy newEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity, this.transform)
-                        .GetComponent<Enemy>();
-                    newEnemy.SetTarget(basePosition);
+                    Enemy newEnemy = Instantiate(enemy, GameManager.Instance.EnemySpawnPoint.position,
+                        Quaternion.identity, this.transform);
+                    newEnemy.SetTarget(GameManager.Instance.PlayerBase.transform);
                     yield return new WaitForSeconds(spawnDelay);
                 }
             }

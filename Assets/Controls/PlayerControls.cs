@@ -62,9 +62,9 @@ namespace Controls
                 },
                 {
                     ""name"": ""WeaponAimStick"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b8da82b0-2200-4b8a-824d-8e006a193fc2"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -167,17 +167,6 @@ namespace Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cb3280c6-1a5f-470d-839c-830cae242ee3"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

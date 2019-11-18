@@ -5,7 +5,9 @@ namespace Interfaces
 {
     public abstract class Damageable : MonoBehaviour
     {
-        [SerializeField] protected int maxHealth;
+        [Header("Damageable-Base")] [SerializeField]
+        protected int maxHealth;
+
         [SerializeField] private HealthBar healthBar;
 
         protected int CurrentHealth;

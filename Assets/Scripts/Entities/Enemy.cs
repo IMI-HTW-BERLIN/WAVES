@@ -7,7 +7,7 @@ namespace Entities
 {
     public class Enemy : Entity
     {
-        [SerializeField] private Transform target;
+        [Header("Enemy")] [SerializeField] private Transform target;
         [SerializeField] private float maxVelocity;
         [SerializeField] private Range attackJumpForceX;
         [SerializeField] private Range attackJumpForceY;
