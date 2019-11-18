@@ -236,7 +236,7 @@ MonoBehaviour:
   bottomRight: {fileID: 310266632941674809}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4352
 --- !u!50 &873512210811409015
 Rigidbody2D:
   serializedVersion: 4
