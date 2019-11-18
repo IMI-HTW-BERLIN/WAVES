@@ -1,6 +1,6 @@
-﻿using UnityEditor;
+﻿using Managers;
+using UnityEditor;
 using UnityEngine;
-using Waves;
 
 namespace Editor
 {
