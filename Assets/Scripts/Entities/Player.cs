@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using Buildings;
+using DefaultNamespace;
 using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -52,7 +56,7 @@ namespace Entities
             // Building in range, get nearest building
             float minDistance = float.PositiveInfinity;
             Collider2D result = null;
-            foreach (var hit in results.Where(hit => Vector2.Distance(transform.position, hit.transform.position) < minDistance))
+            foreach (Collider2D hit in results.Where(hit => Vector2.Distance(transform.position, hit.transform.position) < minDistance))
                 result = hit;
 
             Building selectedBuilding = result.gameObject.GetComponent<Building>();
@@ -68,9 +72,6 @@ namespace Entities
         private void OnUpgrade(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Upgrade);
         private void OnRepair(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Repair);
         private void OnSell(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Sell);
-
-        private void OnEnable() => _controls.Enable();
-        private void OnDisable() => _controls.Disable();
 
         private void FixedUpdate()
         {

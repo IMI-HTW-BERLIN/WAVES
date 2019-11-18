@@ -1,4 +1,5 @@
 ﻿using Buildings;
+using DefaultNamespace;
 using UI;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Managers
         [SerializeField] private GameOver gameOverScreen;
         [SerializeField] private Base playerBase;
         [SerializeField] private Transform enemySpawnPoint;
+        [SerializeField] private UpgradeMenu upgradeMenu;
 
         public static GameManager Instance;
         public Transform PlayerSpawnPosition => playerBase.transform;
@@ -23,6 +25,12 @@ namespace Managers
                 Debug.LogError("There is more than one game manager in the scene");
             Instance = this;
         }
+
+        public void ShowUpgradeMenu(Building building) => upgradeMenu.ShowForBuilding(building);
+
+        public void HideUpgradeMenu() => upgradeMenu.Hide();
+
+        public void ExecuteUpgradeAction(UpgradeAction action) => upgradeMenu.ExecuteAction(action);
 
         public void GameOver() => gameOverScreen.Show();
 
