@@ -54,12 +54,28 @@
                     "interactions": ""
                 },
                 {
-                    "name": "UpgradeMenu",
+                    "name": "Upgrade",
                     "type": "Button",
-                    "id": "267c774e-8542-43dd-a18d-df03bc110d01",
+                    "id": "27e18f34-68dc-417a-8e01-afb8913a9bdb",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Repair",
+                    "type": "Button",
+                    "id": "921543cc-67f6-452b-bfef-c035c8eaf4c5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Sell",
+                    "type": "Button",
+                    "id": "ebdde9c0-153e-4728-a1c3-45b13605f9ad",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -197,23 +213,34 @@
                 },
                 {
                     "name": "",
-                    "id": "af89003b-998d-4b31-a484-ce410fd3fbe3",
-                    "path": "<Keyboard>/e",
+                    "id": "8827d542-280c-4779-a0b2-e5c190c7aaa5",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "UpgradeMenu",
+                    "groups": "Gamepad",
+                    "action": "Upgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b1d0cb26-52d5-4f7b-a054-f279877ebdb7",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "0db5d26c-ba94-4810-b959-932adf2b044b",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "UpgradeMenu",
+                    "action": "Repair",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2fb4d1bc-feb6-4c11-886b-e0a320848f4a",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Controls/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -69,12 +69,28 @@ namespace Controls
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""UpgradeMenu"",
+                    ""name"": ""Upgrade"",
                     ""type"": ""Button"",
-                    ""id"": ""267c774e-8542-43dd-a18d-df03bc110d01"",
+                    ""id"": ""27e18f34-68dc-417a-8e01-afb8913a9bdb"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Repair"",
+                    ""type"": ""Button"",
+                    ""id"": ""921543cc-67f6-452b-bfef-c035c8eaf4c5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Sell"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebdde9c0-153e-4728-a1c3-45b13605f9ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -212,23 +228,34 @@ namespace Controls
                 },
                 {
                     ""name"": """",
-                    ""id"": ""af89003b-998d-4b31-a484-ce410fd3fbe3"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""8827d542-280c-4779-a0b2-e5c190c7aaa5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""UpgradeMenu"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Upgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b1d0cb26-52d5-4f7b-a054-f279877ebdb7"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""id"": ""0db5d26c-ba94-4810-b959-932adf2b044b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""UpgradeMenu"",
+                    ""action"": ""Repair"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fb4d1bc-feb6-4c11-886b-e0a320848f4a"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -273,7 +300,9 @@ namespace Controls
             m_Game_Jump = m_Game.FindAction("Jump", throwIfNotFound: true);
             m_Game_MoveStick = m_Game.FindAction("MoveStick", throwIfNotFound: true);
             m_Game_WeaponAimStick = m_Game.FindAction("WeaponAimStick", throwIfNotFound: true);
-            m_Game_UpgradeMenu = m_Game.FindAction("UpgradeMenu", throwIfNotFound: true);
+            m_Game_Upgrade = m_Game.FindAction("Upgrade", throwIfNotFound: true);
+            m_Game_Repair = m_Game.FindAction("Repair", throwIfNotFound: true);
+            m_Game_Sell = m_Game.FindAction("Sell", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -329,7 +358,9 @@ namespace Controls
         private readonly InputAction m_Game_Jump;
         private readonly InputAction m_Game_MoveStick;
         private readonly InputAction m_Game_WeaponAimStick;
-        private readonly InputAction m_Game_UpgradeMenu;
+        private readonly InputAction m_Game_Upgrade;
+        private readonly InputAction m_Game_Repair;
+        private readonly InputAction m_Game_Sell;
         public struct GameActions
         {
             private PlayerControls m_Wrapper;
@@ -340,7 +371,9 @@ namespace Controls
             public InputAction @Jump => m_Wrapper.m_Game_Jump;
             public InputAction @MoveStick => m_Wrapper.m_Game_MoveStick;
             public InputAction @WeaponAimStick => m_Wrapper.m_Game_WeaponAimStick;
-            public InputAction @UpgradeMenu => m_Wrapper.m_Game_UpgradeMenu;
+            public InputAction @Upgrade => m_Wrapper.m_Game_Upgrade;
+            public InputAction @Repair => m_Wrapper.m_Game_Repair;
+            public InputAction @Sell => m_Wrapper.m_Game_Sell;
             public InputActionMap Get() { return m_Wrapper.m_Game; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -368,9 +401,15 @@ namespace Controls
                     WeaponAimStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
                     WeaponAimStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
                     WeaponAimStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
-                    UpgradeMenu.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgradeMenu;
-                    UpgradeMenu.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgradeMenu;
-                    UpgradeMenu.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgradeMenu;
+                    Upgrade.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    Upgrade.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    Upgrade.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    Repair.started -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    Repair.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    Repair.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    Sell.started -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    Sell.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    Sell.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
                 }
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
@@ -393,9 +432,15 @@ namespace Controls
                     WeaponAimStick.started += instance.OnWeaponAimStick;
                     WeaponAimStick.performed += instance.OnWeaponAimStick;
                     WeaponAimStick.canceled += instance.OnWeaponAimStick;
-                    UpgradeMenu.started += instance.OnUpgradeMenu;
-                    UpgradeMenu.performed += instance.OnUpgradeMenu;
-                    UpgradeMenu.canceled += instance.OnUpgradeMenu;
+                    Upgrade.started += instance.OnUpgrade;
+                    Upgrade.performed += instance.OnUpgrade;
+                    Upgrade.canceled += instance.OnUpgrade;
+                    Repair.started += instance.OnRepair;
+                    Repair.performed += instance.OnRepair;
+                    Repair.canceled += instance.OnRepair;
+                    Sell.started += instance.OnSell;
+                    Sell.performed += instance.OnSell;
+                    Sell.canceled += instance.OnSell;
                 }
             }
         }
@@ -426,7 +471,9 @@ namespace Controls
             void OnJump(InputAction.CallbackContext context);
             void OnMoveStick(InputAction.CallbackContext context);
             void OnWeaponAimStick(InputAction.CallbackContext context);
-            void OnUpgradeMenu(InputAction.CallbackContext context);
+            void OnUpgrade(InputAction.CallbackContext context);
+            void OnRepair(InputAction.CallbackContext context);
+            void OnSell(InputAction.CallbackContext context);
         }
     }
 }

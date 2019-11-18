@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Buildings;
 using Controls;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,7 +49,7 @@ namespace Entities
                 _aimDirection = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()) - transform.position;
         }
 
-        public void OnUpgradeMenu()
+        public void Update()
         {
             List<Collider2D> results = new List<Collider2D>();
             ContactFilter2D filter = new ContactFilter2D
@@ -56,7 +57,12 @@ namespace Entities
                 layerMask = buildingLayer,
                 useLayerMask = true
             };
-            if (Physics2D.OverlapCircle(transform.position, upgradeMenuToggleRange, filter, results) == 0) return;
+            // Check if building in range
+            if (Physics2D.OverlapCircle(transform.position, upgradeMenuToggleRange, filter, results) == 0)
+            {
+                GameManager.Instance.HideUpgradeMenu();
+                return;
+            }
             
             // Building in range, get nearest building
             float minDistance = float.PositiveInfinity;
@@ -73,6 +79,10 @@ namespace Entities
 
             GameManager.Instance.ShowUpgradeMenu(selectedBuilding);
         }
+
+        private void OnUpgrade(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Upgrade);
+        private void OnRepair(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Repair);
+        private void OnSell(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Sell);
 
         private void OnEnable() => _controls.Enable();
         private void OnDisable() => _controls.Disable();

@@ -1,5 +1,4 @@
 using Interfaces;
-using UI;
 using UnityEngine;
 
 namespace Buildings
@@ -8,15 +7,15 @@ namespace Buildings
     public class Building : Damageable
     {
         [SerializeField] private GameObject destructionParticleEffect;
-        [SerializeField] private int maxLevel;
 
-        public int Level { get; private set; }
-
-        private void Start()
-        {
-            Level = 1;
-            CurrentHealth = maxHealth;
-        }
+        public int MaxLevel { get; set; }
+        
+        private int _currentLevel;
+        
+        public delegate void Upgrade(int level);
+        public event Upgrade OnUpgrade;
+        
+        private void Start() => CurrentHealth = maxHealth;
 
         /// <inheritdoc />
         public override void ApplyDamage(int damage)
@@ -39,7 +38,7 @@ namespace Buildings
         /// Checks if a building is on its maximum level
         /// </summary>
         /// <returns></returns>
-        public bool IsMaxLevel() => Level >= maxLevel;
+        public bool IsMaxLevel() => _currentLevel >= MaxLevel;
 
         /// <summary>
         /// Checks if a building's health is on its maximum
@@ -50,12 +49,12 @@ namespace Buildings
         /// <summary>
         /// Called when a building is upgraded to the next level
         /// </summary>
-        public virtual void Upgrade()
+        public void UpgradeBuilding()
         {
-            if (IsMaxLevel())
-                return;
+            if (OnUpgrade == null || IsMaxLevel()) return;
+            OnUpgrade.Invoke(_currentLevel);
             Instantiate(destructionParticleEffect, transform);
-            Level++;
+            _currentLevel++;
         }
 
         /// <summary>

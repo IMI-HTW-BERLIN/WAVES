@@ -1,4 +1,5 @@
 ﻿using Buildings;
+using DefaultNamespace;
 using UI;
 using UnityEngine;
 
@@ -20,10 +21,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() => gameOverScreen.Show();
 
-    public void ShowUpgradeMenu(Building building)
-    {
-        upgradeMenu.ShowForBuilding(building);
-    }
+    public void ShowUpgradeMenu(Building building) => upgradeMenu.ShowForBuilding(building);
+
+    public void HideUpgradeMenu() => upgradeMenu.Hide();
+
+    public void ExecuteUpgradeAction(UpgradeAction action) => upgradeMenu.ExecuteAction(action);
 
     public static void ResetGame()
     {

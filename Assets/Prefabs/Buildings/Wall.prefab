@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7979919810583378003}
   - component: {fileID: 8788792027865371269}
-  - component: {fileID: 6473999233327690604}
+  - component: {fileID: 3990419409461219452}
   - component: {fileID: 4219429431354117161}
   - component: {fileID: 3051178764070975412}
   m_Layer: 12
@@ -51,15 +51,19 @@ MonoBehaviour:
   healthBar: {fileID: 3900174503892607347}
   destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
-  maxLevel: 0
---- !u!222 &6473999233327690604
-CanvasRenderer:
+--- !u!114 &3990419409461219452
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2937822164136766707}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95c3d40d2204d1ea433b64576d4cfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0a0000000f00000019000000
 --- !u!212 &4219429431354117161
 SpriteRenderer:
   m_ObjectHideFlags: 0
