@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Entities;
+using Entities.Enemies;
 using UnityEngine;
 using World;
 
@@ -10,6 +10,7 @@ namespace Managers
         [SerializeField] private Enemy enemy;
         [SerializeField] private int numberOfEnemies;
         [SerializeField] private float spawnDelay;
+        [SerializeField] private Transform[] enemySpawnPoints;
 
         private void Start()
         {
@@ -22,9 +23,9 @@ namespace Managers
             {
                 for (int i = 0; i < numberOfEnemies; i++)
                 {
-                    Enemy newEnemy = Instantiate(enemy, GameManager.Instance.EnemySpawnPoint.position,
+                    Enemy newEnemy = Instantiate(enemy, enemySpawnPoints[i % enemySpawnPoints.Length].position,
                         Quaternion.identity, this.transform);
-                    newEnemy.SetTarget(GameManager.Instance.PlayerBase.transform);
+                    newEnemy.SetPlayerBase(GameManager.Instance.PlayerBase.transform);
                     yield return new WaitForSeconds(spawnDelay);
                 }
             }
