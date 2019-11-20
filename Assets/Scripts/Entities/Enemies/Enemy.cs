@@ -55,7 +55,7 @@ namespace Entities.Enemies
         public void SetPlayerBase(Transform targetTransform) => _playerBase = targetTransform;
 
         /// <summary>
-        /// This method will automatically be called by <see cref="AddTarget"/>.
+        /// This method will automatically be called each frame
         /// </summary>
         protected abstract void Attack(Damageable damageable);
 
@@ -103,8 +103,8 @@ namespace Entities.Enemies
         {
             if (!_playerBase) return;
             Damageable damageable = other.gameObject.GetComponent<Damageable>();
-            if (damageable)
-                AddTarget(damageable);
+            if (!damageable) return;
+            AddTarget(damageable);
         }
 
         /// <summary>
@@ -115,7 +115,6 @@ namespace Entities.Enemies
             if (!_playerBase) return;
             Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (!damageable) return;
-
             RemoveTarget(damageable);
         }
     }

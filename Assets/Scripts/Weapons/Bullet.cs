@@ -36,7 +36,7 @@ namespace Weapons
         /// </summary>
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!LayerMaskUtil.HasLayer(attackableLayers, other.gameObject.layer))
+            if (!attackableLayers.Contains(other.gameObject.layer))
                 return;
 
             //Only listen for actual hits with other object-colliders

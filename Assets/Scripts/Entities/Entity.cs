@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Entities
 {
     /// <summary>
-    /// An Entity is an instance that can attack, receive attacks, can move and die
+    /// An Entity is an instance that can attack, be attacked, can move and die
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class Entity : Damageable
