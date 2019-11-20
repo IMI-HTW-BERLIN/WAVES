@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7f1adf8eb43224fb419a08da07437f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 528593204938031449, guid: e3a136a9ed533ac4996a5fe4719b0ce2, type: 3}
+  enemy: {fileID: 7889135342112414605, guid: c9c79684ab58f8341b9a775084dfa423, type: 3}
   numberOfEnemies: 6
   spawnDelay: 0.5
   enemySpawnPoints:

@@ -1,25 +1,21 @@
-using UnityEngine;
-
 namespace Buildings.Upgrades
 {
     public class HealthUpgrade : UpgradeBase
     {
-        [SerializeField] private int[] health;
-
         protected override void Awake()
         {
             base.Awake();
-            if (Building.MaxLevel < health.Length)
-                Building.MaxLevel = health.Length;
+            if (Building.MaxLevel < upgrades.Length)
+                Building.MaxLevel = upgrades.Length;
         }
 
         protected override void Upgrade(int level)
         {
             // If upgrade doesn't exist, return
-            if (level > health.Length) return;
+            if (level > upgrades.Length) return;
 
             // Upgrade max health for level
-            Building.AddMaxHealth(health[level]);
+            Building.AddMaxHealth(upgrades[level].valueIncrease);
         }
     }
 }

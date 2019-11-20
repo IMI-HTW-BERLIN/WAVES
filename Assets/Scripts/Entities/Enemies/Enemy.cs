@@ -1,6 +1,7 @@
 using System;
-using Boo.Lang;
+using System.Collections.Generic;
 using Interfaces;
+using Managers;
 using UnityEngine;
 
 namespace Entities.Enemies
@@ -10,6 +11,9 @@ namespace Entities.Enemies
     {
         [Tooltip("Defines the max speed by using the velocity of the rigidbody")] [SerializeField]
         private float maxSpeed;
+
+        [Tooltip("Defines how much the player earns for killing this enemy")] [SerializeField]
+        private int goldValue;
 
         protected bool EnemyToLeft;
 
@@ -59,10 +63,16 @@ namespace Entities.Enemies
         /// </summary>
         protected abstract void Attack(Damageable damageable);
 
+        protected override void OnDeath()
+        {
+            ResourceManager.Instance.AddGold(goldValue);
+            base.OnDeath();
+        }
+
         /// <summary>
         /// Moves to the target aka. the player-base.
         /// </summary>
-        protected virtual void MoveToTarget()
+        private void MoveToTarget()
         {
             if (Math.Abs(Rb.velocity.x) < maxSpeed)
                 Rb.AddForce(new Vector2(baseMovementSpeed * Time.fixedDeltaTime * (TargetToLeft ? -1 : 1), 0));

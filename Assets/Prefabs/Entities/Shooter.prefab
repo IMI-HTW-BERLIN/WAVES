@@ -55,6 +55,7 @@ MonoBehaviour:
   baseAttackSpeed: 1
   spriteRenderer: {fileID: 1714553375422581315}
   maxSpeed: 1
+  goldValue: 1
   bulletPrefab: {fileID: -545268524979254285, guid: cf34a952562198a46a346325959cf9b6,
     type: 3}
   bulletSpeed: 200
