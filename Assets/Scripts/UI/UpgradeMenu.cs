@@ -1,5 +1,5 @@
 ﻿using Buildings;
-using DefaultNamespace;
+using Enums;
 using UnityEngine;
 
 namespace UI
@@ -9,19 +9,19 @@ namespace UI
         [SerializeField] private Vector2 offset;
 
         private Building _selectedBuilding;
-        
+
         public void ShowForBuilding(Building building)
         {
             // Store selected building
             _selectedBuilding = building;
-            
+
             // Set position relative to building
             transform.position = building.transform.position + Vector3.right * offset.x + Vector3.up * offset.y;
-            
+
             // Show menu
             gameObject.SetActive(true);
         }
-        
+
         public void Hide()
         {
             _selectedBuilding = null;

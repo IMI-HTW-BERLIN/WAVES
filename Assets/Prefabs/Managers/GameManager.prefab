@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 960443799416040641}
   playerBase: {fileID: 0}
-  enemyLayer: {fileID: 0}
-  friendlyLayer: {fileID: 0}
+  upgradeMenu: {fileID: 4017310336761684546, guid: 0c14fcdcf0ab44bb18a609e2f2266350,
+    type: 3}
 --- !u!1001 &3114428136729920702
 PrefabInstance:
   m_ObjectHideFlags: 0

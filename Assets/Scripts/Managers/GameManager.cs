@@ -1,4 +1,5 @@
 ﻿using Buildings;
+using Enums;
 using UI;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Managers
     {
         [SerializeField] private GameOver gameOverScreen;
         [SerializeField] private Base playerBase;
+        [SerializeField] private UpgradeMenu upgradeMenu;
 
         public static GameManager Instance;
         public Transform PlayerSpawnPosition => playerBase.transform;
