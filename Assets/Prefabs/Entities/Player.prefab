@@ -228,15 +228,19 @@ MonoBehaviour:
   baseMovementSpeed: 10
   baseDamage: 0
   baseAttackSpeed: 0
-  spriteRenderer: {fileID: 7051256944995503710}
   jumpForce: 6
   weapon: {fileID: 8215038850959474279}
+  spriteRenderer: {fileID: 7051256944995503710}
   playerContent: {fileID: 636000326042915219}
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4352
+    m_Bits: 256
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 5120
+  upgradeMenuToggleRange: 1
 --- !u!50 &873512210811409015
 Rigidbody2D:
   serializedVersion: 4
@@ -399,7 +403,7 @@ MonoBehaviour:
   firePosition: {fileID: 1827666538}
   bulletPrefab: {fileID: -545268524979254285, guid: 82efdccdd8c91684b82531eaacd1bc9c,
     type: 3}
-  bulletSpeed: 500
+  bulletSpeed: 1000
   damage: 1
 --- !u!1 &5944096829575672987
 GameObject:

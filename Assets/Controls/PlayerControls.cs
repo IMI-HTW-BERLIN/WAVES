@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Controls/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -11,7 +11,6 @@ namespace Controls
     public class PlayerControls : IInputActionCollection, IDisposable
     {
         private InputActionAsset asset;
-
         public PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
@@ -68,6 +67,30 @@ namespace Controls
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Upgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""27e18f34-68dc-417a-8e01-afb8913a9bdb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Repair"",
+                    ""type"": ""Button"",
+                    ""id"": ""921543cc-67f6-452b-bfef-c035c8eaf4c5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Sell"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebdde9c0-153e-4728-a1c3-45b13605f9ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -191,6 +214,39 @@ namespace Controls
                     ""action"": ""WeaponAimStick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8827d542-280c-4779-a0b2-e5c190c7aaa5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0db5d26c-ba94-4810-b959-932adf2b044b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Repair"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fb4d1bc-feb6-4c11-886b-e0a320848f4a"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -233,6 +289,9 @@ namespace Controls
             m_Game_Jump = m_Game.FindAction("Jump", throwIfNotFound: true);
             m_Game_MoveStick = m_Game.FindAction("MoveStick", throwIfNotFound: true);
             m_Game_WeaponAimStick = m_Game.FindAction("WeaponAimStick", throwIfNotFound: true);
+            m_Game_Upgrade = m_Game.FindAction("Upgrade", throwIfNotFound: true);
+            m_Game_Repair = m_Game.FindAction("Repair", throwIfNotFound: true);
+            m_Game_Sell = m_Game.FindAction("Sell", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -288,45 +347,27 @@ namespace Controls
         private readonly InputAction m_Game_Jump;
         private readonly InputAction m_Game_MoveStick;
         private readonly InputAction m_Game_WeaponAimStick;
-
+        private readonly InputAction m_Game_Upgrade;
+        private readonly InputAction m_Game_Repair;
+        private readonly InputAction m_Game_Sell;
         public struct GameActions
         {
             private PlayerControls m_Wrapper;
-
-            public GameActions(PlayerControls wrapper)
-            {
-                m_Wrapper = wrapper;
-            }
-
+            public GameActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Game_Move;
             public InputAction @WeaponAimMouse => m_Wrapper.m_Game_WeaponAimMouse;
             public InputAction @Fire => m_Wrapper.m_Game_Fire;
             public InputAction @Jump => m_Wrapper.m_Game_Jump;
             public InputAction @MoveStick => m_Wrapper.m_Game_MoveStick;
             public InputAction @WeaponAimStick => m_Wrapper.m_Game_WeaponAimStick;
-
-            public InputActionMap Get()
-            {
-                return m_Wrapper.m_Game;
-            }
-
-            public void Enable()
-            {
-                Get().Enable();
-            }
-
-            public void Disable()
-            {
-                Get().Disable();
-            }
-
+            public InputAction @Upgrade => m_Wrapper.m_Game_Upgrade;
+            public InputAction @Repair => m_Wrapper.m_Game_Repair;
+            public InputAction @Sell => m_Wrapper.m_Game_Sell;
+            public InputActionMap Get() { return m_Wrapper.m_Game; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-
-            public static implicit operator InputActionMap(GameActions set)
-            {
-                return set.Get();
-            }
-
+            public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
             public void SetCallbacks(IGameActions instance)
             {
                 if (m_Wrapper.m_GameActionsCallbackInterface != null)
@@ -349,8 +390,16 @@ namespace Controls
                     WeaponAimStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
                     WeaponAimStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
                     WeaponAimStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
+                    Upgrade.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    Upgrade.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    Upgrade.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    Repair.started -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    Repair.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    Repair.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    Sell.started -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    Sell.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    Sell.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
                 }
-
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
                 {
@@ -372,13 +421,20 @@ namespace Controls
                     WeaponAimStick.started += instance.OnWeaponAimStick;
                     WeaponAimStick.performed += instance.OnWeaponAimStick;
                     WeaponAimStick.canceled += instance.OnWeaponAimStick;
+                    Upgrade.started += instance.OnUpgrade;
+                    Upgrade.performed += instance.OnUpgrade;
+                    Upgrade.canceled += instance.OnUpgrade;
+                    Repair.started += instance.OnRepair;
+                    Repair.performed += instance.OnRepair;
+                    Repair.canceled += instance.OnRepair;
+                    Sell.started += instance.OnSell;
+                    Sell.performed += instance.OnSell;
+                    Sell.canceled += instance.OnSell;
                 }
             }
         }
-
         public GameActions @Game => new GameActions(this);
         private int m_KeyboardSchemeIndex = -1;
-
         public InputControlScheme KeyboardScheme
         {
             get
@@ -387,9 +443,7 @@ namespace Controls
                 return asset.controlSchemes[m_KeyboardSchemeIndex];
             }
         }
-
         private int m_GamepadSchemeIndex = -1;
-
         public InputControlScheme GamepadScheme
         {
             get
@@ -398,7 +452,6 @@ namespace Controls
                 return asset.controlSchemes[m_GamepadSchemeIndex];
             }
         }
-
         public interface IGameActions
         {
             void OnMove(InputAction.CallbackContext context);
@@ -407,6 +460,9 @@ namespace Controls
             void OnJump(InputAction.CallbackContext context);
             void OnMoveStick(InputAction.CallbackContext context);
             void OnWeaponAimStick(InputAction.CallbackContext context);
+            void OnUpgrade(InputAction.CallbackContext context);
+            void OnRepair(InputAction.CallbackContext context);
+            void OnSell(InputAction.CallbackContext context);
         }
     }
 }

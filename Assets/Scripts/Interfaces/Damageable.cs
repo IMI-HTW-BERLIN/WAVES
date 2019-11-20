@@ -24,5 +24,7 @@ namespace Interfaces
         {
             if (healthBar != null) healthBar.SetHealthBar(CurrentHealth, maxHealth);
         }
+
+        public void AddMaxHealth(int health) => maxHealth += health;
     }
 }

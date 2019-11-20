@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7979919810583378003}
   - component: {fileID: 8788792027865371269}
-  - component: {fileID: 6473999233327690604}
+  - component: {fileID: 7037140731073544974}
   - component: {fileID: 4219429431354117161}
   - component: {fileID: 3051178764070975412}
   m_Layer: 12
@@ -52,15 +52,19 @@ MonoBehaviour:
   healthBar: {fileID: 3900174503892607347}
   destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
-  maxLevel: 0
---- !u!222 &6473999233327690604
-CanvasRenderer:
+--- !u!114 &7037140731073544974
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2937822164136766707}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95c3d40d2204d1ea433b64576d4cfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 050000000f00000014000000
 --- !u!212 &4219429431354117161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -213,16 +217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7979919810583378003}
     m_Modifications:
-    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -288,10 +282,25 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 6.6666665
       objectReference: {fileID: 0}
-    - target: {fileID: 392952912744079418, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+    - target: {fileID: 3130032925682372809, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919498900506755498, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2355395510876074432, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
@@ -299,6 +308,11 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1224583780605391038, guid: 705e8423b7c187d4e90f0f9a161aa20e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 392952912744079418, guid: 705e8423b7c187d4e90f0f9a161aa20e,
         type: 3}
       propertyPath: m_Layer
       value: 12

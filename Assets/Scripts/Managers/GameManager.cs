@@ -22,6 +22,12 @@ namespace Managers
             Instance = this;
         }
 
+        public void ShowUpgradeMenu(Building building) => upgradeMenu.ShowForBuilding(building);
+
+        public void HideUpgradeMenu() => upgradeMenu.Hide();
+
+        public void ExecuteUpgradeAction(UpgradeAction action) => upgradeMenu.ExecuteAction(action);
+
         public void GameOver() => gameOverScreen.Show();
 
         public static void ResetGame()
