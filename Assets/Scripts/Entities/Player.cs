@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using Buildings;
+using DefaultNamespace;
 using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +21,10 @@ namespace Entities
 
         [SerializeField] private Transform bottomRight;
         [SerializeField] private LayerMask groundLayer;
+        
+        // Building upgrade menu
+        [SerializeField] private LayerMask buildingLayer;
+        [SerializeField] private float upgradeMenuToggleRange;
 
         //InputSystem
         private Vector2 _movementInput;
@@ -30,6 +38,10 @@ namespace Entities
             spriteRenderer.color = Random.ColorHSV();
         }
 
+        private void OnUpgrade(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Upgrade);
+        private void OnRepair(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Repair);
+        private void OnSell(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Sell);
+
         private void FixedUpdate()
         {
             //Ground Check
@@ -42,6 +54,33 @@ namespace Entities
             bool facingLeft = angle > 90 || angle <= -90;
             spriteRenderer.flipX = facingLeft;
             weapon.SpriteRenderer.flipY = facingLeft;
+            // Show upgrade menu if necessary
+            Building nearestBuilding = GetNearestBuildingInRange();
+            if (nearestBuilding == null)
+                GameManager.Instance.HideUpgradeMenu();
+            else
+                GameManager.Instance.ShowUpgradeMenu(nearestBuilding);
+        }
+
+        private Building GetNearestBuildingInRange()
+        {
+            List<Collider2D> results = new List<Collider2D>();
+            ContactFilter2D filter = new ContactFilter2D
+            {
+                layerMask = buildingLayer,
+                useLayerMask = true
+            };
+            // Check if building in range
+            if (Physics2D.OverlapCircle(transform.position, upgradeMenuToggleRange, filter, results) == 0)
+                return null;
+
+            // Building in range, get nearest building
+            float minDistance = float.PositiveInfinity;
+            Collider2D result = null;
+            foreach (Collider2D hit in results.Where(hit => Vector2.Distance(transform.position, hit.transform.position) < minDistance))
+                result = hit;
+
+            return result.gameObject.GetComponent<Building>();
         }
 
         //Input Messages

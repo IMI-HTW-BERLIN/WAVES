@@ -237,6 +237,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 5120
+  upgradeMenuToggleRange: 1
 --- !u!50 &873512210811409015
 Rigidbody2D:
   serializedVersion: 4

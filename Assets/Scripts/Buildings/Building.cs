@@ -1,3 +1,4 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
@@ -7,15 +8,13 @@ namespace Buildings
     public class Building : Damageable
     {
         [SerializeField] private GameObject destructionParticleEffect;
-        [SerializeField] private int maxLevel;
 
-        public int Level { get; private set; }
-
-        private void Start()
-        {
-            Level = 1;
-            CurrentHealth = maxHealth;
-        }
+        [NonSerialized] public int MaxLevel;
+        
+        private int _currentLevel;
+        
+        public delegate void Upgrade(int level);
+        public event Upgrade OnUpgrade;
 
         /// <inheritdoc />
         public override void ApplyDamage(int damage)
@@ -38,17 +37,37 @@ namespace Buildings
         /// Checks if a building is on its maximum level
         /// </summary>
         /// <returns></returns>
-        public bool IsMaxLevel() => Level >= maxLevel;
+        public bool IsMaxLevel() => _currentLevel >= MaxLevel;
+
+        /// <summary>
+        /// Checks if a building's health is on its maximum
+        /// </summary>
+        /// <returns></returns>
+        public bool IsMaxHealth() => CurrentHealth == maxHealth;
 
         /// <summary>
         /// Called when a building is upgraded to the next level
         /// </summary>
-        protected virtual void Upgrade()
+        public void UpgradeBuilding()
         {
-            if (IsMaxLevel())
-                return;
+            if (OnUpgrade == null || IsMaxLevel()) return;
+            OnUpgrade.Invoke(_currentLevel);
             Instantiate(destructionParticleEffect, transform);
-            Level++;
+            _currentLevel++;
         }
+
+        /// <summary>
+        /// Repairs a building by resetting its current health to the maximum
+        /// </summary>
+        public void Repair()
+        {
+            CurrentHealth = maxHealth;
+            UpdateHealthBar();
+        }
+
+        /// <summary>
+        /// Sells a building
+        /// </summary>
+        public void Sell() => Destroy();
     }
 }
