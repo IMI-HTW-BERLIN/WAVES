@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Buildings.Upgrades
 {
+    [RequireComponent(typeof(Building))]
     public abstract class UpgradeBase : MonoBehaviour
     {
         protected Building Building;

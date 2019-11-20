@@ -1,3 +1,4 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
@@ -8,14 +9,12 @@ namespace Buildings
     {
         [SerializeField] private GameObject destructionParticleEffect;
 
-        public int MaxLevel { get; set; }
+        [NonSerialized] public int MaxLevel;
         
         private int _currentLevel;
         
         public delegate void Upgrade(int level);
         public event Upgrade OnUpgrade;
-        
-        private void Start() => CurrentHealth = maxHealth;
 
         /// <inheritdoc />
         public override void ApplyDamage(int damage)

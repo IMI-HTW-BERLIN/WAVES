@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Buildings.Upgrades
 {
-    [RequireComponent(typeof(Building))]
     public class HealthUpgrade : UpgradeBase
     {
         [SerializeField] private int[] health;
