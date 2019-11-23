@@ -6,8 +6,8 @@ namespace Buildings
     {
         protected override void Destroy()
         {
-            base.Destroy();
             GameManager.Instance.GameOver();
+            base.Destroy();
         }
     }
 }

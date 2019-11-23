@@ -11,6 +11,7 @@ namespace Controls
     public class PlayerControls : IInputActionCollection, IDisposable
     {
         private InputActionAsset asset;
+
         public PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
@@ -88,6 +89,14 @@ namespace Controls
                     ""name"": ""Sell"",
                     ""type"": ""Button"",
                     ""id"": ""ebdde9c0-153e-4728-a1c3-45b13605f9ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a62c2fa-994d-40a6-8ced-6166ce0829e9"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -247,6 +256,28 @@ namespace Controls
                     ""action"": ""Sell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3833415d-2574-42fa-8d0c-4ad85c7e75d9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""125565f7-2d6f-4a6a-accf-2cb230d95d28"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -292,6 +323,7 @@ namespace Controls
             m_Game_Upgrade = m_Game.FindAction("Upgrade", throwIfNotFound: true);
             m_Game_Repair = m_Game.FindAction("Repair", throwIfNotFound: true);
             m_Game_Sell = m_Game.FindAction("Sell", throwIfNotFound: true);
+            m_Game_Pause = m_Game.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -350,10 +382,17 @@ namespace Controls
         private readonly InputAction m_Game_Upgrade;
         private readonly InputAction m_Game_Repair;
         private readonly InputAction m_Game_Sell;
+        private readonly InputAction m_Game_Pause;
+
         public struct GameActions
         {
             private PlayerControls m_Wrapper;
-            public GameActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+
+            public GameActions(PlayerControls wrapper)
+            {
+                m_Wrapper = wrapper;
+            }
+
             public InputAction @Move => m_Wrapper.m_Game_Move;
             public InputAction @WeaponAimMouse => m_Wrapper.m_Game_WeaponAimMouse;
             public InputAction @Fire => m_Wrapper.m_Game_Fire;
@@ -363,11 +402,30 @@ namespace Controls
             public InputAction @Upgrade => m_Wrapper.m_Game_Upgrade;
             public InputAction @Repair => m_Wrapper.m_Game_Repair;
             public InputAction @Sell => m_Wrapper.m_Game_Sell;
-            public InputActionMap Get() { return m_Wrapper.m_Game; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
+            public InputAction @Pause => m_Wrapper.m_Game_Pause;
+
+            public InputActionMap Get()
+            {
+                return m_Wrapper.m_Game;
+            }
+
+            public void Enable()
+            {
+                Get().Enable();
+            }
+
+            public void Disable()
+            {
+                Get().Disable();
+            }
+
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
+
+            public static implicit operator InputActionMap(GameActions set)
+            {
+                return set.Get();
+            }
+
             public void SetCallbacks(IGameActions instance)
             {
                 if (m_Wrapper.m_GameActionsCallbackInterface != null)
@@ -399,7 +457,11 @@ namespace Controls
                     Sell.started -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
                     Sell.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
                     Sell.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    Pause.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                    Pause.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                    Pause.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
                 }
+
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
                 {
@@ -430,11 +492,16 @@ namespace Controls
                     Sell.started += instance.OnSell;
                     Sell.performed += instance.OnSell;
                     Sell.canceled += instance.OnSell;
+                    Pause.started += instance.OnPause;
+                    Pause.performed += instance.OnPause;
+                    Pause.canceled += instance.OnPause;
                 }
             }
         }
+
         public GameActions @Game => new GameActions(this);
         private int m_KeyboardSchemeIndex = -1;
+
         public InputControlScheme KeyboardScheme
         {
             get
@@ -443,7 +510,9 @@ namespace Controls
                 return asset.controlSchemes[m_KeyboardSchemeIndex];
             }
         }
+
         private int m_GamepadSchemeIndex = -1;
+
         public InputControlScheme GamepadScheme
         {
             get
@@ -452,6 +521,7 @@ namespace Controls
                 return asset.controlSchemes[m_GamepadSchemeIndex];
             }
         }
+
         public interface IGameActions
         {
             void OnMove(InputAction.CallbackContext context);
@@ -463,6 +533,7 @@ namespace Controls
             void OnUpgrade(InputAction.CallbackContext context);
             void OnRepair(InputAction.CallbackContext context);
             void OnSell(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }

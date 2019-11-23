@@ -8,7 +8,7 @@ namespace Utils
 
         private void Awake()
         {
-            if (Instance != null)
+            if (Instance != null && Instance == this as T)
                 Destroy(this.gameObject);
             else
                 Instance = this as T;

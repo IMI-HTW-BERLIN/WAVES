@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8765081721851601323}
   - component: {fileID: 8765081721851601322}
-  - component: {fileID: 8765081721851601325}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -47,11 +46,11 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8765081721851601325}
+      - m_Target: {fileID: 0}
         m_MethodName: PlayerJoined
         m_Mode: 0
         m_Arguments:
@@ -76,8 +75,8 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 7cb2fd88-855f-4edd-bb8f-7a048a434fdf
-        m_Path: <Gamepad>/buttonSouth
+        m_Id: 1fa39c0e-b9a9-43a5-ad8d-170f8df1997c
+        m_Path: <Gamepad>/start
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -95,17 +94,3 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &8765081721851601325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8765081721851601320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06ec080544b4022bdfb50cc217a902b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputManager: {fileID: 8765081721851601322}
-  numberOfDevices: 0
