@@ -51,6 +51,7 @@ MonoBehaviour:
   maxHealth: 20
   healthBar: {fileID: 3900174503892607347}
   repairCost: 1
+  upgradeLevelCosts: 0100000002000000030000000400000005000000
   destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
 --- !u!114 &7037140731073544974
@@ -65,13 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95c3d40d2204d1ea433b64576d4cfed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrades:
-  - valueIncrease: 5
-    goldCost: 1
-  - valueIncrease: 10
-    goldCost: 2
-  - valueIncrease: 15
-    goldCost: 3
+  upgradeValues: 050000000a0000000f000000
 --- !u!212 &4219429431354117161
 SpriteRenderer:
   m_ObjectHideFlags: 0

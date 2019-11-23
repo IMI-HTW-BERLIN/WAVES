@@ -9,6 +9,7 @@ namespace Buildings
     public class Building : Damageable
     {
         [Header("Building")] [SerializeField] private int repairCost;
+        [SerializeField] private int[] upgradeLevelCosts;
         [SerializeField] private GameObject destructionParticleEffect;
 
         [NonSerialized] public int MaxLevel;
@@ -54,6 +55,9 @@ namespace Buildings
         public void UpgradeBuilding()
         {
             if (IsMaxLevel()) return;
+            //Check if player has enough money
+            if (!ResourceManager.Instance.RemoveGold(upgradeLevelCosts[_currentLevel])) return;
+
             OnUpgrade?.Invoke(_currentLevel);
             Instantiate(destructionParticleEffect, transform);
             _currentLevel++;

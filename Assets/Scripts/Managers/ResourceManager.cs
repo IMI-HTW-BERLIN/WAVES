@@ -4,16 +4,23 @@ namespace Managers
 {
     public class ResourceManager : Singleton<ResourceManager>
     {
-        public delegate void GoldChanged(int newValue);
-
         public event GoldChanged OnGoldChanged;
 
-        public delegate void GoldAmount();
+        public delegate void GoldChanged(int newValue);
+
 
         public event GoldAmount OnNotEnoughGold;
 
+        public delegate void GoldAmount();
+
+        /// <summary>
+        /// The amount of gold the player(s) have. DO NOT CHANGE THIS DIRECTLY
+        /// </summary>
         private int _currentGold;
 
+        /// <summary>
+        /// The amount of gold the player(s) have. Will trigger the <see cref="OnGoldChanged"/> event when altered. 
+        /// </summary>
         private int CurrentGold
         {
             get => _currentGold;

@@ -21,6 +21,9 @@ namespace UI
             ResourceManager.Instance.OnNotEnoughGold -= NotEnoughGold;
         }
 
+        /// <summary>
+        /// Animates the Gold UI from red to white to indicate that the player does not have enough money.
+        /// </summary>
         private void NotEnoughGold()
         {
             StopAllCoroutines();

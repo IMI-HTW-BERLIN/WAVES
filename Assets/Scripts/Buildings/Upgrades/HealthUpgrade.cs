@@ -5,17 +5,17 @@ namespace Buildings.Upgrades
         protected override void Awake()
         {
             base.Awake();
-            if (Building.MaxLevel < upgrades.Length)
-                Building.MaxLevel = upgrades.Length;
+            if (Building.MaxLevel < upgradeValues.Length)
+                Building.MaxLevel = upgradeValues.Length;
         }
 
         protected override void Upgrade(int level)
         {
             // If upgrade doesn't exist, return
-            if (level > upgrades.Length) return;
+            if (level > upgradeValues.Length) return;
 
             // Upgrade max health for level
-            Building.AddMaxHealth(upgrades[level].valueIncrease);
+            Building.AddMaxHealth(upgradeValues[level]);
         }
     }
 }

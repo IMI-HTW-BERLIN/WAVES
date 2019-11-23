@@ -368,6 +368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
+  test:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5143533132911912118
 GameObject:
   m_ObjectHideFlags: 0
