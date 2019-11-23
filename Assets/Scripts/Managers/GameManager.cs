@@ -2,27 +2,19 @@
 using Enums;
 using UI;
 using UnityEngine;
+using Utils;
 
 namespace Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
         [SerializeField] private GameOver gameOverScreen;
         [SerializeField] private Base playerBase;
         [SerializeField] private UpgradeMenu upgradeMenu;
-
-        public static GameManager Instance;
         public Transform PlayerSpawnPosition => playerBase.transform;
         public Base PlayerBase => playerBase;
 
         public static int Score => 524; //{ get; private set; }
-
-        private void Awake()
-        {
-            if (Instance)
-                Debug.LogError("There is more than one game manager in the scene");
-            Instance = this;
-        }
 
         public void ShowUpgradeMenu(Building building) => upgradeMenu.ShowForBuilding(building);
 

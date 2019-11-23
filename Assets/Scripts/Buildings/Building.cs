@@ -1,5 +1,6 @@
 using System;
 using Interfaces;
+using Managers;
 using UnityEngine;
 
 namespace Buildings
@@ -7,13 +8,16 @@ namespace Buildings
     [RequireComponent(typeof(Collider2D))]
     public class Building : Damageable
     {
+        [Header("Building")] [SerializeField] private int repairCost;
+        [SerializeField] private int[] upgradeLevelCosts;
         [SerializeField] private GameObject destructionParticleEffect;
 
         [NonSerialized] public int MaxLevel;
-        
+
         private int _currentLevel;
-        
+
         public delegate void Upgrade(int level);
+
         public event Upgrade OnUpgrade;
 
         /// <inheritdoc />
@@ -50,8 +54,11 @@ namespace Buildings
         /// </summary>
         public void UpgradeBuilding()
         {
-            if (OnUpgrade == null || IsMaxLevel()) return;
-            OnUpgrade.Invoke(_currentLevel);
+            if (IsMaxLevel()) return;
+            //Check if player has enough money
+            if (!ResourceManager.Instance.RemoveGold(upgradeLevelCosts[_currentLevel])) return;
+
+            OnUpgrade?.Invoke(_currentLevel);
             Instantiate(destructionParticleEffect, transform);
             _currentLevel++;
         }
@@ -61,6 +68,7 @@ namespace Buildings
         /// </summary>
         public void Repair()
         {
+            if (!ResourceManager.Instance.RemoveGold(repairCost)) return;
             CurrentHealth = maxHealth;
             UpdateHealthBar();
         }
