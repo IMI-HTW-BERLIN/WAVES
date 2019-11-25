@@ -17,14 +17,10 @@ namespace UI
             gameObject.SetActive(true);
         }
 
-        private void Hide() => gameObject.SetActive(false);
-
         private void Start()
         {
-            retryButton.onClick.AddListener(GameManager.ResetGame);
-            retryButton.onClick.AddListener(Hide);
+            retryButton.onClick.AddListener(GameManager.StartGame);
             quitButton.onClick.AddListener(Application.Quit);
-            quitButton.onClick.AddListener(() => Debug.Log("Quitting..."));
         }
     }
 }
