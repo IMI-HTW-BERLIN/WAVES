@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtCurrentGold: {fileID: 2698230843686848397}
+  animSteps: 20
+  animStepsDelay: 0.1
 --- !u!1 &5457337626190869934
 GameObject:
   m_ObjectHideFlags: 0

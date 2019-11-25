@@ -9,7 +9,12 @@ namespace Buildings.Upgrades
 
         protected Building Building;
 
-        protected virtual void Awake() => Building = GetComponent<Building>();
+        protected virtual void Awake()
+        {
+            Building = GetComponent<Building>();
+            if (Building.MaxLevel < upgradeValues.Length)
+                Building.MaxLevel = upgradeValues.Length;
+        }
 
         private void OnEnable() => Building.OnUpgrade += Upgrade;
 
