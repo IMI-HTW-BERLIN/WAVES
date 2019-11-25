@@ -8,6 +8,8 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI txtWaveDisplay;
 
+        private const float WaitForSecondsValue = 0.01f;
+
         /// <summary>
         /// Shows the current Wave
         /// </summary>
@@ -24,12 +26,12 @@ namespace UI
                 Color color = txtWaveDisplay.color;
                 txtWaveDisplay.gameObject.SetActive(true);
                 yield return new WaitForSeconds(animTime);
-                int steps = (int) (1 / fadeAnimTime * 0.01f * 255);
+                int steps = (int) (1 / fadeAnimTime * WaitForSecondsValue * 255);
                 for (int i = 255; i >= 0; i -= steps)
                 {
                     color.a = i / 255f;
                     txtWaveDisplay.color = color;
-                    yield return new WaitForSeconds(0.01f);
+                    yield return new WaitForSeconds(WaitForSecondsValue);
                 }
 
                 txtWaveDisplay.gameObject.SetActive(false);
