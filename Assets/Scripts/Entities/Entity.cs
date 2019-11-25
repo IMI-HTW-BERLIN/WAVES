@@ -14,7 +14,7 @@ namespace Entities
 
         [SerializeField] protected int baseDamage;
         [SerializeField] protected float baseAttackSpeed;
-        [SerializeField] protected SpriteRenderer spriteRenderer;
+        [SerializeField] public SpriteRenderer spriteRenderer;
         public int BaseDamage => baseDamage;
 
         protected Rigidbody2D Rb;

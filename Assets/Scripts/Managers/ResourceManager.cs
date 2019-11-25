@@ -31,7 +31,25 @@ namespace Managers
             }
         }
 
+        /// <summary>
+        /// Adds gold to the players resources
+        /// </summary>
+        /// <param name="amount">The amount of gold to add</param>
         public void AddGold(int amount) => CurrentGold += amount;
+
+        /// <summary>
+        /// Checks if the player has at least the specified amount of gold. Triggers the <see cref="OnNotEnoughGold"/>
+        /// event if the player has less than the specified amount of gold.
+        /// </summary>
+        /// <param name="amount">The amount to check for</param>
+        /// <returns>True if player has at least the specified amount of gold, otherwise false</returns>
+        public bool HasGold(int amount)
+        {
+            if (CurrentGold >= amount) return true;
+            OnNotEnoughGold?.Invoke();
+            return false;
+
+        }
 
         /// <summary>
         /// Removes gold. Returns false if the user does not have enough gold and triggers the <see cref="OnNotEnoughGold"/> event.
@@ -40,14 +58,10 @@ namespace Managers
         /// <returns>Returns true if there is enough gold, otherwise it skips the remove and returns false</returns>
         public bool RemoveGold(int amount)
         {
-            if (CurrentGold < amount)
-            {
-                OnNotEnoughGold?.Invoke();
-                return false;
-            }
-
+            if (!HasGold(amount)) return false;
             CurrentGold -= amount;
             return true;
+
         }
     }
 }
