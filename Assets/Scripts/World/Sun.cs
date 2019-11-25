@@ -20,7 +20,7 @@ namespace World
         public static event SunStatus SunDown;
 
         private float _globalLightMaxIntensity;
-        private bool _isNight;
+        private bool _isNight = true;
 
         private void Awake() => _globalLightMaxIntensity = globalLight.intensity;
 

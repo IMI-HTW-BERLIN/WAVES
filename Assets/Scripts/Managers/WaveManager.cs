@@ -36,20 +36,28 @@ namespace Managers
                 for (int i = 0; i < spawnData.numberOfSpawns; i++)
                 {
                     //Left
-                    Transform spawnPosition = enemySpawnPoints[0];
-                    //Both
-                    if (spawnData.spawnLocation == 1)
-                        spawnPosition = enemySpawnPoints[i % enemySpawnPoints.Length];
-                    //Right
-                    else if (spawnData.spawnLocation == 2)
-                        spawnPosition = enemySpawnPoints[1];
+                    Transform spawnPosition;
+                    switch (spawnData.spawnLocation)
+                    {
+                        case SpawnData.SpawnLocation.Left:
+                            spawnPosition = enemySpawnPoints[0];
+                            break;
+                        case SpawnData.SpawnLocation.Right:
+                            spawnPosition = enemySpawnPoints[1];
+                            break;
+                        case SpawnData.SpawnLocation.Both:
+                            spawnPosition = enemySpawnPoints[i % enemySpawnPoints.Length];
+                            break;
+                        default:
+                            spawnPosition = enemySpawnPoints[0];
+                            break;
+                    }
 
                     Enemy newEnemy = Instantiate(spawnData.enemy, spawnPosition.position, Quaternion.identity,
                         this.transform);
 
                     newEnemy.SetPlayerBase(GameManager.Instance.PlayerBase.transform);
                     yield return new WaitForSeconds(spawnData.spawnDelayPerUnit);
-                    //Please work
                 }
             }
         }
@@ -61,11 +69,17 @@ namespace Managers
         [Serializable]
         public struct SpawnData
         {
+            public enum SpawnLocation
+            {
+                Left,
+                Right,
+                Both
+            }
+
             public Enemy enemy;
             public int numberOfSpawns;
 
-            [Tooltip("0-Left, 1-Both, 2-Right")] [Range(0, 2)]
-            public int spawnLocation;
+            public SpawnLocation spawnLocation;
 
             public float spawnDelayPerUnit;
         }
