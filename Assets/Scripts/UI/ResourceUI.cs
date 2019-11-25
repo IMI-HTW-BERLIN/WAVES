@@ -9,6 +9,11 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI txtCurrentGold;
 
+        [Header("Not Enough Gold Animation")] [SerializeField]
+        private int animSteps;
+
+        [SerializeField] private float animStepsDelay;
+
         private void OnEnable()
         {
             ResourceManager.Instance.OnGoldChanged += UpdateText;
@@ -27,7 +32,7 @@ namespace UI
         private void NotEnoughGold()
         {
             StopAllCoroutines();
-            StartCoroutine(NotEnoughGoldAnimation(20, 0.1f));
+            StartCoroutine(NotEnoughGoldAnimation(animSteps, animStepsDelay));
 
             IEnumerator NotEnoughGoldAnimation(int steps, float timeBetweenSteps)
             {
