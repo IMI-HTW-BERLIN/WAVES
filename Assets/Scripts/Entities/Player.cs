@@ -83,10 +83,10 @@ namespace Entities
         private void OnFire(InputValue value) => weapon.Attack();
         private void OnJump(InputValue value) => Jump();
         private void OnDeviceLost() => Destroy(this.gameObject);
-
         private void OnUpgrade(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Upgrade);
         private void OnRepair(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Repair);
         private void OnSell(InputValue value) => GameManager.Instance.ExecuteUpgradeAction(UpgradeAction.Sell);
+        private void OnPause(InputValue value) => GameManager.Instance.TogglePause();
 
         private void Jump()
         {

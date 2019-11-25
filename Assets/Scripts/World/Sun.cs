@@ -13,6 +13,7 @@ namespace World
         private float dayLength;
 
         [SerializeField] private Range dayLightFallOff;
+        [SerializeField] private float globalLightMinIntensity;
 
         public delegate void SunStatus();
 
@@ -29,8 +30,9 @@ namespace World
             float angle = Mathf.Abs(rotationPoint.rotation.z);
             float newIntensity = (angle - dayLightFallOff.min) /
                                  ((dayLightFallOff.max - dayLightFallOff.min) / _globalLightMaxIntensity);
-            globalLight.intensity = Mathf.Clamp(_globalLightMaxIntensity - newIntensity, 0, _globalLightMaxIntensity);
-            if (globalLight.intensity < 0.01f)
+            globalLight.intensity = Mathf.Clamp(_globalLightMaxIntensity - newIntensity, globalLightMinIntensity,
+                _globalLightMaxIntensity);
+            if (rotationPoint.eulerAngles.z - 180 > 0)
             {
                 if (_isNight) return;
                 _isNight = true;
