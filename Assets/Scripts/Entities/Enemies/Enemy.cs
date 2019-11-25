@@ -66,6 +66,7 @@ namespace Entities.Enemies
         protected override void OnDeath()
         {
             ResourceManager.Instance.AddGold(goldValue);
+            GameManager.Instance.IncreaseScore();
             base.OnDeath();
         }
 
