@@ -23,7 +23,7 @@ namespace Managers
 
         public void SpawnWave()
         {
-            waveDisplay.ShowCurrentWave(_currentWaveIndex, 1f, 0.25f);
+            waveDisplay.ShowCurrentWave(_currentWaveIndex);
             WaveData wave = waves[_currentWaveIndex];
             //Using the data from SpawnData, spawns the enemies of this wave
             foreach (SpawnData spawnData in wave.spawnData)

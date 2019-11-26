@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Rendering.LWRP;
-using Utils;
 
 namespace World
 {
     public class Sun : MonoBehaviour
     {
         [SerializeField] private Transform rotationPoint;
-        [SerializeField] private Light2D globalLight;
 
         [Tooltip("Day length in seconds")] [SerializeField]
         private float dayLength;
 
-        [SerializeField] private Range dayLightFallOff;
-        [SerializeField] private float globalLightMinIntensity;
+        [Tooltip("Sun-Angle for defining the start of the night")] [SerializeField]
+        private float nightSunAngle;
 
         public delegate void SunStatus();
 
@@ -22,17 +19,10 @@ namespace World
         private float _globalLightMaxIntensity;
         private bool _isNight = true;
 
-        private void Awake() => _globalLightMaxIntensity = globalLight.intensity;
-
         private void Update()
         {
             rotationPoint.Rotate(Vector3.forward, 1f / dayLength * Time.deltaTime * 360f);
-            float angle = Mathf.Abs(rotationPoint.rotation.z);
-            float newIntensity = (angle - dayLightFallOff.min) /
-                                 ((dayLightFallOff.max - dayLightFallOff.min) / _globalLightMaxIntensity);
-            globalLight.intensity = Mathf.Clamp(_globalLightMaxIntensity - newIntensity, globalLightMinIntensity,
-                _globalLightMaxIntensity);
-            if (rotationPoint.eulerAngles.z - 180 > 0)
+            if (rotationPoint.eulerAngles.z - nightSunAngle > 0)
             {
                 if (_isNight) return;
                 _isNight = true;
