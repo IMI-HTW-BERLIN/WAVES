@@ -19,7 +19,7 @@ TagManager:
   - Base
   - Player
   - Building
-  - PostProcessing
+  - Sun
   - Background
   - 
   - 
@@ -35,9 +35,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - PostProcessingWorld
+  - PostProcessingSun
+  - PostProcessingGlobal
   m_SortingLayers:
   - name: Background
     uniqueID: 4033907581
