@@ -12,20 +12,12 @@ namespace Managers
         [SerializeField] private GameOver gameOverScreen;
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private Base playerBase;
-        [SerializeField] private UpgradeMenu upgradeMenu;
+        
         public Transform PlayerSpawnPosition => playerBase.transform;
         public Base PlayerBase => playerBase;
-
         public int Score { get; private set; }
 
         private bool _isPaused;
-
-        public void ShowUpgradeMenu(Building building) => upgradeMenu.ShowForBuilding(building);
-
-        public void HideUpgradeMenu() => upgradeMenu.Hide();
-
-        public void ExecuteUpgradeAction(UpgradeAction action) => upgradeMenu.ExecuteAction(action);
-
 
         public void IncreaseScore() => Score++;
 

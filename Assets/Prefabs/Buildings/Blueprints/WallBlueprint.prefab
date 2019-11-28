@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7979919810583378003}
-  - component: {fileID: 8788792027865371269}
-  - component: {fileID: 7037140731073544974}
+  - component: {fileID: 8016810792832247634}
   - component: {fileID: 8267463581690393477}
   - component: {fileID: 9204371176281926796}
   m_Layer: 12
-  m_Name: Wall
+  m_Name: WallBlueprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8788792027865371269
+--- !u!114 &8016810792832247634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,28 +43,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2937822164136766707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97bd299920fa53f4bb4dfc3cb412e9c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 15a1e41fa58c4ddbb3d4b25f524d3194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  healthBar: {fileID: 3900174503892607347}
-  repairCost: 1
-  upgradeLevelCosts: 0100000002000000030000000400000005000000
-  destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
-    type: 3}
---- !u!114 &7037140731073544974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2937822164136766707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c95c3d40d2204d1ea433b64576d4cfed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeValues: 050000000a0000000f000000
+  blueprintColor: {r: 0, g: 1, b: 1, a: 0.39215687}
+  blockedColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  towerOffset: 1.5
 --- !u!212 &8267463581690393477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +108,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -181,15 +164,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8354054078592199210}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3900174503892607347 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5030445880187669337, guid: 705e8423b7c187d4e90f0f9a161aa20e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8354054078592199210}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bdd5d49b30592947983a200fbd74a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

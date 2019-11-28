@@ -84,6 +84,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "BuildMenu",
+                    "type": "Button",
+                    "id": "5139ae54-9fda-47f0-bd42-a78717f65c76",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -221,6 +229,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9ad787bd-2980-4e4d-8811-8cad966b1396",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Upgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0db5d26c-ba94-4810-b959-932adf2b044b",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -232,11 +251,33 @@
                 },
                 {
                     "name": "",
+                    "id": "d8357c7f-0270-4080-80fb-7759eff1c873",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Repair",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2fb4d1bc-feb6-4c11-886b-e0a320848f4a",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Sell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "819065f9-2f8f-4c94-9f33-46249d7fd040",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard;Gamepad",
                     "action": "Sell",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -260,6 +301,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ecf5964-80f6-4103-899b-f46c37a77eb3",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "BuildMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1cd8e7cd-6934-449c-8c2f-58e2856b7103",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "BuildMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
