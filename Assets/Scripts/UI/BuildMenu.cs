@@ -20,6 +20,7 @@ namespace UI
 
         private void Awake()
         {
+            bool buttonSelected = false;
             foreach (TowerData tower in towerPrefabs)
             {
                 TowerButton button = Instantiate(buttonPrefab, buttonPanel.transform, false);
@@ -27,6 +28,9 @@ namespace UI
                 button.NameLabel.text = tower.name;
                 button.PriceLabel.text = tower.cost.ToString();
                 button.Button.onClick.AddListener(() => SelectTower(tower));
+                if (buttonSelected) continue;
+                button.Button.Select();
+                buttonSelected = true;
             }
         }
 
