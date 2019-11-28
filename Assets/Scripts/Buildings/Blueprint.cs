@@ -25,7 +25,6 @@ namespace Buildings
             _transform = transform;
             _collider = GetComponent<Collider2D>();
             _renderer = GetComponent<SpriteRenderer>();
-            _player = _transform.parent.GetComponent<Player>();
         }
 
         private void Start() => _renderer.color = blueprintColor;
@@ -39,8 +38,9 @@ namespace Buildings
                     GetGroundHeight() ?? _transform.position.y, 0);
         }
 
-        public void Setup(LayerMask blockedLayers, LayerMask groundLayer)
+        public void Setup(Player player, LayerMask blockedLayers, LayerMask groundLayer)
         {
+            _player = player;
             _blockedLayers = blockedLayers;
             _groundLayer = groundLayer;
         }

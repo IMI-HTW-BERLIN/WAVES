@@ -1,4 +1,5 @@
 using Buildings;
+using Entities;
 using Managers;
 using ScriptableObjects.Towers;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace UI
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private TowerData[] towerPrefabs;
         [SerializeField] private TowerButton buttonPrefab;
+        [SerializeField] private Player player;
 
         public TowerSelection SelectedTower { get; private set; }
         public bool IsActive => gameObject.activeInHierarchy;
@@ -31,8 +33,8 @@ namespace UI
         private void SelectTower(TowerData tower)
         {
             if (!ResourceManager.Instance.HasGold(tower.cost)) return;
-            Blueprint blueprint = Instantiate(tower.blueprintPrefab, transform.parent);
-            blueprint.Setup(blockedLayers, groundLayer);
+            Blueprint blueprint = Instantiate(tower.blueprintPrefab, player.transform);
+            blueprint.Setup(player, blockedLayers, groundLayer);
             SelectedTower = new TowerSelection(tower, blueprint.GetComponent<Blueprint>());
             Hide();
         }

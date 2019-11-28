@@ -11,7 +11,6 @@ namespace Controls
     public class @PlayerControls : IInputActionCollection, IDisposable
     {
         private InputActionAsset asset;
-
         public @PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
@@ -97,6 +96,14 @@ namespace Controls
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""1a62c2fa-994d-40a6-8ced-6166ce0829e9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""BuildMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""5139ae54-9fda-47f0-bd42-a78717f65c76"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -237,6 +244,17 @@ namespace Controls
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9ad787bd-2980-4e4d-8811-8cad966b1396"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Upgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0db5d26c-ba94-4810-b959-932adf2b044b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -248,11 +266,33 @@ namespace Controls
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d8357c7f-0270-4080-80fb-7759eff1c873"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Repair"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2fb4d1bc-feb6-4c11-886b-e0a320848f4a"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Sell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""819065f9-2f8f-4c94-9f33-46249d7fd040"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;Gamepad"",
                     ""action"": ""Sell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -276,6 +316,28 @@ namespace Controls
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ecf5964-80f6-4103-899b-f46c37a77eb3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""BuildMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1cd8e7cd-6934-449c-8c2f-58e2856b7103"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""BuildMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -324,6 +386,7 @@ namespace Controls
             m_Game_Repair = m_Game.FindAction("Repair", throwIfNotFound: true);
             m_Game_Sell = m_Game.FindAction("Sell", throwIfNotFound: true);
             m_Game_Pause = m_Game.FindAction("Pause", throwIfNotFound: true);
+            m_Game_BuildMenu = m_Game.FindAction("BuildMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -383,16 +446,11 @@ namespace Controls
         private readonly InputAction m_Game_Repair;
         private readonly InputAction m_Game_Sell;
         private readonly InputAction m_Game_Pause;
-
+        private readonly InputAction m_Game_BuildMenu;
         public struct GameActions
         {
             private @PlayerControls m_Wrapper;
-
-            public GameActions(@PlayerControls wrapper)
-            {
-                m_Wrapper = wrapper;
-            }
-
+            public GameActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Game_Move;
             public InputAction @WeaponAimMouse => m_Wrapper.m_Game_WeaponAimMouse;
             public InputAction @Fire => m_Wrapper.m_Game_Fire;
@@ -403,29 +461,12 @@ namespace Controls
             public InputAction @Repair => m_Wrapper.m_Game_Repair;
             public InputAction @Sell => m_Wrapper.m_Game_Sell;
             public InputAction @Pause => m_Wrapper.m_Game_Pause;
-
-            public InputActionMap Get()
-            {
-                return m_Wrapper.m_Game;
-            }
-
-            public void Enable()
-            {
-                Get().Enable();
-            }
-
-            public void Disable()
-            {
-                Get().Disable();
-            }
-
+            public InputAction @BuildMenu => m_Wrapper.m_Game_BuildMenu;
+            public InputActionMap Get() { return m_Wrapper.m_Game; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-
-            public static implicit operator InputActionMap(GameActions set)
-            {
-                return set.Get();
-            }
-
+            public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
             public void SetCallbacks(IGameActions instance)
             {
                 if (m_Wrapper.m_GameActionsCallbackInterface != null)
@@ -460,8 +501,10 @@ namespace Controls
                     @Pause.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
                     @Pause.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
                     @Pause.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                    @BuildMenu.started -= m_Wrapper.m_GameActionsCallbackInterface.OnBuildMenu;
+                    @BuildMenu.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnBuildMenu;
+                    @BuildMenu.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnBuildMenu;
                 }
-
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
                 {
@@ -495,13 +538,14 @@ namespace Controls
                     @Pause.started += instance.OnPause;
                     @Pause.performed += instance.OnPause;
                     @Pause.canceled += instance.OnPause;
+                    @BuildMenu.started += instance.OnBuildMenu;
+                    @BuildMenu.performed += instance.OnBuildMenu;
+                    @BuildMenu.canceled += instance.OnBuildMenu;
                 }
             }
         }
-
         public GameActions @Game => new GameActions(this);
         private int m_KeyboardSchemeIndex = -1;
-
         public InputControlScheme KeyboardScheme
         {
             get
@@ -510,9 +554,7 @@ namespace Controls
                 return asset.controlSchemes[m_KeyboardSchemeIndex];
             }
         }
-
         private int m_GamepadSchemeIndex = -1;
-
         public InputControlScheme GamepadScheme
         {
             get
@@ -521,7 +563,6 @@ namespace Controls
                 return asset.controlSchemes[m_GamepadSchemeIndex];
             }
         }
-
         public interface IGameActions
         {
             void OnMove(InputAction.CallbackContext context);
@@ -534,6 +575,7 @@ namespace Controls
             void OnRepair(InputAction.CallbackContext context);
             void OnSell(InputAction.CallbackContext context);
             void OnPause(InputAction.CallbackContext context);
+            void OnBuildMenu(InputAction.CallbackContext context);
         }
     }
 }

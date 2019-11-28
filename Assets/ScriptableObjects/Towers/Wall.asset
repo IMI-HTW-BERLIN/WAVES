@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wall
   m_EditorClassIdentifier: 
   cost: 50
-  prefab: {fileID: 2937822164136766707, guid: 07d2a80316adc8d479d9e971d1ccb703, type: 3}
-  blueprintPrefab: {fileID: 2727885149403499449, guid: 679bcd96c1f134d8c9b612d5acb888d4,
+  prefab: {fileID: 8788792027865371269, guid: 07d2a80316adc8d479d9e971d1ccb703, type: 3}
+  blueprintPrefab: {fileID: 8016810792832247634, guid: 947076c7f356d4e7f9a068d8a4e429cf,
     type: 3}
-  buildMenuIcon: {fileID: 21300000, guid: e9fd0db3f778d4f41871d2c0cc7dcd0f, type: 3}
+  buildMenuIcon: {fileID: 21300000, guid: de773923706f8184594ab0ef39824755, type: 3}
