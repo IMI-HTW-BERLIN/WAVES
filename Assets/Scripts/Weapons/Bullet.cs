@@ -9,6 +9,7 @@ namespace Weapons
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private float lifeTime;
+        [SerializeField] private float bulletSpeed;
         [SerializeField] private LayerMask attackableLayers;
 
         private Rigidbody2D _rb;
@@ -28,7 +29,7 @@ namespace Weapons
         public void Shoot(int damage, Vector2 directionAndForce)
         {
             _damage = damage;
-            _rb.AddForce(directionAndForce);
+            _rb.AddForce(directionAndForce * bulletSpeed);
         }
 
         /// <summary>
@@ -45,7 +46,6 @@ namespace Weapons
             //If not an enemy, keep living
             if (!enemy) return;
             enemy.ApplyDamage(_damage);
-            Destroy(gameObject);
         }
 
         /// <summary>
