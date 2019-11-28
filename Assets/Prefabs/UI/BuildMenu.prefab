@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25c7edfe0ad45d888ad1e786c05d094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPanel: {fileID: 4448806622599065989}
+  buttonPanel: {fileID: 677891452315188496}
   blockedLayers:
     serializedVersion: 2
     m_Bits: 5120
@@ -384,6 +384,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 232a4c73fa32642cfbb5db9329c11f5f, type: 2}
   buttonPrefab: {fileID: 5241993343400231217, guid: c857892ddf4864509b55eacfcbf0bb8d,
     type: 3}
+  player: {fileID: 0}
+  canvas: {fileID: 6527607749690595203}
 --- !u!1 &4448806622599065989
 GameObject:
   m_ObjectHideFlags: 0

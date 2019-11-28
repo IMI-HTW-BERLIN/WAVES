@@ -3,34 +3,35 @@ using Entities;
 using Managers;
 using ScriptableObjects.Towers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
     public class BuildMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject buttonPanel;
+        [SerializeField] private Transform buttonPanel;
         [SerializeField] private LayerMask blockedLayers;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private TowerData[] towerPrefabs;
         [SerializeField] private TowerButton buttonPrefab;
         [SerializeField] private Player player;
+        [SerializeField] private Canvas canvas;
 
         public TowerSelection SelectedTower { get; private set; }
         public bool IsActive => gameObject.activeInHierarchy;
 
         private void Awake()
         {
-            bool buttonSelected = false;
+            // Set camera reference
+            canvas.worldCamera = Camera.main;
+            // Add all towers to build menu
             foreach (TowerData tower in towerPrefabs)
             {
-                TowerButton button = Instantiate(buttonPrefab, buttonPanel.transform, false);
+                TowerButton button = Instantiate(buttonPrefab, buttonPanel, false);
                 button.TowerIcon.sprite = tower.buildMenuIcon;
                 button.NameLabel.text = tower.name;
                 button.PriceLabel.text = tower.cost.ToString();
                 button.Button.onClick.AddListener(() => SelectTower(tower));
-                if (buttonSelected) continue;
-                button.Button.Select();
-                buttonSelected = true;
             }
         }
 
@@ -54,9 +55,14 @@ namespace UI
             if (SelectedTower != null)
                 DeselectTower();
             gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(buttonPanel.GetChild(0).gameObject);
         }
 
-        public void Hide() => gameObject.SetActive(false);
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+        }
 
         public class TowerSelection
         {

@@ -23,7 +23,7 @@ namespace UI
         /// <summary>
         /// Selects and highlights the Continue-Button. Needs to wait one frame after it gets enabled
         /// </summary>
-        private void OnEnable() => StartCoroutine(WaitOneFrame(continueButton.Select));
+        private void OnEnable() => continueButton.Select();
 
         /// <summary>
         /// This fixes the _bug, where Unity won't select the button (visually)
