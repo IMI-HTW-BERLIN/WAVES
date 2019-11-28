@@ -14,20 +14,19 @@ namespace Managers
         public Transform PlayerSpawnPosition => playerBase.transform;
         public Base PlayerBase => playerBase;
 
-        public static int Score => 524; //{ get; private set; }
+        public int Score { get; private set; }
 
         private bool _isPaused;
 
-        public void ShowBuildMenu()
-        {
-            Debug.Log("Show menu");
-        }
-        
-        public void HideBuildMenu()
-        {
-            Debug.Log("Hide menu");
-        }
-        
+        public void ShowUpgradeMenu(Building building) => upgradeMenu.ShowForBuilding(building);
+
+        public void HideUpgradeMenu() => upgradeMenu.Hide();
+
+        public void ExecuteUpgradeAction(UpgradeAction action) => upgradeMenu.ExecuteAction(action);
+
+
+        public void IncreaseScore() => Score++;
+
         /// <summary>
         /// Freezes the time and shows the GameOverScreen
         /// </summary>

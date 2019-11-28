@@ -14,6 +14,7 @@ namespace Entities
         [Header("Player")] [SerializeField] private float jumpForce;
         [SerializeField] private Weapon weapon;
         [SerializeField] private GameObject playerContent;
+        [SerializeField] private Color[] colors;
 
         [Header("Player Ground-Check")] [SerializeField]
         private Transform topLeft;
@@ -41,7 +42,7 @@ namespace Entities
         protected override void Awake()
         {
             base.Awake();
-            spriteRenderer.color = Random.ColorHSV();
+            spriteRenderer.color = colors[Random.Range(0, colors.Length - 1)];
         }
 
         private void FixedUpdate()

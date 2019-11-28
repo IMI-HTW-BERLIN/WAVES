@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cinemachine;
 using Interfaces;
 using Managers;
 using UnityEngine;
@@ -9,11 +10,16 @@ namespace Entities.Enemies
     [RequireComponent(typeof(CircleCollider2D))]
     public abstract class Enemy : Entity
     {
-        [Tooltip("Defines the max speed by using the velocity of the rigidbody")] [SerializeField]
+        [Header("Enemy-Base")]
+        [Tooltip("Defines the max speed by using the velocity of the rigidbody")]
+        [SerializeField]
         private float maxSpeed;
 
         [Tooltip("Defines how much the player earns for killing this enemy")] [SerializeField]
         private int goldValue;
+
+        [SerializeField] private ParticleSystem enemyDeathPS;
+        [SerializeField] private CinemachineImpulseSource impulseSource;
 
         protected bool EnemyToLeft;
 
@@ -66,7 +72,10 @@ namespace Entities.Enemies
         protected override void OnDeath()
         {
             ResourceManager.Instance.AddGold(goldValue);
+            GameManager.Instance.IncreaseScore();
             base.OnDeath();
+            Instantiate(enemyDeathPS, this.transform.position, Quaternion.identity);
+            impulseSource.GenerateImpulse();
         }
 
         /// <summary>

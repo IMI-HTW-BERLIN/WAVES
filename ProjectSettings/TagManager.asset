@@ -19,6 +19,14 @@ TagManager:
   - Base
   - Player
   - Building
+  - Sun
+  - Background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Particles
   - 
   - 
   - 
@@ -26,18 +34,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessingEnemies
+  - PostProcessingWorld
+  - PostProcessingSun
+  - PostProcessingGlobal
   m_SortingLayers:
   - name: Background
     uniqueID: 4033907581

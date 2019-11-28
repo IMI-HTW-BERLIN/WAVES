@@ -13,7 +13,7 @@ namespace UI
 
         public void Show()
         {
-            scoreLabel.SetText(GameManager.Score.ToString());
+            scoreLabel.SetText(GameManager.Instance.Score.ToString());
             gameObject.SetActive(true);
         }
 
