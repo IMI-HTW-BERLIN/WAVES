@@ -8,11 +8,11 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Controls
 {
-    public class PlayerControls : IInputActionCollection, IDisposable
+    public class @PlayerControls : IInputActionCollection, IDisposable
     {
         private InputActionAsset asset;
 
-        public PlayerControls()
+        public @PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerControls"",
@@ -386,9 +386,9 @@ namespace Controls
 
         public struct GameActions
         {
-            private PlayerControls m_Wrapper;
+            private @PlayerControls m_Wrapper;
 
-            public GameActions(PlayerControls wrapper)
+            public GameActions(@PlayerControls wrapper)
             {
                 m_Wrapper = wrapper;
             }
@@ -430,71 +430,71 @@ namespace Controls
             {
                 if (m_Wrapper.m_GameActionsCallbackInterface != null)
                 {
-                    Move.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
-                    Move.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
-                    Move.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
-                    WeaponAimMouse.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimMouse;
-                    WeaponAimMouse.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimMouse;
-                    WeaponAimMouse.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimMouse;
-                    Fire.started -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
-                    Fire.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
-                    Fire.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
-                    Jump.started -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
-                    Jump.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
-                    Jump.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
-                    MoveStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMoveStick;
-                    MoveStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMoveStick;
-                    MoveStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMoveStick;
-                    WeaponAimStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
-                    WeaponAimStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
-                    WeaponAimStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
-                    Upgrade.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
-                    Upgrade.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
-                    Upgrade.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
-                    Repair.started -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
-                    Repair.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
-                    Repair.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
-                    Sell.started -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
-                    Sell.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
-                    Sell.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
-                    Pause.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
-                    Pause.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
-                    Pause.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                    @Move.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
+                    @Move.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
+                    @Move.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
+                    @WeaponAimMouse.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimMouse;
+                    @WeaponAimMouse.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimMouse;
+                    @WeaponAimMouse.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimMouse;
+                    @Fire.started -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
+                    @Fire.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
+                    @Fire.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
+                    @Jump.started -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
+                    @Jump.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
+                    @Jump.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
+                    @MoveStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMoveStick;
+                    @MoveStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMoveStick;
+                    @MoveStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMoveStick;
+                    @WeaponAimStick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
+                    @WeaponAimStick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
+                    @WeaponAimStick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWeaponAimStick;
+                    @Upgrade.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    @Upgrade.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    @Upgrade.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUpgrade;
+                    @Repair.started -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    @Repair.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    @Repair.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnRepair;
+                    @Sell.started -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    @Sell.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    @Sell.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnSell;
+                    @Pause.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
                 }
 
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    Move.started += instance.OnMove;
-                    Move.performed += instance.OnMove;
-                    Move.canceled += instance.OnMove;
-                    WeaponAimMouse.started += instance.OnWeaponAimMouse;
-                    WeaponAimMouse.performed += instance.OnWeaponAimMouse;
-                    WeaponAimMouse.canceled += instance.OnWeaponAimMouse;
-                    Fire.started += instance.OnFire;
-                    Fire.performed += instance.OnFire;
-                    Fire.canceled += instance.OnFire;
-                    Jump.started += instance.OnJump;
-                    Jump.performed += instance.OnJump;
-                    Jump.canceled += instance.OnJump;
-                    MoveStick.started += instance.OnMoveStick;
-                    MoveStick.performed += instance.OnMoveStick;
-                    MoveStick.canceled += instance.OnMoveStick;
-                    WeaponAimStick.started += instance.OnWeaponAimStick;
-                    WeaponAimStick.performed += instance.OnWeaponAimStick;
-                    WeaponAimStick.canceled += instance.OnWeaponAimStick;
-                    Upgrade.started += instance.OnUpgrade;
-                    Upgrade.performed += instance.OnUpgrade;
-                    Upgrade.canceled += instance.OnUpgrade;
-                    Repair.started += instance.OnRepair;
-                    Repair.performed += instance.OnRepair;
-                    Repair.canceled += instance.OnRepair;
-                    Sell.started += instance.OnSell;
-                    Sell.performed += instance.OnSell;
-                    Sell.canceled += instance.OnSell;
-                    Pause.started += instance.OnPause;
-                    Pause.performed += instance.OnPause;
-                    Pause.canceled += instance.OnPause;
+                    @Move.started += instance.OnMove;
+                    @Move.performed += instance.OnMove;
+                    @Move.canceled += instance.OnMove;
+                    @WeaponAimMouse.started += instance.OnWeaponAimMouse;
+                    @WeaponAimMouse.performed += instance.OnWeaponAimMouse;
+                    @WeaponAimMouse.canceled += instance.OnWeaponAimMouse;
+                    @Fire.started += instance.OnFire;
+                    @Fire.performed += instance.OnFire;
+                    @Fire.canceled += instance.OnFire;
+                    @Jump.started += instance.OnJump;
+                    @Jump.performed += instance.OnJump;
+                    @Jump.canceled += instance.OnJump;
+                    @MoveStick.started += instance.OnMoveStick;
+                    @MoveStick.performed += instance.OnMoveStick;
+                    @MoveStick.canceled += instance.OnMoveStick;
+                    @WeaponAimStick.started += instance.OnWeaponAimStick;
+                    @WeaponAimStick.performed += instance.OnWeaponAimStick;
+                    @WeaponAimStick.canceled += instance.OnWeaponAimStick;
+                    @Upgrade.started += instance.OnUpgrade;
+                    @Upgrade.performed += instance.OnUpgrade;
+                    @Upgrade.canceled += instance.OnUpgrade;
+                    @Repair.started += instance.OnRepair;
+                    @Repair.performed += instance.OnRepair;
+                    @Repair.canceled += instance.OnRepair;
+                    @Sell.started += instance.OnSell;
+                    @Sell.performed += instance.OnSell;
+                    @Sell.canceled += instance.OnSell;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }

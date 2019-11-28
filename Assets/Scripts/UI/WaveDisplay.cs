@@ -7,6 +7,8 @@ namespace UI
     public class WaveDisplay : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI txtWaveDisplay;
+        [SerializeField] private float animTime;
+        [SerializeField] private float fadeAnimTime;
 
         private const float WaitForSecondsValue = 0.01f;
 
@@ -16,7 +18,7 @@ namespace UI
         /// <param name="currentWave">The wave index</param>
         /// <param name="animTime">Defines how long the WaveDisplay will be shown (exclusive the fade-animation)</param>
         /// <param name="fadeAnimTime">Sets the time for the fading</param>
-        public void ShowCurrentWave(int currentWave, float animTime, float fadeAnimTime)
+        public void ShowCurrentWave(int currentWave)
         {
             txtWaveDisplay.SetText($"WAVE {currentWave + 1}");
             StartCoroutine(WaveDisplayAnimation());
