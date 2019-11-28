@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 50
   prefab: {fileID: 2937822164136766707, guid: 07d2a80316adc8d479d9e971d1ccb703, type: 3}
-  blueprintPrefab: {fileID: 2937822164136766707, guid: 76f13b60d7f614b5094e6e977f7a50e0,
+  blueprintPrefab: {fileID: 2727885149403499449, guid: 679bcd96c1f134d8c9b612d5acb888d4,
     type: 3}
   buildMenuIcon: {fileID: 21300000, guid: e9fd0db3f778d4f41871d2c0cc7dcd0f, type: 3}

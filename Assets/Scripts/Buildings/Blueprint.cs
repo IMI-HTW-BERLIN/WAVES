@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Buildings
 {
+    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Blueprint : MonoBehaviour
     {
         [SerializeField] private Color blueprintColor;
         [SerializeField] private Color blockedColor;
         [SerializeField] private float towerOffset;
-        [SerializeField] private SpriteRenderer renderer;
 
+        private SpriteRenderer _renderer;
         private LayerMask _blockedLayers;
         private LayerMask _groundLayer;
         private Collider2D _collider;
@@ -22,15 +24,16 @@ namespace Buildings
         {
             _transform = transform;
             _collider = GetComponent<Collider2D>();
+            _renderer = GetComponent<SpriteRenderer>();
             _player = _transform.parent.GetComponent<Player>();
         }
 
-        private void Start() => renderer.color = blueprintColor;
+        private void Start() => _renderer.color = blueprintColor;
 
         private void Update()
         {
             IsBuildable = !_collider.IsTouchingLayers(_blockedLayers);
-            renderer.color = IsBuildable ? blueprintColor : blockedColor;
+            _renderer.color = IsBuildable ? blueprintColor : blockedColor;
             _transform.position =
                 new Vector3(_transform.parent.position.x + towerOffset * (_player.IsFacingLeft ? -1 : 1),
                     GetGroundHeight() ?? _transform.position.y, 0);
@@ -42,7 +45,7 @@ namespace Buildings
             _groundLayer = groundLayer;
         }
 
-        public void Build(GameObject towerPrefab)
+        public void Build(Building towerPrefab)
         {
             Vector3 position = transform.position;
             float? y = GetGroundHeight();

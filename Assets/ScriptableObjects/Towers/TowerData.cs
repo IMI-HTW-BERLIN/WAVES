@@ -7,7 +7,7 @@ namespace ScriptableObjects.Towers
     public class TowerData : ScriptableObject
     {
         public int cost;
-        public GameObject prefab;
+        public Building prefab;
         public Blueprint blueprintPrefab;
         public Sprite buildMenuIcon;
     }
