@@ -95,7 +95,7 @@ namespace Entities
         private void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
         private void OnFire(InputValue value)
         {
-            if (buildMenu.IsActive) return;
+            if (buildMenu.IsActive || !enabled) return;
             weapon.Attack();
         }
 

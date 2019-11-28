@@ -382,6 +382,7 @@ MonoBehaviour:
     m_Bits: 256
   towerPrefabs:
   - {fileID: 11400000, guid: 232a4c73fa32642cfbb5db9329c11f5f, type: 2}
+  - {fileID: 11400000, guid: e11195514e7a14b7daec453ba1bc5b62, type: 2}
   buttonPrefab: {fileID: 5241993343400231217, guid: c857892ddf4864509b55eacfcbf0bb8d,
     type: 3}
   player: {fileID: 0}

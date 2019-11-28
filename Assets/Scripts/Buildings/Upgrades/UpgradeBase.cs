@@ -3,9 +3,9 @@ using UnityEngine;
 namespace Buildings.Upgrades
 {
     [RequireComponent(typeof(Building))]
-    public abstract class UpgradeBase : MonoBehaviour
+    public abstract class UpgradeBase<T> : MonoBehaviour
     {
-        [SerializeField] protected int[] upgradeValues;
+        [SerializeField] protected T[] upgradeValues;
 
         protected Building Building;
 

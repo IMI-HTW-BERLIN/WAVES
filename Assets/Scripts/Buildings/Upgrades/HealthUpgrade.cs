@@ -1,6 +1,6 @@
 namespace Buildings.Upgrades
 {
-    public class HealthUpgrade : UpgradeBase
+    public class HealthUpgrade : UpgradeBase<int>
     {
         protected override void Upgrade(int level)
         {
