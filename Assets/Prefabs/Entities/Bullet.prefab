@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  bulletSpeed: 100
+  bulletSpeed: 50
   attackableLayers:
     serializedVersion: 2
     m_Bits: 512
