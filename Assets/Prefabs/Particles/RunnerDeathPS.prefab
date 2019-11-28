@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3500934168818581759}
   - component: {fileID: 734356864911730896}
   m_Layer: 20
-  m_Name: EnemyDeathPS
+  m_Name: RunnerDeathPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,8 +167,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
+      minMaxState: 3
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -975,7 +975,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 10
+        scalar: 100
         minScalar: 3
         maxCurve:
           serializedVersion: 2
