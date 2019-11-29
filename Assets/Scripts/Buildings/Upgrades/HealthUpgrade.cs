@@ -9,6 +9,7 @@ namespace Buildings.Upgrades
 
             // Upgrade max health for level
             Building.AddMaxHealth(upgradeValues[level]);
+            Building.Repair(false);
         }
     }
 }

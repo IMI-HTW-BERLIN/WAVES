@@ -53,19 +53,6 @@ namespace Entities
         /// <summary>
         /// Destroys the game object. Allows behaviour before death.
         /// </summary>
-        protected virtual void OnDeath() => Destroy(this.gameObject);
-
-        /// <inheritdoc />
-        /// TODO Should be in Damageable
-        public override void ApplyDamage(int damage)
-        {
-            base.ApplyDamage(damage);
-            CurrentHealth -= damage;
-            if (CurrentHealth > 0) return;
-
-            OnDeath();
-        }
-
-        public void ResetHealth() => CurrentHealth = maxHealth;
+        protected override void Destroy() => Destroy(gameObject);
     }
 }

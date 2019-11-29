@@ -18,7 +18,19 @@ namespace Interfaces
         /// Applies the given amount of damage to the object
         /// </summary>
         /// <param name="damage">The amount of damage to apply</param>
-        public virtual void ApplyDamage(int damage) => UpdateHealthBar();
+        public void ApplyDamage(int damage)
+        {
+            CurrentHealth -= damage;
+            UpdateHealthBar();
+
+            if (CurrentHealth <= 0)
+                Destroy();
+        }
+
+        /// <summary>
+        /// Called when the current health drops to or below zero
+        /// </summary>
+        protected abstract void Destroy();
 
         public void AddMaxHealth(int health) => maxHealth += health;
 

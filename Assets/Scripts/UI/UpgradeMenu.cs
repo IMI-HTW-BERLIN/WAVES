@@ -47,7 +47,7 @@ namespace UI
                     break;
                 case UpgradeAction.Repair:
                     if (_selectedBuilding.IsMaxHealth()) return;
-                    _selectedBuilding.Repair();
+                    _selectedBuilding.Repair(true);
                     break;
                 case UpgradeAction.Sell:
                     if (_selectedBuilding is Base) return;

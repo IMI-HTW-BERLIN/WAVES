@@ -82,7 +82,7 @@ namespace Entities
             IsFacingLeft = facingLeft;
         }
 
-        protected override void OnDeath()
+        protected override void Destroy()
         {
             TogglePlayer(false);
             CurrentHealth = maxHealth;

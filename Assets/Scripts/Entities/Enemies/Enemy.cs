@@ -69,12 +69,12 @@ namespace Entities.Enemies
         /// </summary>
         protected abstract void Attack(Damageable damageable);
 
-        protected override void OnDeath()
+        protected override void Destroy()
         {
             ResourceManager.Instance.AddGold(goldValue);
             GameManager.Instance.IncreaseScore();
-            base.OnDeath();
-            Instantiate(enemyDeathPS, this.transform.position, Quaternion.identity);
+            base.Destroy();
+            Instantiate(enemyDeathPS, transform.position, Quaternion.identity);
             impulseSource.GenerateImpulse();
         }
 

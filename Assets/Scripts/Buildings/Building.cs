@@ -21,18 +21,10 @@ namespace Buildings
 
         public event Upgrade OnUpgrade;
 
-        /// <inheritdoc />
-        public override void ApplyDamage(int damage)
-        {
-            base.ApplyDamage(damage);
-            CurrentHealth -= damage;
-            if (CurrentHealth <= 0) Destroy();
-        }
-
         /// <summary>
         /// Called when a building's health drops to or below zero
         /// </summary>
-        protected virtual void Destroy()
+        protected override void Destroy()
         {
             Instantiate(destructionParticleEffect, transform.position, Quaternion.identity);
             GameObject.Destroy(gameObject);
@@ -58,19 +50,20 @@ namespace Buildings
             if (IsMaxLevel()) return;
             //Check if player has enough money
             if (!ResourceManager.Instance.RemoveGold(upgradeLevelCosts[_currentLevel])) return;
-
+            
             OnUpgrade?.Invoke(_currentLevel);
             _currentLevel++;
-
+            
+            UpdateHealthBar();
             Instantiate(upgradeParticleEffect, transform);
         }
 
         /// <summary>
         /// Repairs a building by resetting its current health to the maximum
         /// </summary>
-        public void Repair()
+        public void Repair(bool removeGold)
         {
-            if (!ResourceManager.Instance.RemoveGold(repairCost)) return;
+            if (removeGold && !ResourceManager.Instance.RemoveGold(repairCost)) return;
             CurrentHealth = maxHealth;
             UpdateHealthBar();
         }
