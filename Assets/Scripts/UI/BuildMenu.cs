@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using Buildings;
 using Entities;
 using Managers;
 using ScriptableObjects.Towers;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -17,8 +19,12 @@ namespace UI
         [SerializeField] private Player player;
         [SerializeField] private Canvas canvas;
 
+        [SerializeField] private MultiplayerEventSystem eventSystem;
+
         public TowerSelection SelectedTower { get; private set; }
-        public bool IsActive => gameObject.activeInHierarchy;
+        public bool IsShowing => canvas.gameObject.activeSelf;
+
+        private readonly List<Button> _buttons = new List<Button>();
 
         private void Awake()
         {
@@ -27,12 +33,16 @@ namespace UI
             // Add all towers to build menu
             foreach (TowerData tower in towerPrefabs)
             {
-                TowerButton button = Instantiate(buttonPrefab, buttonPanel, false);
-                button.TowerIcon.sprite = tower.buildMenuIcon;
-                button.NameLabel.text = tower.name;
-                button.PriceLabel.text = tower.cost.ToString();
-                button.Button.onClick.AddListener(() => SelectTower(tower));
+                TowerButton towerButton = Instantiate(buttonPrefab, buttonPanel, false);
+                towerButton.TowerIcon.sprite = tower.buildMenuIcon;
+                towerButton.NameLabel.text = tower.name;
+                towerButton.PriceLabel.text = tower.cost.ToString();
+                towerButton.Button.onClick.AddListener(() => SelectTower(tower));
+                _buttons.Add(towerButton.Button);
             }
+
+            SetNavigationForButtons();
+            eventSystem.firstSelectedGameObject = _buttons[0].gameObject;
         }
 
         private void SelectTower(TowerData tower)
@@ -54,15 +64,11 @@ namespace UI
         {
             if (SelectedTower != null)
                 DeselectTower();
-            gameObject.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(buttonPanel.GetChild(0).gameObject);
+            canvas.gameObject.SetActive(true);
         }
 
-        public void Hide()
-        {
-            gameObject.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(null);
-        }
+
+        public void Hide() => canvas.gameObject.SetActive(false);
 
         public class TowerSelection
         {
@@ -73,6 +79,25 @@ namespace UI
             {
                 TowerData = towerData;
                 BlueprintInstance = blueprintInstance;
+            }
+        }
+
+        private void SetNavigationForButtons()
+        {
+            Navigation navigation;
+            Selectable previous, current;
+            for (int i = 1; i < _buttons.Count; i++)
+            {
+                previous = _buttons[i - 1];
+                current = _buttons[i];
+
+                navigation = previous.navigation;
+                navigation.selectOnRight = current;
+                previous.navigation = navigation;
+
+                navigation = current.navigation;
+                navigation.selectOnLeft = previous;
+                current.navigation = navigation;
             }
         }
     }

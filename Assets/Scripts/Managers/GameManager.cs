@@ -1,5 +1,4 @@
 ﻿using Buildings;
-using Enums;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,12 +11,17 @@ namespace Managers
         [SerializeField] private GameOver gameOverScreen;
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private Base playerBase;
-        
+
         public Transform PlayerSpawnPosition => playerBase.transform;
         public Base PlayerBase => playerBase;
         public int Score { get; private set; }
 
-        private bool _isPaused;
+        public bool isPaused;
+
+        public delegate void PauseDelegate(bool paused);
+
+        public static event PauseDelegate OnPause;
+
 
         public void IncreaseScore() => Score++;
 
@@ -35,9 +39,10 @@ namespace Managers
         /// </summary>
         public void TogglePause()
         {
-            _isPaused = !_isPaused;
-            pauseMenu.gameObject.SetActive(_isPaused);
-            Time.timeScale = _isPaused ? 0 : 1;
+            isPaused = !isPaused;
+            pauseMenu.gameObject.SetActive(isPaused);
+            OnPause?.Invoke(isPaused);
+            Time.timeScale = isPaused ? 0 : 1;
         }
 
         /// <summary>

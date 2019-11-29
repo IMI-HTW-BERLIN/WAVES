@@ -121,9 +121,8 @@ namespace Entities.Enemies
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!_playerBase) return;
-            Damageable damageable = other.gameObject.GetComponent<Damageable>();
-            if (!damageable) return;
-            AddTarget(damageable);
+            if (other.TryGetComponent(out Damageable damageable))
+                AddTarget(damageable);
         }
 
         /// <summary>
@@ -132,9 +131,8 @@ namespace Entities.Enemies
         private void OnTriggerExit2D(Collider2D other)
         {
             if (!_playerBase) return;
-            Damageable damageable = other.gameObject.GetComponent<Damageable>();
-            if (!damageable) return;
-            RemoveTarget(damageable);
+            if (other.TryGetComponent(out Damageable damageable))
+                RemoveTarget(damageable);
         }
     }
 }
