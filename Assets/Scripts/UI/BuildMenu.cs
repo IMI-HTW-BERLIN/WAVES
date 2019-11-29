@@ -45,25 +45,6 @@ namespace UI
             eventSystem.firstSelectedGameObject = _buttons[0].gameObject;
         }
 
-        private void SetNavigationForButtons()
-        {
-            Navigation navigation;
-            Selectable previous, current;
-            for (int i = 1; i < _buttons.Count; i++)
-            {
-                previous = _buttons[i - 1];
-                current = _buttons[i];
-
-                navigation = previous.navigation;
-                navigation.selectOnRight = current;
-                previous.navigation = navigation;
-
-                navigation = current.navigation;
-                navigation.selectOnLeft = previous;
-                current.navigation = navigation;
-            }
-        }
-
         private void SelectTower(TowerData tower)
         {
             if (!ResourceManager.Instance.HasGold(tower.cost)) return;
@@ -98,6 +79,25 @@ namespace UI
             {
                 TowerData = towerData;
                 BlueprintInstance = blueprintInstance;
+            }
+        }
+
+        private void SetNavigationForButtons()
+        {
+            Navigation navigation;
+            Selectable previous, current;
+            for (int i = 1; i < _buttons.Count; i++)
+            {
+                previous = _buttons[i - 1];
+                current = _buttons[i];
+
+                navigation = previous.navigation;
+                navigation.selectOnRight = current;
+                previous.navigation = navigation;
+
+                navigation = current.navigation;
+                navigation.selectOnLeft = previous;
+                current.navigation = navigation;
             }
         }
     }

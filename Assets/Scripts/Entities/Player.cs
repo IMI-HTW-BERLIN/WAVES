@@ -33,6 +33,8 @@ namespace Entities
         [SerializeField] private UpgradeMenu upgradeMenu;
         [SerializeField] private BuildMenu buildMenu;
 
+        [Header("Controls")] [SerializeField] private PlayerInput input;
+
         //InputSystem
         private Vector2 _movementInput;
         private Vector2 _aimDirection;
@@ -129,6 +131,7 @@ namespace Entities
 
         private void OnSell(InputValue value)
         {
+            if (buildMenu.IsShowing) return;
             if (buildMenu.SelectedTower != null)
             {
                 Debug.Log("C");
@@ -140,6 +143,14 @@ namespace Entities
         }
 
         private void OnBuildMenu(InputValue value) => ToggleBuildMenu();
+
+        private void OnCancel(InputValue value)
+        {
+            if (GameManager.Instance.isPaused)
+                GameManager.Instance.TogglePause();
+            else if (buildMenu.IsShowing)
+                ToggleBuildMenu();
+        }
 
         private void OnPause(InputValue value)
         {
@@ -191,6 +202,7 @@ namespace Entities
 
         private void ToggleBuildMenu()
         {
+            Debug.Log(input.currentActionMap);
             // If build menu already shown, hide it
             if (buildMenu.IsShowing)
             {
@@ -201,6 +213,7 @@ namespace Entities
             // If build menu not shown, check distance to base
             if (!(Vector2.Distance(GameManager.Instance.PlayerBase.transform.position, transform.position) <
                   buildMenuToggleRange)) return;
+
             buildMenu.Show();
         }
     }

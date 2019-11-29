@@ -16,7 +16,7 @@ namespace Managers
         public Base PlayerBase => playerBase;
         public int Score { get; private set; }
 
-        private bool _isPaused;
+        public bool isPaused;
 
 
         public void IncreaseScore() => Score++;
@@ -35,9 +35,9 @@ namespace Managers
         /// </summary>
         public void TogglePause()
         {
-            _isPaused = !_isPaused;
-            pauseMenu.gameObject.SetActive(_isPaused);
-            Time.timeScale = _isPaused ? 0 : 1;
+            isPaused = !isPaused;
+            pauseMenu.gameObject.SetActive(isPaused);
+            Time.timeScale = isPaused ? 0 : 1;
         }
 
         /// <summary>

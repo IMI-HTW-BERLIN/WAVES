@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 265884853426472772, guid: bf4f937e643dc8d448b93ecbfe99f4e2, type: 3}
-  - {fileID: 265884853426472772, guid: 9f30a05450ffece43ab4b8b62d23296a, type: 3}
-  - {fileID: 265884853426472772, guid: bc7e7674adc1d2b41a6c5011095f5ff7, type: 3}
-  - {fileID: 265884853426472772, guid: c97d8c47d0f9d04459d1f907ac91fc68, type: 3}
+  - {fileID: 873512210811409014, guid: c9a1ff21682226e4da941e4c38a31be4, type: 3}
+  - {fileID: 873512210811409014, guid: 6255ef2ffec19c943a687c119acc53e6, type: 3}
+  - {fileID: 873512210811409014, guid: 4c8da41c190e15146a11bfeeca4653b0, type: 3}
+  - {fileID: 873512210811409014, guid: 6c27176447b13e349a531a2a07adf7f3, type: 3}
   maxPlayers: 4
-  ignoreKeyboardAndMouse: 1

@@ -6,10 +6,10 @@ namespace Utils
     {
         public static T Instance { get; private set; }
 
-        protected virtual void Awake()
+        private void Awake()
         {
             if (Instance != null && Instance == this as T)
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             else
                 Instance = this as T;
         }

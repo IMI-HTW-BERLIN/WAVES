@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 
@@ -14,12 +15,8 @@ namespace Managers
         [Header("Players")] [SerializeField] private GameObject[] players;
 
         [SerializeField] private int maxPlayers;
-        [SerializeField] private bool ignoreKeyboardAndMouse;
 
         private int _numberOfPlayers;
-
-        private const float InputDelay = 0.5f;
-        private float _inputGuardTimer;
 
 
         private void OnEnable()
@@ -32,16 +29,13 @@ namespace Managers
 
         private void PairNewUser(InputControl controls, InputEventPtr eventPtr)
         {
-            //Prevent two inputs to trigger at the same time e.g. mouse movement and controller
-            if (Time.time < _inputGuardTimer + InputDelay) return;
+            if (_numberOfPlayers == maxPlayers) return;
 
-            if (ignoreKeyboardAndMouse &&
-                (controls.device == Keyboard.current.device ||
-                 controls.device == Mouse.current.device)) return;
+            //Ignore Mouse-Movement
+            if (!(controls is ButtonControl)) return;
 
             PlayerInput.Instantiate(players[_numberOfPlayers], _numberOfPlayers, pairWithDevice: controls.device);
             _numberOfPlayers++;
-            _inputGuardTimer = Time.time;
         }
     }
 }
