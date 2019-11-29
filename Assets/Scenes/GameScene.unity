@@ -154,7 +154,7 @@ Transform:
   - {fileID: 1902489552}
   - {fileID: 739435826}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &235835161
 PrefabInstance:
@@ -385,6 +385,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5802745207803674605, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5802745207803674607, guid: 18a20f56aa96dd1438c18aa7357152f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -445,7 +450,7 @@ Transform:
   - {fileID: 1578839298}
   - {fileID: 1570840355}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547355199
 GameObject:
@@ -1256,6 +1261,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2042435966}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/start
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 83ba0b37-343c-44fa-b8cb-3ec2602c5e33
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Action
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/enter
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8765081721851601320, guid: 8fdadb5eeefbf6e428be952d7ead7b4e,
         type: 3}
       propertyPath: m_Name
@@ -1314,16 +1347,6 @@ PrefabInstance:
     - target: {fileID: 8765081721851601323, guid: 8fdadb5eeefbf6e428be952d7ead7b4e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765081721851601322, guid: 8fdadb5eeefbf6e428be952d7ead7b4e,
-        type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <Gamepad>/select
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765081721851601322, guid: 8fdadb5eeefbf6e428be952d7ead7b4e,
-        type: 3}
-      propertyPath: m_JoinBehavior
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1616,72 +1639,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3114428135973594904}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1775038413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1775038416}
-  - component: {fileID: 1775038415}
-  - component: {fileID: 1775038414}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1775038414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775038413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1775038415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775038413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1775038416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775038413}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1784372129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,7 +1892,7 @@ Transform:
   - {fileID: 3041112321289275528}
   - {fileID: 793864527}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2134355653 stripped
 MonoBehaviour:
@@ -2106,6 +2063,30 @@ PrefabInstance:
       propertyPath: upgradeMenu
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3114428137714592612, guid: 05226af708b0ba64ca9679c2d68d7fad,
+        type: 3}
+      propertyPath: playerControls.Array.data[4]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 67262cf71ca2baf40bbd55bfed5ac5ee,
+        type: 3}
+    - target: {fileID: 3114428137714592612, guid: 05226af708b0ba64ca9679c2d68d7fad,
+        type: 3}
+      propertyPath: playerControls.Array.data[5]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 99178653c022d524d943797fb5cc2e12,
+        type: 3}
+    - target: {fileID: 3114428137714592612, guid: 05226af708b0ba64ca9679c2d68d7fad,
+        type: 3}
+      propertyPath: playerControls.Array.data[6]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 48db72598f5211a48a76f79bf609ef0e,
+        type: 3}
+    - target: {fileID: 3114428137714592612, guid: 05226af708b0ba64ca9679c2d68d7fad,
+        type: 3}
+      propertyPath: playerControls.Array.data[7]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 32f0fdf494259674fa05c9acdf724dd8,
+        type: 3}
     - target: {fileID: 3655977736852532212, guid: 05226af708b0ba64ca9679c2d68d7fad,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2290,6 +2271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412136489480547541, guid: 05226af708b0ba64ca9679c2d68d7fad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05226af708b0ba64ca9679c2d68d7fad, type: 3}
