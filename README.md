@@ -1,6 +1,23 @@
 # WAVES
 A wave-based local co-op battler
 
+## Controls
+Played best with a PlayStation controller
+
+Controller | Keyboard | Action
+---|---|---
+Left Stick | A, D | Move
+Left Button | Space | Jump
+Right Stick | Mouse | Aim
+Right Button | Left Mouse Button | Fire
+Triangle | E | Build Menu
+Square | Y | Upgrade
+Cross | X | Repair / Build
+Circle | C | Sell
+
+## External assets used
+[PlayStation Button Icons](https://banner2.cleanpng.com/20180910/yyj/kisspng-playstation-2-playstation-3-playstation-controller-sony-ps-games-buttons-svg-png-icon-free-download-5b96c34cd6a084.1403838615366070528791.jpg)
+
 ## Screenshots
 ![](https://i.imgur.com/wnE9Chs.png)
 ![](https://i.imgur.com/W0mL5nr.png)
