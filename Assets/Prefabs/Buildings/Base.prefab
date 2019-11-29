@@ -50,7 +50,9 @@ MonoBehaviour:
   healthBar: {fileID: 4589029524504289353}
   repairCost: 0
   upgradeLevelCosts: 
-  destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
+  destructionParticleEffect: {fileID: 5243084685596826873, guid: 545d072f5ac27674bbda5756ab31824b,
+    type: 3}
+  upgradeParticleEffect: {fileID: 3500934168818581759, guid: a6372174e1eca41a98a6c61941f7b7d4,
     type: 3}
 --- !u!61 &9179122198509522856
 BoxCollider2D:

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7340857193488295770}
   - component: {fileID: 3500934168818581759}
   - component: {fileID: 734356864911730896}
+  - component: {fileID: -4892522619033652268}
   m_Layer: 20
   m_Name: RunnerDeathPS
   m_TagString: Untagged
@@ -4811,3 +4812,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-4892522619033652268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5015729081619262893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 968b5d413d2949b3a817bc442bc761ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

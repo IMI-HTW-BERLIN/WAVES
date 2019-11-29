@@ -10,7 +10,8 @@ namespace Buildings
     {
         [Header("Building")] [SerializeField] private int repairCost;
         [SerializeField] private int[] upgradeLevelCosts;
-        [SerializeField] private GameObject destructionParticleEffect;
+        [SerializeField] private ParticleSystem destructionParticleEffect;
+        [SerializeField] private ParticleSystem upgradeParticleEffect;
 
         [NonSerialized] public int MaxLevel;
 
@@ -33,7 +34,7 @@ namespace Buildings
         /// </summary>
         protected virtual void Destroy()
         {
-            Instantiate(destructionParticleEffect, transform);
+            Instantiate(destructionParticleEffect, transform.position, Quaternion.identity);
             GameObject.Destroy(gameObject);
         }
 
@@ -59,8 +60,9 @@ namespace Buildings
             if (!ResourceManager.Instance.RemoveGold(upgradeLevelCosts[_currentLevel])) return;
 
             OnUpgrade?.Invoke(_currentLevel);
-            Instantiate(destructionParticleEffect, transform);
             _currentLevel++;
+
+            Instantiate(upgradeParticleEffect, transform);
         }
 
         /// <summary>

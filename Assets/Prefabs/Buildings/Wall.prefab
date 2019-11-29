@@ -51,7 +51,9 @@ MonoBehaviour:
   healthBar: {fileID: 3900174503892607347}
   repairCost: 1
   upgradeLevelCosts: 0100000002000000030000000400000005000000
-  destructionParticleEffect: {fileID: 4976845954772258, guid: 545d072f5ac27674bbda5756ab31824b,
+  destructionParticleEffect: {fileID: 5243084685596826873, guid: 545d072f5ac27674bbda5756ab31824b,
+    type: 3}
+  upgradeParticleEffect: {fileID: 3500934168818581759, guid: a6372174e1eca41a98a6c61941f7b7d4,
     type: 3}
 --- !u!114 &7037140731073544974
 MonoBehaviour:
