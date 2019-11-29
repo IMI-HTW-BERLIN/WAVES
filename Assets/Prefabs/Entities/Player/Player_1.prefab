@@ -198,7 +198,7 @@ MonoBehaviour:
     m_Bits: 5120
   upgradeMenuToggleRange: 1
   buildMenuToggleRange: 200
-  upgradeMenu: {fileID: 0}
+  upgradeMenu: {fileID: 1709391552251760787}
   buildMenu: {fileID: 2647746454941071804}
   input: {fileID: 873512210811409012}
 --- !u!61 &3608027719653020196
@@ -745,6 +745,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2339796994121954001}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1709391552251760787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4017310336761684546, guid: 0c14fcdcf0ab44bb18a609e2f2266350,
+    type: 3}
+  m_PrefabInstance: {fileID: 2339796994121954001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1895b12fd5434beb9a7443910428806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9009383145693284036
 PrefabInstance:
   m_ObjectHideFlags: 0

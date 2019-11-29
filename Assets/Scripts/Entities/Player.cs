@@ -191,7 +191,6 @@ namespace Entities
 
         private void ToggleBuildMenu()
         {
-            Debug.Log(input.currentActionMap);
             // If build menu already shown, hide it
             if (buildMenu.IsShowing)
             {
