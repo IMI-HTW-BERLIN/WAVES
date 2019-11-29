@@ -192,7 +192,7 @@ MonoBehaviour:
     m_Bits: 4352
   buildingLayer:
     serializedVersion: 2
-    m_Bits: 5120
+    m_Bits: 4096
   upgradeMenuToggleRange: 1
   buildMenuToggleRange: 200
   upgradeMenu: {fileID: 1709391552251760787}

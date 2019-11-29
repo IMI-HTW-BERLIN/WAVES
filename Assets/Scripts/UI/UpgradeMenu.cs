@@ -11,7 +11,7 @@ namespace UI
         public void ShowForBuilding(Building building)
         {
             // If menu is already shown for this building, return
-            if (_selectedBuilding == building || building is Base) return;
+            if (_selectedBuilding == building) return;
             // Store selected building
             _selectedBuilding = building;
             // Show menu
