@@ -40,7 +40,7 @@ Circle | C | Sell
 - Wave-based – Defined by daylight or simply by time
 - Split-screen or one screen
 
-### Should have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/2)
+### Should have - [Project](https://github.com/imi-htw-berlin/WAVES/projects/2) :white_check_mark:
 -	Different enemy types
 -	Buildable towers which attack enemies/provide buffs or debuffs
 -	Resources for building towers (money/loot from defeated enemies or resource gathering)
