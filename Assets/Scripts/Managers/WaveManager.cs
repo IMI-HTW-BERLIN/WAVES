@@ -65,8 +65,8 @@ namespace Managers
                             break;
                     }
 
-                    Enemy newEnemy = Instantiate(spawnData.enemy, spawnPosition.position, Quaternion.identity,
-                        this.transform);
+                    Enemy newEnemy = Instantiate(spawnData.enemy);
+                    newEnemy.transform.position = spawnPosition.position;
 
                     newEnemy.SetPlayerBase(GameManager.Instance.PlayerBase.transform);
                     yield return new WaitForSeconds(spawnData.spawnDelayPerUnit);
