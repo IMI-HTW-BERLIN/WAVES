@@ -9,6 +9,7 @@ using Weapons;
 
 namespace Entities
 {
+    [RequireComponent(typeof(PlayerInput))]
     public class Player : Entity
     {
         [Header("Player")] [SerializeField] private float jumpForce;
@@ -23,8 +24,9 @@ namespace Entities
         [SerializeField] private LayerMask groundLayer;
 
         // Building upgrade menu
-        [Header("Build & Upgrade Menu")]
-        [SerializeField] private LayerMask buildingLayer;
+        [Header("Build & Upgrade Menu")] [SerializeField]
+        private LayerMask buildingLayer;
+
         [SerializeField] private float upgradeMenuToggleRange;
         [SerializeField] private float buildMenuToggleRange;
 
@@ -34,9 +36,9 @@ namespace Entities
         //InputSystem
         private Vector2 _movementInput;
         private Vector2 _aimDirection;
-        
+
         private bool _onGround;
-        
+
         public bool IsFacingLeft { get; private set; }
 
         protected override void Awake()
@@ -49,11 +51,12 @@ namespace Entities
         {
             //Ground Check
             _onGround = Physics2D.OverlapArea(topLeft.position, bottomRight.position, groundLayer);
-            if (buildMenu.IsActive)
+            if (buildMenu.IsShowing)
             {
                 Rb.velocity = new Vector2(0, Rb.velocity.y);
                 return;
             }
+
             //Movement
             Rb.velocity = new Vector2(_movementInput.x * baseMovementSpeed, Rb.velocity.y);
             //Aiming
@@ -86,27 +89,29 @@ namespace Entities
         }
 
         //Input Messages
-        private void OnMove(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);
+        private void OnMovePlayer(InputValue value) => _movementInput = new Vector2(value.Get<float>(), 0);
         private void OnMoveStick(InputValue value) => _movementInput = value.Get<Vector2>();
 
         private void OnWeaponAimMouse(InputValue value) =>
             _aimDirection = Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - transform.position;
 
         private void OnWeaponAimStick(InputValue value) => _aimDirection = value.Get<Vector2>();
+
         private void OnFire(InputValue value)
         {
-            if (buildMenu.IsActive || !enabled) return;
+            if (buildMenu.IsShowing || !enabled) return;
             weapon.Attack();
         }
 
         private void OnJump(InputValue value)
         {
-            if (buildMenu.IsActive) return;
+            if (buildMenu.IsShowing) return;
             Jump();
         }
 
         private void OnDeviceLost() => Destroy(this.gameObject);
         private void OnUpgrade(InputValue value) => upgradeMenu.ExecuteAction(UpgradeAction.Upgrade);
+
         private void OnRepair(InputValue value)
         {
             BuildMenu.TowerSelection selectedTower = buildMenu.SelectedTower;
@@ -118,6 +123,7 @@ namespace Entities
                     buildMenu.DeselectTower();
                 }
             }
+
             upgradeMenu.ExecuteAction(UpgradeAction.Repair);
         }
 
@@ -129,11 +135,17 @@ namespace Entities
                 buildMenu.DeselectTower();
                 return;
             }
+
             upgradeMenu.ExecuteAction(UpgradeAction.Sell);
         }
 
         private void OnBuildMenu(InputValue value) => ToggleBuildMenu();
-        private void OnPause(InputValue value) => GameManager.Instance.TogglePause();
+
+        private void OnPause(InputValue value)
+        {
+            buildMenu.Hide();
+            GameManager.Instance.TogglePause();
+        }
 
         private void Jump()
         {
@@ -180,11 +192,12 @@ namespace Entities
         private void ToggleBuildMenu()
         {
             // If build menu already shown, hide it
-            if (buildMenu.IsActive)
+            if (buildMenu.IsShowing)
             {
                 buildMenu.Hide();
                 return;
             }
+
             // If build menu not shown, check distance to base
             if (!(Vector2.Distance(GameManager.Instance.PlayerBase.transform.position, transform.position) <
                   buildMenuToggleRange)) return;

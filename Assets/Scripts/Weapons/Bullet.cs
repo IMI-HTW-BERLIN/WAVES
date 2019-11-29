@@ -42,10 +42,9 @@ namespace Weapons
 
             //Only listen for actual hits with other object-colliders
             if (other.isTrigger) return;
-            Damageable enemy = other.GetComponent<Damageable>();
             //If not an enemy, keep living
-            if (!enemy) return;
-            enemy.ApplyDamage(_damage);
+            if (other.TryGetComponent(out Damageable enemy))
+                enemy.ApplyDamage(_damage);
         }
 
         /// <summary>

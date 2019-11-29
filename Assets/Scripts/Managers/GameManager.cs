@@ -1,5 +1,4 @@
 ﻿using Buildings;
-using Enums;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,12 +11,13 @@ namespace Managers
         [SerializeField] private GameOver gameOverScreen;
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private Base playerBase;
-        
+
         public Transform PlayerSpawnPosition => playerBase.transform;
         public Base PlayerBase => playerBase;
         public int Score { get; private set; }
 
         private bool _isPaused;
+
 
         public void IncreaseScore() => Score++;
 
