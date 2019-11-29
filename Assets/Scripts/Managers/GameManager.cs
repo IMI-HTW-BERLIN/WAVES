@@ -18,6 +18,10 @@ namespace Managers
 
         public bool isPaused;
 
+        public delegate void PauseDelegate(bool paused);
+
+        public static event PauseDelegate OnPause;
+
 
         public void IncreaseScore() => Score++;
 
@@ -37,6 +41,7 @@ namespace Managers
         {
             isPaused = !isPaused;
             pauseMenu.gameObject.SetActive(isPaused);
+            OnPause?.Invoke(isPaused);
             Time.timeScale = isPaused ? 0 : 1;
         }
 

@@ -47,6 +47,7 @@ namespace Entities
         {
             base.Awake();
             spriteRenderer.color = colors[Random.Range(0, colors.Length - 1)];
+            GameManager.OnPause += TogglePause;
         }
 
         private void FixedUpdate()
@@ -101,7 +102,7 @@ namespace Entities
 
         private void OnFire(InputValue value)
         {
-            if (buildMenu.IsShowing || !enabled) return;
+            if (buildMenu.IsShowing || !enabled || GameManager.Instance.isPaused) return;
             weapon.Attack();
         }
 
@@ -144,19 +145,7 @@ namespace Entities
 
         private void OnBuildMenu(InputValue value) => ToggleBuildMenu();
 
-        private void OnCancel(InputValue value)
-        {
-            if (GameManager.Instance.isPaused)
-                GameManager.Instance.TogglePause();
-            else if (buildMenu.IsShowing)
-                ToggleBuildMenu();
-        }
-
-        private void OnPause(InputValue value)
-        {
-            buildMenu.Hide();
-            GameManager.Instance.TogglePause();
-        }
+        private void OnPause(InputValue value) => GameManager.Instance.TogglePause();
 
         private void Jump()
         {
@@ -216,5 +205,7 @@ namespace Entities
 
             buildMenu.Show();
         }
+
+        private void TogglePause(bool paused) => buildMenu.Hide();
     }
 }
