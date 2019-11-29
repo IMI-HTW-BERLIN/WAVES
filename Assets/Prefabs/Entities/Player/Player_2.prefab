@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 873512210811409015}
   - component: {fileID: 873512210811409012}
   m_Layer: 11
-  m_Name: Player_1
+  m_Name: Player_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   jumpForce: 5
   weapon: {fileID: 8215038850959474279}
   playerContent: {fileID: 636000326042915219}
-  color: {r: 0, g: 1, b: 1, a: 1}
+  color: {r: 1, g: 0.601208, b: 0, a: 1}
   topLeft: {fileID: 1860828776217005230}
   bottomRight: {fileID: 310266632941674809}
   groundLayer:
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 67262cf71ca2baf40bbd55bfed5ac5ee,
+  m_Actions: {fileID: -944628639613478452, guid: 0d28769e51e12b541800b10f18716c5e,
     type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 2694210018230391410}
@@ -537,19 +537,20 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MoveAction
       value: 
-      objectReference: {fileID: -2250188739719683950, guid: 67262cf71ca2baf40bbd55bfed5ac5ee,
+      objectReference: {fileID: -2250188739719683950, guid: 0d28769e51e12b541800b10f18716c5e,
         type: 3}
     - target: {fileID: 4500609555817336645, guid: d52977f1b0eb4420db71e4b5e084cc7d,
         type: 3}
       propertyPath: m_SubmitAction
       value: 
-      objectReference: {fileID: 2064916234097673511, guid: 67262cf71ca2baf40bbd55bfed5ac5ee,
+      objectReference: {fileID: 2064916234097673511, guid: 0d28769e51e12b541800b10f18716c5e,
         type: 3}
     - target: {fileID: 4500609555817336645, guid: d52977f1b0eb4420db71e4b5e084cc7d,
         type: 3}
       propertyPath: m_CancelAction
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -1967631576421560919, guid: 0d28769e51e12b541800b10f18716c5e,
+        type: 3}
     - target: {fileID: 4500609555817336645, guid: d52977f1b0eb4420db71e4b5e084cc7d,
         type: 3}
       propertyPath: m_LeftClickAction
@@ -585,6 +586,12 @@ PrefabInstance:
       propertyPath: m_TrackedDeviceSelectAction
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4500609555817336645, guid: d52977f1b0eb4420db71e4b5e084cc7d,
+        type: 3}
+      propertyPath: m_ActionsAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 0d28769e51e12b541800b10f18716c5e,
+        type: 3}
     - target: {fileID: 3817616412049130647, guid: d52977f1b0eb4420db71e4b5e084cc7d,
         type: 3}
       propertyPath: m_Name

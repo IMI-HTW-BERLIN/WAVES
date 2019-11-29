@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4087540299748966126}
-  - {fileID: 1226343558430112965}
+  - {fileID: 2870248726824027315}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,12 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 960443799416040641}
-  pauseMenu: {fileID: 7033059033818211237}
+  pauseMenu: {fileID: 6290267639400602579}
   playerBase: {fileID: 0}
-  players:
-  - {fileID: 265884853426472772, guid: bf4f937e643dc8d448b93ecbfe99f4e2, type: 3}
-  - {fileID: 265884853426472772, guid: 9f30a05450ffece43ab4b8b62d23296a, type: 3}
---- !u!1001 &1384925395118680324
+  isPaused: 0
+--- !u!1001 &2731937530533040498
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -220,17 +218,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 345f37936d5e20c4c813084877977bb9, type: 3}
---- !u!4 &1226343558430112965 stripped
+--- !u!4 &2870248726824027315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 161257360946877889, guid: 345f37936d5e20c4c813084877977bb9,
     type: 3}
-  m_PrefabInstance: {fileID: 1384925395118680324}
+  m_PrefabInstance: {fileID: 2731937530533040498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7033059033818211237 stripped
+--- !u!114 &6290267639400602579 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8260252226361051809, guid: 345f37936d5e20c4c813084877977bb9,
     type: 3}
-  m_PrefabInstance: {fileID: 1384925395118680324}
+  m_PrefabInstance: {fileID: 2731937530533040498}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

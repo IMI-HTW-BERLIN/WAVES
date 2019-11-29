@@ -6,7 +6,7 @@ namespace UI
     public class WaveDisplay : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI txtWaveDisplay;
-        [SerializeField] private Animator txtAnimator;
+        [SerializeField] private GameObject txtAnimator;
         private static readonly int Fade = Animator.StringToHash("fade");
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace UI
         public void ShowCurrentWave(int currentWave)
         {
             txtWaveDisplay.SetText($"WAVE {currentWave + 1}");
-            txtAnimator.SetTrigger(Fade);
+            txtAnimator.GetComponent<Animator>().SetTrigger(Fade);
         }
     }
 }

@@ -282,5 +282,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtWaveDisplay: {fileID: 2007110056467704834}
-  animTime: 2
-  fadeAnimTime: 1
+  txtAnimator: {fileID: 4480243598224027871}

@@ -15,7 +15,7 @@ namespace Entities
         [Header("Player")] [SerializeField] private float jumpForce;
         [SerializeField] private Weapon weapon;
         [SerializeField] private GameObject playerContent;
-        [SerializeField] private Color[] colors;
+        [SerializeField] private Color color;
 
         [Header("Player Ground-Check")] [SerializeField]
         private Transform topLeft;
@@ -46,7 +46,7 @@ namespace Entities
         protected override void Awake()
         {
             base.Awake();
-            spriteRenderer.color = colors[Random.Range(0, colors.Length - 1)];
+            spriteRenderer.color = color;
             GameManager.OnPause += TogglePause;
         }
 
@@ -102,6 +102,17 @@ namespace Entities
 
         private void OnFire(InputValue value)
         {
+            BuildMenu.TowerSelection selectedTower = buildMenu.SelectedTower;
+            if (selectedTower != null && selectedTower.BlueprintInstance.IsBuildable)
+            {
+                if (ResourceManager.Instance.RemoveGold(selectedTower.TowerData.cost))
+                {
+                    selectedTower.BlueprintInstance.Build(selectedTower.TowerData.prefab);
+                    buildMenu.DeselectTower();
+                    return;
+                }
+            }
+
             if (buildMenu.IsShowing || !enabled || GameManager.Instance.isPaused) return;
             weapon.Attack();
         }
@@ -117,16 +128,6 @@ namespace Entities
 
         private void OnRepair(InputValue value)
         {
-            BuildMenu.TowerSelection selectedTower = buildMenu.SelectedTower;
-            if (selectedTower != null && selectedTower.BlueprintInstance.IsBuildable)
-            {
-                if (ResourceManager.Instance.RemoveGold(selectedTower.TowerData.cost))
-                {
-                    selectedTower.BlueprintInstance.Build(selectedTower.TowerData.prefab);
-                    buildMenu.DeselectTower();
-                }
-            }
-
             upgradeMenu.ExecuteAction(UpgradeAction.Repair);
         }
 
@@ -135,7 +136,6 @@ namespace Entities
             if (buildMenu.IsShowing) return;
             if (buildMenu.SelectedTower != null)
             {
-                Debug.Log("C");
                 buildMenu.DeselectTower();
                 return;
             }

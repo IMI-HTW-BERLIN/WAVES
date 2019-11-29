@@ -8,19 +8,19 @@ namespace UI
     public class GameOver : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI scoreLabel;
-        [SerializeField] private Button retryButton;
-        [SerializeField] private Button quitButton;
+        [SerializeField] private Button btnRestart;
+        [SerializeField] private Button btnQuit;
+
+        private void Awake()
+        {
+            btnRestart.onClick.AddListener(GameManager.StartGame);
+            btnQuit.onClick.AddListener(Application.Quit);
+        }
 
         public void Show()
         {
-            scoreLabel.SetText(GameManager.Instance.Score.ToString());
+            scoreLabel.SetText($"Score:  {GameManager.Instance.Score.ToString()}");
             gameObject.SetActive(true);
-        }
-
-        private void Start()
-        {
-            retryButton.onClick.AddListener(GameManager.StartGame);
-            quitButton.onClick.AddListener(Application.Quit);
         }
     }
 }

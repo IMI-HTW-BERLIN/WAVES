@@ -4,6 +4,7 @@ using Entities.Enemies;
 using ScriptableObjects.Waves;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using World;
 
 namespace Managers
@@ -15,10 +16,21 @@ namespace Managers
         [SerializeField] private Transform[] enemySpawnPoints;
 
         private int _currentWaveIndex;
+        private static WaveManager _instance;
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+            if (_instance != null)
+                Destroy(gameObject);
+            else
+                _instance = this;
+        }
 
         private void Start()
         {
             Sun.SunDown += SpawnWave;
+            SceneManager.activeSceneChanged += (oldScene, newScene) => _currentWaveIndex = 0;
         }
 
         public void SpawnWave()

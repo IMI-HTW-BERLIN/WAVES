@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - {fileID: 873512210811409014, guid: c9a1ff21682226e4da941e4c38a31be4, type: 3}
-  - {fileID: 873512210811409014, guid: 6255ef2ffec19c943a687c119acc53e6, type: 3}
-  - {fileID: 873512210811409014, guid: 4c8da41c190e15146a11bfeeca4653b0, type: 3}
-  - {fileID: 873512210811409014, guid: 6c27176447b13e349a531a2a07adf7f3, type: 3}
+  - {fileID: 873512210811409014, guid: 4e6711be8b41987409de223052e6cd4c, type: 3}
+  - {fileID: 873512210811409014, guid: 8344fb2d7b033e44e96f35c111fbb588, type: 3}
+  - {fileID: 873512210811409014, guid: 6426a1868cda9a84781d0ece4ee182e2, type: 3}
   maxPlayers: 4

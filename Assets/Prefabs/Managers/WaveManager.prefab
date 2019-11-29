@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &7694409504863501491
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478516985560202007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7a10fa4a900a474a8a6666c264c013e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5680176652212770729
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +104,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb52be8c4197233449fe586031bc4b44, type: 2}
   - {fileID: 11400000, guid: d5e9991c529f32b47bef5960346e8093, type: 2}
   - {fileID: 11400000, guid: 35ec1badced49f541b94137428381e7f, type: 2}
+  - {fileID: 11400000, guid: 81435cfd036cb404284101bba586e395, type: 2}
+  - {fileID: 11400000, guid: 86c96f60b273e48cca7b077db9733f71, type: 2}
+  - {fileID: 11400000, guid: e9d212c2c14914c718b1a36e81c49990, type: 2}
+  - {fileID: 11400000, guid: 9dcbdc633f5e24117be4d03775d89547, type: 2}
+  - {fileID: 11400000, guid: a4ab8ac1d94214d35b90bd84c210153d, type: 2}
+  - {fileID: 11400000, guid: 56e3fc8aefa8349e882cdda489d978d2, type: 2}
+  - {fileID: 11400000, guid: 65c375a2ef3ea437aa5ecd7a513f147f, type: 2}
+  - {fileID: 11400000, guid: bbd4e66a0794a423a97891dd1df7ccef, type: 2}
   enemySpawnPoints:
   - {fileID: 8696169981878417406}
   - {fileID: 7266041295005507063}
@@ -187,42 +214,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
         type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
-        type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 2007110056467704834, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
         type: 3}
       propertyPath: m_fontColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4480243598224027871, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -245,3 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e431b218176a4cdc845f80a7faa51d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2478516985560202007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4480243598224027871, guid: 21b62f44e6f5edd4aa4156d24410bb1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2038006107326778312}
+  m_PrefabAsset: {fileID: 0}

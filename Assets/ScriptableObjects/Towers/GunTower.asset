@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad58c3bea1e458ea602564f4d5fd426, type: 3}
   m_Name: GunTower
   m_EditorClassIdentifier: 
-  cost: 10
+  cost: 50
   prefab: {fileID: 7490311517834607569, guid: 8398b891c059d4958b97df5308503219, type: 3}
   blueprintPrefab: {fileID: 4886626117878653198, guid: b1f38c937963d4d6fac1cdaed807d0f3,
     type: 3}
