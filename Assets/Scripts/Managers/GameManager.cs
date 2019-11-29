@@ -19,10 +19,8 @@ namespace Managers
         public bool isPaused;
 
         public delegate void PauseDelegate(bool paused);
-
         public static event PauseDelegate OnPause;
-
-
+        
         public void IncreaseScore() => Score++;
 
         /// <summary>

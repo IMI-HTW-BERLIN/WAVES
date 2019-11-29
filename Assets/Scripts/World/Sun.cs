@@ -13,7 +13,6 @@ namespace World
         private float nightSunAngle;
 
         public delegate void SunStatus();
-
         public static event SunStatus SunDown;
 
         private float _globalLightMaxIntensity;

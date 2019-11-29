@@ -461,6 +461,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: bbd4e66a0794a423a97891dd1df7ccef,
         type: 2}
+    - target: {fileID: 7753944466517542229, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: txtAnimator
+      value: 
+      objectReference: {fileID: 1745859124}
+    - target: {fileID: 545740637565429706, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545740637565429706, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478516985560202007, guid: 18a20f56aa96dd1438c18aa7357152f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a20f56aa96dd1438c18aa7357152f5, type: 3}
 --- !u!4 &364794064 stripped
@@ -1609,6 +1629,31 @@ Transform:
   m_Father: {fileID: 386888360}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1745859120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2478516985560202007, guid: 18a20f56aa96dd1438c18aa7357152f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 364794063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1745859124
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745859120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7a10fa4a900a474a8a6666c264c013e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1774554237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3114428137714592613, guid: 05226af708b0ba64ca9679c2d68d7fad,
