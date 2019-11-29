@@ -1,6 +1,14 @@
 # WAVES
 A wave-based local co-op battler
 
+## Screenshots
+![](https://i.imgur.com/wnE9Chs.png)
+![](https://i.imgur.com/W0mL5nr.png)
+![](https://i.imgur.com/5s0qu8J.png)
+![](https://i.imgur.com/bbo6YbG.png)
+![](https://i.imgur.com/LxQ7JpK.jpg)
+![](https://i.imgur.com/IhvxlYT.jpg)
+
 ## Team Members
 - [David Panagiotopulos](https://github.com/DavidPgl)
 - [Luis Hankel](https://github.com/Kaes3kuch3n)
