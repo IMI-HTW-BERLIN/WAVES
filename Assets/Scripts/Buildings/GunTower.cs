@@ -15,11 +15,9 @@ namespace Buildings
         [SerializeField] private float attackSpeed;
         [SerializeField] private int attackDamage;
         [SerializeField] private Bullet bulletPrefab;
-        [SerializeField] private LayerMask attackableLayers;
         [SerializeField] private CircleCollider2D attackRange;
+        [SerializeField] private TargetFinder targetFinder;
 
-        private List<Damageable> _targets = new List<Damageable>();
-        
         private float _cooldownTime;
 
         private bool CanAttack
@@ -40,20 +38,6 @@ namespace Buildings
                 Attack(closestTarget);
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            Damageable damageable = other.GetComponent<Damageable>();
-            if (!damageable || !attackableLayers.Contains(other.gameObject.layer)) return;
-            _targets.Add(damageable);
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            Damageable damageable = other.GetComponent<Damageable>();
-            if (!damageable) return;
-            _targets.Remove(damageable);
-        }
-
         public void IncreaseAttackDamage(int damage) => attackDamage += damage;
         public void IncreaseAttackRange(float range) => attackRange.radius += range;
 
@@ -71,13 +55,14 @@ namespace Buildings
 
         private Damageable GetNearestTarget()
         {
-            if (_targets.Count <= 0) return null;
+            List<Damageable> targets = targetFinder.Targets;
+            if (targets.Count <= 0) return null;
             
-            Damageable closest = _targets[0];
+            Damageable closest = targetFinder.Targets[0];
             
-            for (int i = 1; i < _targets.Count; i++)
+            for (int i = 1; i < targets.Count; i++)
             {
-                Damageable damageable = _targets[i];
+                Damageable damageable = targets[i];
                 if (Vector3.Distance(damageable.transform.position, transform.position) <
                     Vector3.Distance(closest.transform.position, transform.position))
                     closest = damageable;

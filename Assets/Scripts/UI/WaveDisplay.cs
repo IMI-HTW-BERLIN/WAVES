@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using World;
 
 namespace UI
 {
@@ -15,7 +16,9 @@ namespace UI
         /// <param name="currentWave">The wave index</param>
         public void ShowCurrentWave(int currentWave)
         {
-            txtWaveDisplay.SetText($"WAVE {currentWave + 1}");
+            string newText = $"WAVE {currentWave + 1}";
+            newText += new string('?', Sun.Instance.NumberOfSpeedUps);
+            txtWaveDisplay.SetText(newText);
             txtAnimator.GetComponent<Animator>().SetTrigger(Fade);
         }
     }
