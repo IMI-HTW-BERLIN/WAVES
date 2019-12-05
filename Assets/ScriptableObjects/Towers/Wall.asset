@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad58c3bea1e458ea602564f4d5fd426, type: 3}
   m_Name: Wall
   m_EditorClassIdentifier: 
-  cost: 30
+  cost: 10
   prefab: {fileID: 8788792027865371269, guid: 07d2a80316adc8d479d9e971d1ccb703, type: 3}
   blueprintPrefab: {fileID: 8016810792832247634, guid: 947076c7f356d4e7f9a068d8a4e429cf,
     type: 3}

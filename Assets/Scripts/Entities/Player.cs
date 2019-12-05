@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Buildings;
 using Enums;
@@ -47,11 +48,23 @@ namespace Entities
         {
             base.Awake();
             spriteRenderer.color = color;
-            GameManager.OnPause += TogglePause;
         }
+
+        private void OnEnable() => GameManager.Instance.OnPause += TogglePause;
+        private void OnDisable() => GameManager.Instance.OnPause -= TogglePause;
 
         private void FixedUpdate()
         {
+            //Prevent player from moving outside
+            if (Camera.main != null)
+            {
+                float leftBound = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
+                float rightBound = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
+                Vector3 position = transform.position;
+                position.x = Mathf.Clamp(position.x, leftBound, rightBound);
+                transform.position = position;
+            }
+
             //Ground Check
             _onGround = Physics2D.OverlapArea(topLeft.position, bottomRight.position, groundLayer);
             if (buildMenu.IsShowing)
@@ -86,7 +99,10 @@ namespace Entities
         {
             TogglePlayer(false);
             CurrentHealth = maxHealth;
-            transform.position = GameManager.Instance.PlayerSpawnPosition.position;
+            Transform spawnPosition = GameManager.Instance.PlayerSpawnPosition;
+            if(spawnPosition == null)
+                return;
+            transform.position = spawnPosition.position;
             UpdateHealthBar();
             Invoke(nameof(Respawn), 3);
         }

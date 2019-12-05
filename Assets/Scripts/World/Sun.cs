@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using Utils;
 
 namespace World
 {
-    public class Sun : MonoBehaviour
+    public class Sun : Singleton<Sun>
     {
         [SerializeField] private Transform rotationPoint;
 
@@ -13,10 +14,13 @@ namespace World
         private float nightSunAngle;
 
         public delegate void SunStatus();
-        public static event SunStatus SunDown;
+        public event SunStatus SunDown;
+
+        public int NumberOfSpeedUps => _numberOfSpeedUps;
 
         private float _globalLightMaxIntensity;
         private bool _isNight = true;
+        private int _numberOfSpeedUps;
 
         private void Update()
         {
@@ -29,6 +33,12 @@ namespace World
             }
             else
                 _isNight = false;
+        }
+
+        public void SpeedUpDayTime()
+        {
+            _numberOfSpeedUps++;
+            dayLength /= 2f;
         }
     }
 }

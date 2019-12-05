@@ -70,18 +70,6 @@ namespace UI
 
         public void Hide() => canvas.gameObject.SetActive(false);
 
-        public class TowerSelection
-        {
-            public TowerData TowerData { get; }
-            public Blueprint BlueprintInstance { get; }
-
-            public TowerSelection(TowerData towerData, Blueprint blueprintInstance)
-            {
-                TowerData = towerData;
-                BlueprintInstance = blueprintInstance;
-            }
-        }
-
         private void SetNavigationForButtons()
         {
             Navigation navigation;
@@ -98,6 +86,18 @@ namespace UI
                 navigation = current.navigation;
                 navigation.selectOnLeft = previous;
                 current.navigation = navigation;
+            }
+        }
+        
+        public class TowerSelection
+        {
+            public TowerData TowerData { get; }
+            public Blueprint BlueprintInstance { get; }
+
+            public TowerSelection(TowerData towerData, Blueprint blueprintInstance)
+            {
+                TowerData = towerData;
+                BlueprintInstance = blueprintInstance;
             }
         }
     }

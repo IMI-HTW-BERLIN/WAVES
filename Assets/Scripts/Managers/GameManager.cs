@@ -12,25 +12,21 @@ namespace Managers
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private Base playerBase;
 
-        public Transform PlayerSpawnPosition => playerBase.transform;
+        public Transform PlayerSpawnPosition => playerBase != null ? playerBase.transform : null;
         public Base PlayerBase => playerBase;
         public int Score { get; private set; }
 
         public bool isPaused;
 
         public delegate void PauseDelegate(bool paused);
-        public static event PauseDelegate OnPause;
+        public event PauseDelegate OnPause;
         
         public void IncreaseScore() => Score++;
 
         /// <summary>
         /// Freezes the time and shows the GameOverScreen
         /// </summary>
-        public void GameOver()
-        {
-            Time.timeScale = 0f;
-            gameOverScreen.Show();
-        }
+        public void GameOver() => gameOverScreen.Show();
 
         /// <summary>
         /// Shows/Hides the PauseMenu and sets the TimeScale respectively

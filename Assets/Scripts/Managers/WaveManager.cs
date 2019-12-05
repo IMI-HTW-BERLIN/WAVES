@@ -5,6 +5,7 @@ using ScriptableObjects.Waves;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utils;
 using World;
 
 namespace Managers
@@ -16,25 +17,29 @@ namespace Managers
         [SerializeField] private Transform[] enemySpawnPoints;
 
         private int _currentWaveIndex;
-        private static WaveManager _instance;
 
-        private void Awake()
+        private void OnEnable()
         {
-            DontDestroyOnLoad(gameObject);
-            if (_instance != null)
-                Destroy(gameObject);
-            else
-                _instance = this;
+            Sun.Instance.SunDown += SpawnWave;
         }
 
-        private void Start()
+        private void OnDisable()
         {
-            Sun.SunDown += SpawnWave;
-            SceneManager.activeSceneChanged += (oldScene, newScene) => _currentWaveIndex = 0;
+            Sun.Instance.SunDown -= SpawnWave;
         }
 
         public void SpawnWave()
         {
+            //Game Over?
+            if(GameManager.Instance.PlayerBase.Equals(null))
+                return;
+            //Through all waves? Make it harder!
+            if (_currentWaveIndex >= waves.Length)
+            {
+                Sun.Instance.SpeedUpDayTime();
+                _currentWaveIndex = 0;
+            }
+
             waveDisplay.ShowCurrentWave(_currentWaveIndex);
             WaveData wave = waves[_currentWaveIndex];
             //Using the data from SpawnData, spawns the enemies of this wave
@@ -64,7 +69,9 @@ namespace Managers
                             spawnPosition = enemySpawnPoints[0];
                             break;
                     }
-
+                    
+                    if(GameManager.Instance.PlayerBase.Equals(null))
+                        yield break;
                     Enemy newEnemy = Instantiate(spawnData.enemy);
                     newEnemy.transform.position = spawnPosition.position;
 
