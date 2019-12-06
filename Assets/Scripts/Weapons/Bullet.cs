@@ -25,31 +25,24 @@ namespace Weapons
         /// Shoots the bullet with a specified damage in a specified direction (and speed)
         /// </summary>
         /// <param name="damage"></param>
-        /// <param name="directionAndForce"></param>
-        public void Shoot(int damage, Vector2 directionAndForce)
+        /// <param name="direction"></param>
+        public void Shoot(int damage, Vector2 direction)
         {
             _damage = damage;
-            _rb.AddForce(directionAndForce * bulletSpeed);
+            _rb.AddForce(direction * bulletSpeed);
         }
 
         /// <summary>
-        /// Target hit? -> Do damage, then delete me
+        /// Deal damage and destroy itself
         /// </summary>
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!attackableLayers.Contains(other.gameObject.layer))
-                return;
-
-            //Only listen for actual hits with other object-colliders
-            if (other.isTrigger) return;
-            //If not an enemy, keep living
-            if (other.TryGetComponent(out Damageable enemy))
-                enemy.ApplyDamage(_damage);
+            if (attackableLayers.Contains(other.gameObject.layer))
+            {
+                if (other.gameObject.TryGetComponent(out Damageable enemy))
+                    enemy.ApplyDamage(_damage);
+            }
+            Destroy(gameObject);
         }
-
-        /// <summary>
-        /// Anything hit? -> Delete me
-        /// </summary>
-        private void OnCollisionEnter2D(Collision2D other) => Destroy(gameObject);
     }
 }

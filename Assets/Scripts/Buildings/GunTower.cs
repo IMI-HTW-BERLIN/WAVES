@@ -48,7 +48,7 @@ namespace Buildings
             // Aim barrel towards nearest enemy
             barrel.transform.right = targetPosition - barrel.transform.position;
             // Fire bullet towards enemy
-            Vector2 direction = targetPosition - bulletSpawnPosition;
+            Vector2 direction = (targetPosition - bulletSpawnPosition).normalized;
             Bullet bullet = Instantiate(bulletPrefab, bulletSpawnPosition, Quaternion.identity);
             bullet.Shoot(attackDamage, direction);
         }

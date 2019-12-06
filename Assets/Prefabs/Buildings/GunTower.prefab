@@ -83,8 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   healthBar: {fileID: 8570648384955936832}
-  repairCost: 1
-  upgradeLevelCosts: 050000000a0000000a0000000a0000000a000000
+  repairCost: 5
+  upgradeLevelCosts: 0a0000000a0000000a0000000a0000000a000000
   destructionParticleEffect: {fileID: 5243084685596826873, guid: 545d072f5ac27674bbda5756ab31824b,
     type: 3}
   upgradeParticleEffect: {fileID: 3500934168818581759, guid: a6372174e1eca41a98a6c61941f7b7d4,
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9fbab7080d449a98487f1ccde16d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeValues: 0100000002000000
+  upgradeValues: 0100000001000000
 --- !u!114 &2838569378444061002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeValues:
-  - 3
-  - 5
+  - 1
+  - 1
 --- !u!114 &6668511782907980243
 MonoBehaviour:
   m_ObjectHideFlags: 0
